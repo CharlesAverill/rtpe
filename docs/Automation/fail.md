@@ -2,7 +2,7 @@
 title: fail - RTPE
 ---
 
-## [fail](/Automation/fail.html)
+## [fail](/rtpe/Automation/fail.html)
 
 `fail` always fails.
 

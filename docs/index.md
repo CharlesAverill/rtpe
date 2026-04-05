@@ -3,7 +3,7 @@ title: "Rocq Tactics in Plain English"
 ---
 
 
-# [Rocq Tactics in Plain English](/prologue.html)
+# [Rocq Tactics in Plain English](/rtpe/prologue.html)
 
 If you're like me, one of the biggest shortcomings of the Rocq ecosystem is the fairly complicated [tactic reference documentation](https://rocq-prover.org/doc/master/refman/proof-engine/tactics.html).
 It is exhaustive (which is better than lacking), but I have a few specific issues with it:
@@ -50,7 +50,7 @@ There are many other guides to Rocq tactics, you should check them out too if I 
 <hr>
 
 
-# [Generalization](/Generalization/index.html)
+# [Generalization](/rtpe/Generalization/index.html)
 
 This group of tactics is often found at the beginnings of proofs. 
 Generalization and its counterpart Specialization (both are included here) are concepts used to fine-tune how strong of a theorem is needed to continue.
@@ -58,13 +58,13 @@ Theorems that are too strong (specific) aren't useful for many different kinds o
 Theorems that are too weak (general) are frequently unprovable (even if their specified counterparts are!) and those that are provable are frequently harder to prove!
 
 
-## [intros](/Generalization/intros.html)
+## [intros](/rtpe/Generalization/intros.html)
 
 Typically the first tactics a Rocq user ever utilizes.
 `intros` finds assumptions builtin to your goal (usually in the form of a `forall` quantifier) and moves them to the goal's context (a.k.a. hypothesis space, assumption space).
 This is similar to the first step of many informal, paper proofs, when the prover states "let there be some number n, ..."
 
-More specifically, `intros` [specializes](/glossary.html#specialize) a goal by looking for [type inhabitation](/glossary.html#type_inhabitation) and proposition assumptions and moving them into the assumption space.
+More specifically, `intros` [specializes](/rtpe/glossary.html#specialize) a goal by looking for [type inhabitation](/rtpe/glossary.html#type_inhabitation) and proposition assumptions and moving them into the assumption space.
 For example, if you write `forall (n : nat), n + 0 = n`, the `forall` is acting as an assumption that there is a value of type `nat` that we can call `n`.
 Calling `intros` here will provide you an assumption `n` that there is a value of type `nat`.
 
@@ -164,7 +164,7 @@ n = n
 <hr>
 
 
-## [clear](/Generalization/clear.html)
+## [clear](/rtpe/Generalization/clear.html)
 
 `clear` erases assumptions from the assumption space.
 Multiple assumptions may be erased in one tactic via a space-separated list of assumptions.
@@ -241,13 +241,13 @@ True
 <hr>
 
 
-# [Simplification](/Simplification/index.html)
+# [Simplification](/rtpe/Simplification/index.html)
 
 This group of tactic aims to reduce the complexity of terms in a goal. 
 They will not solve a goal, only convert it into what is a structurally smaller (although maybe not lexically smaller!) form of the original goal.
 
 
-## [simpl](/Simplification/simpl.html)
+## [simpl](/rtpe/Simplification/simpl.html)
 
 `simpl` evaluates terms that are constructed of constant values - not variables.
 `simpl` can also partially evaluate partially-constant values.
@@ -295,7 +295,7 @@ After
 <hr>
 
 
-## [unfold](/Simplification/unfold.html)
+## [unfold](/rtpe/Simplification/unfold.html)
 
 `unfold` replaces definition identifiers with the definition's contents, simplifying along the way.
 
@@ -366,7 +366,7 @@ false
 <hr>
 
 
-## [split](/Simplification/split.html)
+## [split](/rtpe/Simplification/split.html)
 
 `split` is primarily used to break a single goal of the form `A /\ B` into two new goals `A` and `B`.
 
@@ -417,14 +417,14 @@ False
 <hr>
 
 
-# [Specific Solvers](/SpecificSolvers/index.html)
+# [Specific Solvers](/rtpe/SpecificSolvers/index.html)
 
 Each tactic in this group exists to solve a very specific kind of goal.
 They're fairly simple to learn about and use, because their goal targets are such small groups that there are hardly any degrees of freedom for automation to be required.
 Essentially all Rocq proofs include some of these (whether they're written by the programmer or called by more complex tactics).
 
 
-## [reflexivity](/SpecificSolvers/reflexivity.html)
+## [reflexivity](/rtpe/SpecificSolvers/reflexivity.html)
 
 `reflexivity` solves goals which state that a term is equal to itself.
 `reflexivity` has some simplification power, but not as much as [`simpl`](/RTPE/Simplification/simpl.html).
@@ -465,7 +465,7 @@ No more goals.
 <hr>
 
 
-## [assumption](/SpecificSolvers/assumption.html)
+## [assumption](/rtpe/SpecificSolvers/assumption.html)
 
 `assumption` solves goals in which there exists an assumption that directly proves the goal (no simplification).
 This tactic will fail if there does not exist such an assumption.
@@ -504,7 +504,7 @@ No more goals.
 <hr>
 
 
-## [discriminate](/SpecificSolvers/discriminate.html)
+## [discriminate](/rtpe/SpecificSolvers/discriminate.html)
 
 `discriminate` solves goals that are trivial inequalities (something of the form `x <> y`)\*.
 This tactic will fail if the goal is not an inequality or is non-trivial.
@@ -577,7 +577,7 @@ No more goals.
 <hr>
 
 
-## [exact](/SpecificSolvers/exact.html)
+## [exact](/rtpe/SpecificSolvers/exact.html)
 
 `exact` allows users to solve goals by providing a proof object directly.
 This tactic will fail if the provided proof object does not prove the goal.
@@ -631,7 +631,7 @@ No more goals.
 <hr>
 
 
-## [contradiction](/SpecificSolvers/contradiction.html)
+## [contradiction](/rtpe/SpecificSolvers/contradiction.html)
 
 `contradiction` solves goals in which there exist contradictory hypotheses.
 These contradictions generally take the form of a `False` hypothesis or a pair of hypotheses that state `P` and `~ P` for some proposition.
@@ -691,13 +691,13 @@ No more goals.
 <hr>
 
 
-# [Rewriting](/Rewriting/index.html)
+# [Rewriting](/rtpe/Rewriting/index.html)
 
 This group of tactics is very frequently used in the middles of proofs.
 Rewriting in all of its forms is an efficient way to bring together previously-independent parts of a goal.
 
 
-## [rewrite](/Rewriting/rewrite.html)
+## [rewrite](/rtpe/Rewriting/rewrite.html)
 
 `rewrite` takes an equivalence proof as input, like `t1 = t2`, and replaces all occurances of `t1` with `t2`.
 Replacement of `t2` with `t1` can be achieved with the variant `rewrite <-` (rewrite backwards).
@@ -763,7 +763,7 @@ x + x = x + x
 <hr>
 
 
-## [rename](/Rewriting/rename.html)
+## [rename](/rtpe/Rewriting/rename.html)
 
 `rename` changes the name of an introduced variable or assumption.
 
@@ -802,7 +802,7 @@ x = x
 <hr>
 
 
-## [remember](/Rewriting/remember.html)
+## [remember](/rtpe/Rewriting/remember.html)
 
 `remember` gives a name to complex terms.
 Specifically, `remember t` (where `t` has type `T`) introduces an assumption that there exists a member of type `T`, gives it a name such as `t0`, and provides another assumption that `t = t0`.
@@ -849,7 +849,7 @@ y = 0
 <hr>
 
 
-## [symmetry](/Rewriting/symmetry.html)
+## [symmetry](/rtpe/Rewriting/symmetry.html)
 
 `symmetry` is used to swap the left and right sides of an equality.
 
@@ -895,18 +895,18 @@ After
 <hr>
 
 
-# [Case Analysis](/CaseAnalysis/index.html)
+# [Case Analysis](/rtpe/CaseAnalysis/index.html)
 
 Case analysis is a core aspect of constructivist logic.
 Although for many kinds of problems it is a low-level tool, it is ubiquitous among the foundations of all problems formalized in the Rocq system.
 The core idea is: "if I want to prove a property P holds for a term t, I can do so by writing multiple sub-proofs stating that for each form that t can have, P holds."
 
 
-## [destruct](/CaseAnalysis/destruct.html)
+## [destruct](/rtpe/CaseAnalysis/destruct.html)
 
 `destruct` allows for case analysis on inductive terms or assumptions.
 It can be used to split assumptions with conjunctions and disjunctions, as well as existential assumptions.
-The arguments of `destruct` are [patterns](/glossary.html#pattern).
+The arguments of `destruct` are [patterns](/rtpe/glossary.html#pattern).
 
 ### Syntax
 
@@ -1005,7 +1005,7 @@ Qed.
 <hr>
 
 
-## [inversion](/CaseAnalysis/inversion.html)
+## [inversion](/rtpe/CaseAnalysis/inversion.html)
 
 `inversion` looks at a given piece of structural evidence and draws conclusions from it.
 If there are multiple sets of conclusions, `inversion` will generate a new proof obligation for each one.
@@ -1101,7 +1101,7 @@ Qed.
 <hr>
 
 
-## [induction](/CaseAnalysis/induction.html)
+## [induction](/rtpe/CaseAnalysis/induction.html)
 
 `induction` is an extension of `destruct` that allows for case analysis on inductive terms, gaining an inductive hypothesis for each recursive subterm generated by the term destruction.
 The arguments of `induction` are [patterns](/RTPE/glossary.html#pattern).
@@ -1198,7 +1198,7 @@ Qed.
 <hr>
 
 
-## [constructor](/CaseAnalysis/constructor.html)
+## [constructor](/rtpe/CaseAnalysis/constructor.html)
 
 When faced with a goal consisting of an inductive proposition with multiple constructors (such as [`le`](https://rocq-prover.org/doc/master/corelib/Corelib.Init.Peano.html#le) or [`NoDup`](https://rocq-prover.org/doc/master/stdlib/Stdlib.Lists.List.html#NoDup)), the `constructor` tactic iteratively attempts to apply each inductive constructor until one makes progress.
 
@@ -1274,13 +1274,13 @@ n = 0
 <hr>
 
 
-# [Automation](/Automation/index.html)
+# [Automation](/rtpe/Automation/index.html)
 
 This is basically a catch-all category for tactics that do a lot of things at once.
 This category of tactics generally intends to solve a large category of simple goals to reduce the load of the proof writer.
 
 
-## [auto](/Automation/auto.html)
+## [auto](/rtpe/Automation/auto.html)
 
 `auto` does a recursive search through a specified knowledge base in order to solve goals.
 If `auto` cannot completely solve a goal, it succeeds with no changes to the goal.
@@ -1354,7 +1354,7 @@ Proof. auto with automation. Qed.
 <hr>
 
 
-## [trivial](/Automation/trivial.html)
+## [trivial](/rtpe/Automation/trivial.html)
 
 `trivial` is essentially a non-recursive [`auto`](/RTPE/Automation/auto.html).
 `trivial` is best utilized when a lemma that exactly matches the goal already exists in the hint database.
@@ -1387,7 +1387,7 @@ Qed.
 <hr>
 
 
-## [easy](/Automation/easy.html)
+## [easy](/rtpe/Automation/easy.html)
 
 `easy` throws many common "closing tactics" at a goal to solve a large category of simple problems.
 `easy` will attempt to use:
@@ -1443,7 +1443,7 @@ No more goals.
 <hr>
 
 
-## [idtac](/Automation/idtac.html)
+## [idtac](/rtpe/Automation/idtac.html)
 
 `idtac` leaves a goal completely unchanged. This tactic will never fail.
 
@@ -1510,7 +1510,7 @@ S n + 0 = S n
 <hr>
 
 
-## [fail](/Automation/fail.html)
+## [fail](/rtpe/Automation/fail.html)
 
 `fail` always fails.
 
@@ -1550,7 +1550,7 @@ Error: Tactic failure.
 <hr>
 
 
-# [Tacticals](/Tacticals/index.html)
+# [Tacticals](/rtpe/Tacticals/index.html)
 
 This category refers to tactics that modify the behavior of other tactics.
 Important phrasing note for this section: a tactical is only a tactical when it doesn't have all of its arguments. A tactical with all of its arguments is a tactic.
@@ -1559,7 +1559,7 @@ Tacticals are heavily utilized in automation because they broaden the capabiliti
 For an interesting perspective on automation - and good examples of building "one shot proofs" (proofs that utilize tacticals to contain only one proof step) - check out [this post by Adam Chlipala](http://adam.chlipala.net/cpdt/html/Large.html).
 
 
-## [try](/Tacticals/try.html)
+## [try](/rtpe/Tacticals/try.html)
 
 The `try` tactical executes a provided tactic, catching any errors and always succeeding.
 
@@ -1609,7 +1609,7 @@ No more goals.
 <hr>
 
 
-## [;](/Tacticals/semicolon.html)
+## [;](/rtpe/Tacticals/semicolon.html)
 
 The infix `;` tactical is the sequencing tactical.
 It applies the right tactic to all of the goals generated by the left tactic.
@@ -1691,7 +1691,7 @@ Inductive or (A B : Prop) : Prop :=
 <hr>
 
 
-## [Goal Selectors](/Tacticals/goalselectors.html)
+## [Goal Selectors](/rtpe/Tacticals/goalselectors.html)
 
 Goal selectors are a category of tacticals that apply a tactic to a specific goal or goals.
 
@@ -1754,7 +1754,7 @@ Error: Expected a single focused goal but 2 goals are focused.
 <hr>
 
 
-## [repeat](/Tacticals/repeat.html)
+## [repeat](/rtpe/Tacticals/repeat.html)
 
 The `repeat` tactical repeatedly executes a tactic until it either fails or causes no change in the goal.
 If the tactic provided succeeds, it will be recursively applied to each generated subgoal.
@@ -1807,7 +1807,7 @@ S
 <hr>
 
 
-## [||](/Tacticals/or.html)
+## [||](/rtpe/Tacticals/or.html)
 
 The infix `||` tactical tries the first tactic and only tries the second if the first failed.
 In other words, `||` executes the first tactic that makes progress on the goal.
@@ -1846,7 +1846,7 @@ No more goals.
 <hr>
 
 
-## [now](/Tacticals/now.html)
+## [now](/rtpe/Tacticals/now.html)
 
 `now tactic` is simply notation for `tactic;` [`easy`](/RTPE/Automation/easy.html).
 
@@ -1881,7 +1881,7 @@ No more goals.
 <hr>
 
 
-## [do](/Tacticals/do.html)
+## [do](/rtpe/Tacticals/do.html)
 
 The `do` tactical accepts a tactic `t` and a natural number `n`, applying `t` to the goal `n` times.
 `do` fails if one of the applications of `t` fails before `n` applications have occurred.

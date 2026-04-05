@@ -2,7 +2,7 @@
 title: "|| - RTPE"
 ---
 
-## [||](/Tacticals/or.html)
+## [||](/rtpe/Tacticals/or.html)
 
 The infix `||` tactical tries the first tactic and only tries the second if the first failed.
 In other words, `||` executes the first tactic that makes progress on the goal.

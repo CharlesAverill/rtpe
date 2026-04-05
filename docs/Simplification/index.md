@@ -2,13 +2,13 @@
 title: "Simplification - RTPE"
 ---
 
-# [Simplification](/Simplification/index.html)
+# [Simplification](/rtpe/Simplification/index.html)
 
 This group of tactic aims to reduce the complexity of terms in a goal. 
 They will not solve a goal, only convert it into what is a structurally smaller (although maybe not lexically smaller!) form of the original goal.
 
 
-## [simpl](/Simplification/simpl.html)
+## [simpl](/rtpe/Simplification/simpl.html)
 
 `simpl` evaluates terms that are constructed of constant values - not variables.
 `simpl` can also partially evaluate partially-constant values.
@@ -56,7 +56,7 @@ After
 <hr>
 
 
-## [unfold](/Simplification/unfold.html)
+## [unfold](/rtpe/Simplification/unfold.html)
 
 `unfold` replaces definition identifiers with the definition's contents, simplifying along the way.
 
@@ -127,7 +127,7 @@ false
 <hr>
 
 
-## [split](/Simplification/split.html)
+## [split](/rtpe/Simplification/split.html)
 
 `split` is primarily used to break a single goal of the form `A /\ B` into two new goals `A` and `B`.
 

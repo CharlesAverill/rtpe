@@ -2,7 +2,7 @@
 title: easy - RTPE
 ---
 
-## [easy](/Automation/easy.html)
+## [easy](/rtpe/Automation/easy.html)
 
 `easy` throws many common "closing tactics" at a goal to solve a large category of simple problems.
 `easy` will attempt to use:

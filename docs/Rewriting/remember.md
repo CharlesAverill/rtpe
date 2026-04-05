@@ -2,7 +2,7 @@
 title: "remember - RTPE"
 ---
 
-## [remember](/Rewriting/remember.html)
+## [remember](/rtpe/Rewriting/remember.html)
 
 `remember` gives a name to complex terms.
 Specifically, `remember t` (where `t` has type `T`) introduces an assumption that there exists a member of type `T`, gives it a name such as `t0`, and provides another assumption that `t = t0`.

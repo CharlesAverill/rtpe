@@ -139,7 +139,7 @@ body {
 
     <!-- Content -->
     <div class="container">
-<h2 id="inversion"><a href="/CaseAnalysis/inversion.html">inversion</a></h2>
+<h2 id="inversion"><a href="/rtpe/CaseAnalysis/inversion.html">inversion</a></h2>
 <p><code>inversion</code> looks at a given piece of structural evidence and draws conclusions from it. If there are multiple sets of conclusions, <code>inversion</code> will generate a new proof obligation for each one. Informally, <code>inversion</code> is doing a more specific form of the case analysis provided by <a href="destruct.html"><code>destruct</code></a> - where <code>destruct</code> essentially says &#x201C;I don&#x2019;t know what this term is, so I&#x2019;ll prove a property for all of the possible forms of it,&#x201D; <code>inversion</code> says &#x201C;I know exactly what terms could construct this hypothesis because of its definition, so I&#x2019;ll only prove a property for those terms.&#x201D;</p>
 <p>This tactic often generates many trivial equality assumptions that may clutter the assumption space. I recommend almost always following <code>inversion</code> with <a href="/"><code>subst</code></a> to immediately substitute away these equalities.</p>
 <h3 id="syntax">Syntax</h3>

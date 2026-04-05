@@ -2,7 +2,7 @@
 title: "clear - RTPE"
 ---
 
-## [clear](/Generalization/clear.html)
+## [clear](/rtpe/Generalization/clear.html)
 
 `clear` erases assumptions from the assumption space.
 Multiple assumptions may be erased in one tactic via a space-separated list of assumptions.

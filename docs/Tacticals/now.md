@@ -2,7 +2,7 @@
 title: now - RTPE
 ---
 
-## [now](/Tacticals/now.html)
+## [now](/rtpe/Tacticals/now.html)
 
 `now tactic` is simply notation for `tactic;` [`easy`](/RTPE/Automation/easy.html).
 

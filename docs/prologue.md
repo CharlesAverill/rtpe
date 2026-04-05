@@ -2,7 +2,7 @@
 title : Prologue - RTPE
 ---
 
-# [Rocq Tactics in Plain English](/prologue.html)
+# [Rocq Tactics in Plain English](/rtpe/prologue.html)
 
 If you're like me, one of the biggest shortcomings of the Rocq ecosystem is the fairly complicated [tactic reference documentation](https://rocq-prover.org/doc/master/refman/proof-engine/tactics.html).
 It is exhaustive (which is better than lacking), but I have a few specific issues with it:

@@ -2,7 +2,7 @@
 title: "exact - RTPE"
 ---
 
-## [exact](/SpecificSolvers/exact.html)
+## [exact](/rtpe/SpecificSolvers/exact.html)
 
 `exact` allows users to solve goals by providing a proof object directly.
 This tactic will fail if the provided proof object does not prove the goal.

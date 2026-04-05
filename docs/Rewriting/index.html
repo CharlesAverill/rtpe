@@ -139,9 +139,9 @@ body {
 
     <!-- Content -->
     <div class="container">
-<h1 id="rewriting"><a href="/Rewriting/index.html">Rewriting</a></h1>
+<h1 id="rewriting"><a href="/rtpe/Rewriting/index.html">Rewriting</a></h1>
 <p>This group of tactics is very frequently used in the middles of proofs. Rewriting in all of its forms is an efficient way to bring together previously-independent parts of a goal.</p>
-<h2 id="rewrite"><a href="/Rewriting/rewrite.html">rewrite</a></h2>
+<h2 id="rewrite"><a href="/rtpe/Rewriting/rewrite.html">rewrite</a></h2>
 <p><code>rewrite</code> takes an equivalence proof as input, like <code>t1 = t2</code>, and replaces all occurances of <code>t1</code> with <code>t2</code>. Replacement of <code>t2</code> with <code>t1</code> can be achieved with the variant <code>rewrite &lt;-</code> (rewrite backwards). Multiple rewrites can be chained with one tactic via a list of comma-separated equivalence proofs. Each of the equivalence proofs in the chain may be rewritten backwards. <code>rewrite</code> will fail if there are no <code>t1</code>&#x2019;s (in this example) to replace.</p>
 <h3 id="syntax">Syntax</h3>
 <pre class="rocq"><code>(* Replace t1 with t2 in the goal *)
@@ -176,7 +176,7 @@ x + x = x + x</code></pre>
 <h3 id="resources">Resources</h3>
 <p><a href="https://rocq-prover.org/doc/master/refman/proofs/writing-proofs/equality.html#rocq:tacn.rewrite">Reference Documentation</a></p>
 <hr>
-<h2 id="rename"><a href="/Rewriting/rename.html">rename</a></h2>
+<h2 id="rename"><a href="/rtpe/Rewriting/rename.html">rename</a></h2>
 <p><code>rename</code> changes the name of an introduced variable or assumption.</p>
 <h3 id="syntax-1">Syntax</h3>
 <pre class="rocq"><code>(* Simple example *)
@@ -196,7 +196,7 @@ x = x</code></pre>
 <h3 id="resources-1">Resources</h3>
 <p><a href="https://rocq-prover.org/doc/master/refman/proof-engine/tactics.html#rocq:tacn.rename">Reference Documentation</a></p>
 <hr>
-<h2 id="remember"><a href="/Rewriting/remember.html">remember</a></h2>
+<h2 id="remember"><a href="/rtpe/Rewriting/remember.html">remember</a></h2>
 <p><code>remember</code> gives a name to complex terms. Specifically, <code>remember t</code> (where <code>t</code> has type <code>T</code>) introduces an assumption that there exists a member of type <code>T</code>, gives it a name such as <code>t0</code>, and provides another assumption that <code>t = t0</code>.</p>
 <h3 id="syntax-2">Syntax</h3>
 <pre class="rocq"><code>(* Simple usage *)
@@ -222,7 +222,7 @@ y = 0</code></pre>
 <h3 id="resources-2">Resources</h3>
 <p><a href="https://rocq-prover.org/doc/master/refman/proof-engine/tactics.html#rocq:tacn.remember">Reference Documentation</a></p>
 <hr>
-<h2 id="symmetry"><a href="/Rewriting/symmetry.html">symmetry</a></h2>
+<h2 id="symmetry"><a href="/rtpe/Rewriting/symmetry.html">symmetry</a></h2>
 <p><code>symmetry</code> is used to swap the left and right sides of an equality.</p>
 <p><code>symmetry</code> can be used on either the goal or a list of hypotheses.</p>
 <h3 id="syntax-3">Syntax</h3>

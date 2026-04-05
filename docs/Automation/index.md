@@ -2,13 +2,13 @@
 title: "Automation - RTPE"
 ---
 
-# [Automation](/Automation/index.html)
+# [Automation](/rtpe/Automation/index.html)
 
 This is basically a catch-all category for tactics that do a lot of things at once.
 This category of tactics generally intends to solve a large category of simple goals to reduce the load of the proof writer.
 
 
-## [auto](/Automation/auto.html)
+## [auto](/rtpe/Automation/auto.html)
 
 `auto` does a recursive search through a specified knowledge base in order to solve goals.
 If `auto` cannot completely solve a goal, it succeeds with no changes to the goal.
@@ -82,7 +82,7 @@ Proof. auto with automation. Qed.
 <hr>
 
 
-## [trivial](/Automation/trivial.html)
+## [trivial](/rtpe/Automation/trivial.html)
 
 `trivial` is essentially a non-recursive [`auto`](/RTPE/Automation/auto.html).
 `trivial` is best utilized when a lemma that exactly matches the goal already exists in the hint database.
@@ -115,7 +115,7 @@ Qed.
 <hr>
 
 
-## [easy](/Automation/easy.html)
+## [easy](/rtpe/Automation/easy.html)
 
 `easy` throws many common "closing tactics" at a goal to solve a large category of simple problems.
 `easy` will attempt to use:
@@ -171,7 +171,7 @@ No more goals.
 <hr>
 
 
-## [idtac](/Automation/idtac.html)
+## [idtac](/rtpe/Automation/idtac.html)
 
 `idtac` leaves a goal completely unchanged. This tactic will never fail.
 
@@ -238,7 +238,7 @@ S n + 0 = S n
 <hr>
 
 
-## [fail](/Automation/fail.html)
+## [fail](/rtpe/Automation/fail.html)
 
 `fail` always fails.
 

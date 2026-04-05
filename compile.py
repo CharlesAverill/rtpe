@@ -3,7 +3,7 @@ import shutil
 import sys
 
 def compile_markdown(file_path, docs_dir, depth, use_absolute_path, is_root=False):
-    use_absolute_path = True
+    use_absolute_path = False
     with open(file_path, 'r') as file:
         lines = file.readlines()
     

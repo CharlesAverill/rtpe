@@ -13,7 +13,7 @@ Looking at the definition of `/\` (or `and`):
 ```rocq
 Inductive and (A B : Prop) : Prop :=  conj : A -> B -> A /\ B.
 ```
-we can see that `and` has a single constructor called `conj` - so `constructor 1` simply reduces to `apply conj`, which would give us goals `A` and `B` due to the impliciations that it carries.
+we can see that `and` has a single constructor called `conj` - so `constructor 1` simply reduces to `apply conj`, which would give us goals `A` and `B` due to the implications that it carries.
 
 ### Syntax
 

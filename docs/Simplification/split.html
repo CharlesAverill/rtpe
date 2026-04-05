@@ -144,7 +144,7 @@ body {
 <p>You will often notice that <code>split</code> seems to solve some of the subgoals that it generates. This is because <code>split</code> is just shorthand for <code>constructor 1</code> (see the <a href="/RTPE/CaseAnalysis/constructor.html"><code>constructor</code> tactic</a>).</p>
 <p>Looking at the definition of <code>/\</code> (or <code>and</code>):</p>
 <pre class="rocq"><code>Inductive and (A B : Prop) : Prop :=  conj : A -&gt; B -&gt; A /\ B.</code></pre>
-<p>we can see that <code>and</code> has a single constructor called <code>conj</code> - so <code>constructor 1</code> simply reduces to <code>apply conj</code>, which would give us goals <code>A</code> and <code>B</code> due to the impliciations that it carries.</p>
+<p>we can see that <code>and</code> has a single constructor called <code>conj</code> - so <code>constructor 1</code> simply reduces to <code>apply conj</code>, which would give us goals <code>A</code> and <code>B</code> due to the implications that it carries.</p>
 <h3 id="syntax">Syntax</h3>
 <pre class="rocq"><code>split.</code></pre>
 <h3 id="examples">Examples</h3>

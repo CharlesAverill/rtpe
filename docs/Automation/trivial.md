@@ -2,7 +2,7 @@
 title: "trivial - RTPE"
 ---
 
-## [trivial](/rtpe/Automation/trivial.html)
+## [trivial](/Automation/trivial.html)
 
 `trivial` is essentially a non-recursive [`auto`](/RTPE/Automation/auto.html).
 `trivial` is best utilized when a lemma that exactly matches the goal already exists in the hint database.

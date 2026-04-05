@@ -2,13 +2,13 @@
 title: "intros - RTPE"
 ---
 
-## [intros](/rtpe/Generalization/intros.html)
+## [intros](/Generalization/intros.html)
 
 Typically the first tactics a Rocq user ever utilizes.
 `intros` finds assumptions builtin to your goal (usually in the form of a `forall` quantifier) and moves them to the goal's context (a.k.a. hypothesis space, assumption space).
 This is similar to the first step of many informal, paper proofs, when the prover states "let there be some number n, ..."
 
-More specifically, `intros` [specializes](/rtpe/glossary.html#specialize) a goal by looking for [type inhabitation](/rtpe/glossary.html#type_inhabitation) and proposition assumptions and moving them into the assumption space.
+More specifically, `intros` [specializes](/glossary.html#specialize) a goal by looking for [type inhabitation](/glossary.html#type_inhabitation) and proposition assumptions and moving them into the assumption space.
 For example, if you write `forall (n : nat), n + 0 = n`, the `forall` is acting as an assumption that there is a value of type `nat` that we can call `n`.
 Calling `intros` here will provide you an assumption `n` that there is a value of type `nat`.
 

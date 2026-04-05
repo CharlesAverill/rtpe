@@ -139,7 +139,7 @@ body {
 
     <!-- Content -->
     <div class="container">
-<h2 id="reflexivity"><a href="/rtpe/SpecificSolvers/reflexivity.html">reflexivity</a></h2>
+<h2 id="reflexivity"><a href="/SpecificSolvers/reflexivity.html">reflexivity</a></h2>
 <p><code>reflexivity</code> solves goals which state that a term is equal to itself. <code>reflexivity</code> has some simplification power, but not as much as <a href="/RTPE/Simplification/simpl.html"><code>simpl</code></a>. This tactic will fail if it cannot solve the goal.</p>
 <p><code>reflexivity</code> makes an attempt to simplify the goal and then <code>apply eq_refl</code>, where <code>eq_refl</code> is the sole constructor of the <code>eq</code> Inductive Proposition, stating that <code>forall {A : Type} (a : A), eq a a</code>.</p>
 <h3 id="syntax">Syntax</h3>

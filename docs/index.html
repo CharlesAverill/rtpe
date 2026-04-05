@@ -803,7 +803,7 @@ Qed. </code></pre>
 <p><a href="https://softwarefoundations.cis.upenn.edu/lf-current/IndPrinciples.html">&#x201C;Induction Principles&#x201D; - Logical Foundations</a></p>
 <hr>
 <h2 id="constructor"><a href="/CaseAnalysis/constructor.html">constructor</a></h2>
-<p>When faced with a goal consisting of an inductive proposition with multiple constructors (such as <a href="https://rocq-prover.org/doc/V9.1.0/corelib/Corelib.Init.Peano.html#le"><code>le</code></a> or <a href="https://rocq-prover.org/doc/master/stdlib/Stdlib.Lists.List.html#NoDup"><code>NoDup</code></a>), the <code>constructor</code> tactic iteratively attempts to apply each inductive constructor until one makes progress.</p>
+<p>When faced with a goal consisting of an inductive proposition with multiple constructors (such as <a href="https://rocq-prover.org/doc/master/corelib/Corelib.Init.Peano.html#le"><code>le</code></a> or <a href="https://rocq-prover.org/doc/master/stdlib/Stdlib.Lists.List.html#NoDup"><code>NoDup</code></a>), the <code>constructor</code> tactic iteratively attempts to apply each inductive constructor until one makes progress.</p>
 <p>This tactic can succeed in multiple ways. Consider the following scenario:</p>
 <pre class="rocq"><code>Inductive example : nat -&gt; Prop :=
 | EOdd (n : nat) :
@@ -827,12 +827,16 @@ Proof.
     | [|- ?G] =&gt; idtac G; assumption
     end.</code></pre>
 <p>Binding values to specific names is supported, as with <code>apply</code>.</p>
+<p>Furthermore, a specific constructor&#x2019;s index can be supplied to specifically apply that one.</p>
 <h3 id="syntax-17">Syntax</h3>
 <pre class="rocq"><code>(* Simple usage *)
 constructor.
 
 (* Bind to variables in the applied constructor *)
-constructor with (n := S x) (m := 5).</code></pre>
+constructor with (n := S x) (m := 5).
+
+(* Apply the 5th constructor in the type&#39;s constructor list *)
+constructor 5.</code></pre>
 <h3 id="examples-17">Examples</h3>
 <p>Before</p>
 <pre class="rocq"><code>n: nat
@@ -842,7 +846,7 @@ n = 0 \/ 1 &lt;= n</code></pre>
 <p>After (<code>or_introl</code> applied)</p>
 <pre class="rocq"><code>n: nat
 =========================
-0 = 0</code></pre>
+n = 0</code></pre>
 <h3 id="resources-17">Resources</h3>
 <p><a href="https://rocq-prover.org/doc/master/refman/proofs/writing-proofs/reasoning-inductives.html#rocq:tacn.constructor">Reference Documentation</a></p>
 <hr>

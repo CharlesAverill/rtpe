@@ -2,7 +2,7 @@
 title: idtac - RTPE
 ---
 
-## [idtac](/rtpe/Automation/idtac.html)
+## [idtac](/Automation/idtac.html)
 
 `idtac` leaves a goal completely unchanged. This tactic will never fail.
 

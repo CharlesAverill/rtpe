@@ -2,7 +2,7 @@
 title: "try - RTPE"
 ---
 
-## [try](/rtpe/Tacticals/try.html)
+## [try](/Tacticals/try.html)
 
 The `try` tactical executes a provided tactic, catching any errors and always succeeding.
 

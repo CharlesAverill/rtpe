@@ -139,7 +139,7 @@ body {
 
     <!-- Content -->
     <div class="container">
-<h2 id="do"><a href="/rtpe/Tacticals/do.html">do</a></h2>
+<h2 id="do"><a href="/Tacticals/do.html">do</a></h2>
 <p>The <code>do</code> tactical accepts a tactic <code>t</code> and a natural number <code>n</code>, applying <code>t</code> to the goal <code>n</code> times. <code>do</code> fails if one of the applications of <code>t</code> fails before <code>n</code> applications have occurred.</p>
 <p>In my opinion, <code>do</code> is a difficult tactic to justify. I find myself using it when using <a href="/RTPE/Tacticals/repeat.html"><code>repeat</code></a> tends to be overzealous. For example, if I have a goal with 100 subterms, and I&#x2019;d like to apply a tactic <code>t</code> only to 30 of the subterms (assuming <code>t</code> works on individual subterms and not the whole goal), I&#x2019;m more likely to use <code>do 30 t</code> than <code>repeat t</code> to prevent the remaining 70 subterms from being affected.</p>
 <h3 id="syntax">Syntax</h3>

@@ -2,14 +2,14 @@
 title: "Specific Solvers - RTPE"
 ---
 
-# [Specific Solvers](/rtpe/SpecificSolvers/index.html)
+# [Specific Solvers](/SpecificSolvers/index.html)
 
 Each tactic in this group exists to solve a very specific kind of goal.
 They're fairly simple to learn about and use, because their goal targets are such small groups that there are hardly any degrees of freedom for automation to be required.
 Essentially all Rocq proofs include some of these (whether they're written by the programmer or called by more complex tactics).
 
 
-## [reflexivity](/rtpe/SpecificSolvers/reflexivity.html)
+## [reflexivity](/SpecificSolvers/reflexivity.html)
 
 `reflexivity` solves goals which state that a term is equal to itself.
 `reflexivity` has some simplification power, but not as much as [`simpl`](/RTPE/Simplification/simpl.html).
@@ -50,7 +50,7 @@ No more goals.
 <hr>
 
 
-## [assumption](/rtpe/SpecificSolvers/assumption.html)
+## [assumption](/SpecificSolvers/assumption.html)
 
 `assumption` solves goals in which there exists an assumption that directly proves the goal (no simplification).
 This tactic will fail if there does not exist such an assumption.
@@ -89,7 +89,7 @@ No more goals.
 <hr>
 
 
-## [discriminate](/rtpe/SpecificSolvers/discriminate.html)
+## [discriminate](/SpecificSolvers/discriminate.html)
 
 `discriminate` solves goals that are trivial inequalities (something of the form `x <> y`)\*.
 This tactic will fail if the goal is not an inequality or is non-trivial.
@@ -162,7 +162,7 @@ No more goals.
 <hr>
 
 
-## [exact](/rtpe/SpecificSolvers/exact.html)
+## [exact](/SpecificSolvers/exact.html)
 
 `exact` allows users to solve goals by providing a proof object directly.
 This tactic will fail if the provided proof object does not prove the goal.
@@ -216,7 +216,7 @@ No more goals.
 <hr>
 
 
-## [contradiction](/rtpe/SpecificSolvers/contradiction.html)
+## [contradiction](/SpecificSolvers/contradiction.html)
 
 `contradiction` solves goals in which there exist contradictory hypotheses.
 These contradictions generally take the form of a `False` hypothesis or a pair of hypotheses that state `P` and `~ P` for some proposition.

@@ -139,9 +139,9 @@ body {
 
     <!-- Content -->
     <div class="container">
-<h2 id="intros"><a href="/rtpe/Generalization/intros.html">intros</a></h2>
+<h2 id="intros"><a href="/Generalization/intros.html">intros</a></h2>
 <p>Typically the first tactics a Rocq user ever utilizes. <code>intros</code> finds assumptions builtin to your goal (usually in the form of a <code>forall</code> quantifier) and moves them to the goal&#x2019;s context (a.k.a. hypothesis space, assumption space). This is similar to the first step of many informal, paper proofs, when the prover states &#x201C;let there be some number n, &#x2026;&#x201D;</p>
-<p>More specifically, <code>intros</code> <a href="/rtpe/glossary.html#specialize">specializes</a> a goal by looking for <a href="/rtpe/glossary.html#type_inhabitation">type inhabitation</a> and proposition assumptions and moving them into the assumption space. For example, if you write <code>forall (n : nat), n + 0 = n</code>, the <code>forall</code> is acting as an assumption that there is a value of type <code>nat</code> that we can call <code>n</code>. Calling <code>intros</code> here will provide you an assumption <code>n</code> that there is a value of type <code>nat</code>.</p>
+<p>More specifically, <code>intros</code> <a href="/glossary.html#specialize">specializes</a> a goal by looking for <a href="/glossary.html#type_inhabitation">type inhabitation</a> and proposition assumptions and moving them into the assumption space. For example, if you write <code>forall (n : nat), n + 0 = n</code>, the <code>forall</code> is acting as an assumption that there is a value of type <code>nat</code> that we can call <code>n</code>. Calling <code>intros</code> here will provide you an assumption <code>n</code> that there is a value of type <code>nat</code>.</p>
 <p><code>intros</code> will not introduce variables that are contained in opaque/wrapped definitions - <b>unless</b> an explicit name is provided for them.</p>
 <p>A simpler tactic, <code>intro</code>, acts similarly but can only introduce one assumption, and will introduce variables contained in opaque/wrapped definitions.</p>
 <h3 id="syntax">Syntax</h3>

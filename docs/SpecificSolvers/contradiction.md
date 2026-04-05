@@ -2,7 +2,7 @@
 title: "contradiction - RTPE"
 ---
 
-## [contradiction](/rtpe/SpecificSolvers/contradiction.html)
+## [contradiction](/SpecificSolvers/contradiction.html)
 
 `contradiction` solves goals in which there exist contradictory hypotheses.
 These contradictions generally take the form of a `False` hypothesis or a pair of hypotheses that state `P` and `~ P` for some proposition.

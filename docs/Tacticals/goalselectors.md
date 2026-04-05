@@ -2,7 +2,7 @@
 title: "Goal Selectors - RTPE"
 ---
 
-## [Goal Selectors](/rtpe/Tacticals/goalselectors.html)
+## [Goal Selectors](/Tacticals/goalselectors.html)
 
 Goal selectors are a category of tacticals that apply a tactic to a specific goal or goals.
 

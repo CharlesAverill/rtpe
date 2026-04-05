@@ -2,7 +2,7 @@
 title: "constructor - RTPE"
 ---
 
-## [constructor](/rtpe/CaseAnalysis/constructor.html)
+## [constructor](/CaseAnalysis/constructor.html)
 
 When faced with a goal consisting of an inductive proposition with multiple constructors (such as [`le`](https://rocq-prover.org/doc/master/corelib/Corelib.Init.Peano.html#le) or [`NoDup`](https://rocq-prover.org/doc/master/stdlib/Stdlib.Lists.List.html#NoDup)), the `constructor` tactic iteratively attempts to apply each inductive constructor until one makes progress.
 

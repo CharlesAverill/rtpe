@@ -337,6 +337,8 @@ Proof.
 
 Binding values to specific names is supported, as with `apply`.
 
+Furthermore, a specific constructor's index can be supplied to specifically apply that one.
+
 ### Syntax
 
 ```rocq
@@ -345,6 +347,9 @@ constructor.
 
 (* Bind to variables in the applied constructor *)
 constructor with (n := S x) (m := 5).
+
+(* Apply the 5th constructor in the type's constructor list *)
+constructor 5.
 ```
 
 ### Examples

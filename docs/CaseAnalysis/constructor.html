@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta property="og:type" content="article">
     <meta property="og:title" content="constructor - RTPE">
-    <meta property="og:url" content="https://charlesaverill.github.io/">
+    <meta property="og:url" content="https://charlesaverill.github.io/ctpe/">
     <meta property="og:image" content="https://raw.githubusercontent.com/github/explore/7905d12e729f7b0f0dc9b80ad385fca3b6e17523/topics/rocq/rocq.png">
     <meta property="og:description" content="A simplified explanation of commonly-used Rocq tactics">
     <meta property="article:author" content="Charles Averill">
@@ -95,10 +95,10 @@ body {
     </style>
 
     <!-- Syntax Highlighting -->
-    <link rel="stylesheet" href="/docs/highlight/styles/school-book.css">
-    <script src="/docs/highlight/highlight.min.js"></script>
-    <link rel="stylesheet" href="/highlight/styles/school-book.css">
-    <script src="/highlight/highlight.min.js"></script>
+    <link rel="stylesheet" href="/ctpe/docs/highlight/styles/school-book.css">
+    <script src="/ctpe/docs/highlight/highlight.min.js"></script>
+    <link rel="stylesheet" href="/ctpe/highlight/styles/school-book.css">
+    <script src="/ctpe/highlight/highlight.min.js"></script>
     <script>hljs.highlightAll();</script>
 
     <script>
@@ -128,8 +128,8 @@ body {
 <body>
     <table>
         <tr>
-            <td><h3 class="home"><a href="/">Home</a></h3></td>
-            <td><h3 class="home"><a href="https://github.com/CharlesAverill/">Github</a></h3></td>
+            <td><h3 class="home"><a href="/ctpe/">Home</a></h3></td>
+            <td><h3 class="home"><a href="https://github.com/CharlesAverill/ctpe/">Github</a></h3></td>
             <td><form style="text-align: right" id="searchForm">
                 <input type="text" id="searchInput" placeholder="Tactic Name">
                 <button type="submit" id="submitButton">Tactic Search</button>
@@ -139,8 +139,8 @@ body {
 
     <!-- Content -->
     <div class="container">
-<h2 id="constructor"><a href="/CaseAnalysis/constructor.html">constructor</a></h2>
-<p>When faced with a goal consisting of an inductive proposition with multiple constructors (such as <a href="https://rocq-prover.org/doc/V9.1.0/corelib/Corelib.Init.Peano.html#le"><code>le</code></a> or <a href="https://rocq-prover.org/doc/master/stdlib/Stdlib.Lists.List.html#NoDup"><code>NoDup</code></a>), the <code>constructor</code> tactic iteratively attempts to apply each inductive constructor until one makes progress.</p>
+<h2 id="constructor"><a href="/ctpe/CaseAnalysis/constructor.html">constructor</a></h2>
+<p>When faced with a goal consisting of an inductive proposition with multiple constructors (such as <a href="https://rocq-prover.org/doc/master/corelib/Corelib.Init.Peano.html#le"><code>le</code></a> or <a href="https://rocq-prover.org/doc/master/stdlib/Stdlib.Lists.List.html#NoDup"><code>NoDup</code></a>), the <code>constructor</code> tactic iteratively attempts to apply each inductive constructor until one makes progress.</p>
 <p>This tactic can succeed in multiple ways. Consider the following scenario:</p>
 <pre class="rocq"><code>Inductive example : nat -&gt; Prop :=
 | EOdd (n : nat) :
@@ -164,12 +164,16 @@ Proof.
     | [|- ?G] =&gt; idtac G; assumption
     end.</code></pre>
 <p>Binding values to specific names is supported, as with <code>apply</code>.</p>
+<p>Furthermore, a specific constructor&#x2019;s index can be supplied to specifically apply that one.</p>
 <h3 id="syntax">Syntax</h3>
 <pre class="rocq"><code>(* Simple usage *)
 constructor.
 
 (* Bind to variables in the applied constructor *)
-constructor with (n := S x) (m := 5).</code></pre>
+constructor with (n := S x) (m := 5).
+
+(* Apply the 5th constructor in the type&#39;s constructor list *)
+constructor 5.</code></pre>
 <h3 id="examples">Examples</h3>
 <p>Before</p>
 <pre class="rocq"><code>n: nat
@@ -179,7 +183,7 @@ n = 0 \/ 1 &lt;= n</code></pre>
 <p>After (<code>or_introl</code> applied)</p>
 <pre class="rocq"><code>n: nat
 =========================
-0 = 0</code></pre>
+n = 0</code></pre>
 <h3 id="resources">Resources</h3>
 <p><a href="https://rocq-prover.org/doc/master/refman/proofs/writing-proofs/reasoning-inductives.html#rocq:tacn.constructor">Reference Documentation</a></p>
 <hr>

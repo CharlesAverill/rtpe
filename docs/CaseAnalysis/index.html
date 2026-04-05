@@ -356,12 +356,16 @@ Proof.
     | [|- ?G] =&gt; idtac G; assumption
     end.</code></pre>
 <p>Binding values to specific names is supported, as with <code>apply</code>.</p>
+<p>Furthermore, a specific constructor&#x2019;s index can be supplied to specifically apply that one.</p>
 <h3 id="syntax-3">Syntax</h3>
 <pre class="rocq"><code>(* Simple usage *)
 constructor.
 
 (* Bind to variables in the applied constructor *)
-constructor with (n := S x) (m := 5).</code></pre>
+constructor with (n := S x) (m := 5).
+
+(* Apply the 5th constructor in the type&#39;s constructor list *)
+constructor 5.</code></pre>
 <h3 id="examples-3">Examples</h3>
 <p>Before</p>
 <pre class="rocq"><code>n: nat

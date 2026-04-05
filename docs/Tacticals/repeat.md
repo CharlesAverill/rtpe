@@ -1,5 +1,5 @@
 ---
-title: "repeat - CTPE"
+title: "repeat - RTPE"
 ---
 
 ## [repeat](/ctpe/Tacticals/repeat.html)
@@ -12,7 +12,7 @@ For example, `repeat symmetry` or `repeat idtac` will always result in an infini
 
 ### Syntax
 
-```coq
+```rocq
 (* Simple usage *)
 repeat split.
 ```
@@ -20,19 +20,19 @@ repeat split.
 ### Examples
 
 Before
-```coq
+```rocq
 P, Q, R, S: Prop
 =========================
 1/1
 P /\ Q /\ R /\ S
 ```
 
-```coq
+```rocq
 repeat split.
 ```
 
 After
-```coq
+```rocq
 P, Q, R, S: Prop
 =========================
 1/4
@@ -50,6 +50,6 @@ S
 
 ### Resources
 
-[Reference Documentation](https://coq.inria.fr/doc/master/refman/proof-engine/ltac.html#coq:tacn.repeat)
+[Reference Documentation](https://rocq-prover.org/doc/master/refman/proof-engine/ltac.html#rocq:tacn.repeat)
 
 <hr>

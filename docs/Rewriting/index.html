@@ -5,18 +5,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta property="og:type" content="article">
-    <meta property="og:title" content="Rewriting - CTPE">
+    <meta property="og:title" content="Rewriting - RTPE">
     <meta property="og:url" content="https://charlesaverill.github.io/ctpe/">
-    <meta property="og:image" content="https://raw.githubusercontent.com/github/explore/7905d12e729f7b0f0dc9b80ad385fca3b6e17523/topics/coq/coq.png">
-    <meta property="og:description" content="A simplified explanation of commonly-used Coq tactics">
+    <meta property="og:image" content="https://raw.githubusercontent.com/github/explore/7905d12e729f7b0f0dc9b80ad385fca3b6e17523/topics/rocq/rocq.png">
+    <meta property="og:description" content="A simplified explanation of commonly-used Rocq tactics">
     <meta property="article:author" content="Charles Averill">
     <meta property="article:section" content="Technology">
-    <meta property="article:tag" content="coq">
+    <meta property="article:tag" content="rocq">
     <meta property="article:tag" content="proof">
     <meta property="article:tag" content="formal verification">
     <meta property="article:tag" content="tactic">
 
-    <title>Rewriting - CTPE</title>
+    <title>Rewriting - RTPE</title>
     <style>
 :root {
     --blue: #0000FF;
@@ -142,9 +142,9 @@ body {
 <h1 id="rewriting"><a href="/ctpe/Rewriting/index.html">Rewriting</a></h1>
 <p>This group of tactics is very frequently used in the middles of proofs. Rewriting in all of its forms is an efficient way to bring together previously-independent parts of a goal.</p>
 <h2 id="rewrite"><a href="/ctpe/Rewriting/rewrite.html">rewrite</a></h2>
-<p><code>rewrite</code> takes an equivalence proof as input, like <code>t1 = t2</code>, and replaces all occurances of <code>t1</code> with <code>t2</code>. Replacement of <code>t2</code> with <code>t1</code> can be achieved with the variant <code>rewrite &lt;-</code> (rewrite backwards). Multiple rewrites can be chained with one tactic via a list of comma-separated equivalence proofs. Each of the equivalence proofs in the chain may be rewritten backwards. <code>rewrite</code> will fail if there are no <code>t1</code>&#8217;s (in this example) to replace.</p>
+<p><code>rewrite</code> takes an equivalence proof as input, like <code>t1 = t2</code>, and replaces all occurances of <code>t1</code> with <code>t2</code>. Replacement of <code>t2</code> with <code>t1</code> can be achieved with the variant <code>rewrite &lt;-</code> (rewrite backwards). Multiple rewrites can be chained with one tactic via a list of comma-separated equivalence proofs. Each of the equivalence proofs in the chain may be rewritten backwards. <code>rewrite</code> will fail if there are no <code>t1</code>&#x2019;s (in this example) to replace.</p>
 <h3 id="syntax">Syntax</h3>
-<pre class="coq"><code>(* Replace t1 with t2 in the goal *)
+<pre class="rocq"><code>(* Replace t1 with t2 in the goal *)
 rewrite t1_eq_t2.
 
 (* Rewrite in an assumption *)
@@ -157,76 +157,76 @@ rewrite HEq in *.
 rewrite t1_eq_t2, &lt;- x_eq_y, ht_eq_ht.</code></pre>
 <h3 id="examples">Examples</h3>
 <p>Before</p>
-<pre class="coq"><code>x, y: nat
+<pre class="rocq"><code>x, y: nat
 H: x = y
 =========================
 x + y = y + y</code></pre>
-<pre class="coq"><code>rewrite H.</code></pre>
+<pre class="rocq"><code>rewrite H.</code></pre>
 <p>After</p>
-<pre class="coq"><code>x, y: nat
+<pre class="rocq"><code>x, y: nat
 H: x = y
 =========================
 y + y = y + y</code></pre>
 <p>Alternatively,</p>
-<pre class="coq"><code>rewrite &lt;- H.</code></pre>
-<pre class="coq"><code>x, y: nat
+<pre class="rocq"><code>rewrite &lt;- H.</code></pre>
+<pre class="rocq"><code>x, y: nat
 H: x = y
 =========================
 x + x = x + x</code></pre>
 <h3 id="resources">Resources</h3>
-<p><a href="https://coq.inria.fr/doc/master/refman/proofs/writing-proofs/equality.html#coq:tacn.rewrite">Reference Documentation</a></p>
+<p><a href="https://rocq-prover.org/doc/master/refman/proofs/writing-proofs/equality.html#rocq:tacn.rewrite">Reference Documentation</a></p>
 <hr>
 <h2 id="rename"><a href="/ctpe/Rewriting/rename.html">rename</a></h2>
 <p><code>rename</code> changes the name of an introduced variable or assumption.</p>
 <h3 id="syntax-1">Syntax</h3>
-<pre class="coq"><code>(* Simple example *)
+<pre class="rocq"><code>(* Simple example *)
 rename x into y.</code></pre>
 <h3 id="examples-1">Examples</h3>
 <p>Before</p>
-<pre class="coq"><code>n: nat
+<pre class="rocq"><code>n: nat
 =========================
 1/1
 n = n</code></pre>
-<pre class="coq"><code>rename n into x.</code></pre>
+<pre class="rocq"><code>rename n into x.</code></pre>
 <p>After</p>
-<pre class="coq"><code>x: nat
+<pre class="rocq"><code>x: nat
 =========================
 1/1
 x = x</code></pre>
 <h3 id="resources-1">Resources</h3>
-<p><a href="https://coq.inria.fr/doc/V8.13.2/refman/proof-engine/tactics.html#coq:tacn.rename">Reference Documentation</a></p>
+<p><a href="https://rocq-prover.org/doc/master/refman/proof-engine/tactics.html#rocq:tacn.rename">Reference Documentation</a></p>
 <hr>
 <h2 id="remember"><a href="/ctpe/Rewriting/remember.html">remember</a></h2>
 <p><code>remember</code> gives a name to complex terms. Specifically, <code>remember t</code> (where <code>t</code> has type <code>T</code>) introduces an assumption that there exists a member of type <code>T</code>, gives it a name such as <code>t0</code>, and provides another assumption that <code>t = t0</code>.</p>
 <h3 id="syntax-2">Syntax</h3>
-<pre class="coq"><code>(* Simple usage *)
+<pre class="rocq"><code>(* Simple usage *)
 remember (5 + x).
 
 (* Provide a name for the remembered term *)
 remember (&quot;hello world&quot;) as s.</code></pre>
 <h3 id="examples-2">Examples</h3>
 <p>Before</p>
-<pre class="coq"><code>x, y: nat
+<pre class="rocq"><code>x, y: nat
 H: x + y = x
 =========================
 1/1
 y = 0</code></pre>
-<pre class="coq"><code>remember (x + y) as sum.</code></pre>
+<pre class="rocq"><code>remember (x + y) as sum.</code></pre>
 <p>After</p>
-<pre class="coq"><code>x, y, sum: nat
+<pre class="rocq"><code>x, y, sum: nat
 Heqsum: sum = x + y
 H: sum = x
 =========================
 1/1
 y = 0</code></pre>
 <h3 id="resources-2">Resources</h3>
-<p><a href="https://coq.inria.fr/doc/V8.13.2/refman/proof-engine/tactics.html#coq:tacn.remember">Reference Documentation</a></p>
+<p><a href="https://rocq-prover.org/doc/master/refman/proof-engine/tactics.html#rocq:tacn.remember">Reference Documentation</a></p>
 <hr>
 <h2 id="symmetry"><a href="/ctpe/Rewriting/symmetry.html">symmetry</a></h2>
 <p><code>symmetry</code> is used to swap the left and right sides of an equality.</p>
 <p><code>symmetry</code> can be used on either the goal or a list of hypotheses.</p>
 <h3 id="syntax-3">Syntax</h3>
-<pre class="coq"><code>(* Usage on goal *)
+<pre class="rocq"><code>(* Usage on goal *)
 symmetry.
 
 (* Usage on hypotheses *)
@@ -234,16 +234,16 @@ symmetry in H.
 symmetry in H1, H2.</code></pre>
 <h3 id="examples-3">Examples</h3>
 <p>Before</p>
-<pre class="coq"><code>=========================
+<pre class="rocq"><code>=========================
 1/1
 5 = 2 + 3</code></pre>
-<pre class="coq"><code>symmetry.</code></pre>
+<pre class="rocq"><code>symmetry.</code></pre>
 <p>After</p>
-<pre class="coq"><code>=========================
+<pre class="rocq"><code>=========================
 1/1
 2 + 3 = 5</code></pre>
 <h3 id="resources-3">Resources</h3>
-<p><a href="https://coq.inria.fr/doc/master/refman/proofs/writing-proofs/equality.html#coq:tacn.symmetry">Reference Documentation</a></p>
+<p><a href="https://rocq-prover.org/doc/master/refman/proofs/writing-proofs/equality.html#rocq:tacn.symmetry">Reference Documentation</a></p>
 <hr>
 <hr>
     </div>

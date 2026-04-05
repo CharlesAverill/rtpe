@@ -1,15 +1,15 @@
 ---
-title: "trivial - CTPE"
+title: "trivial - RTPE"
 ---
 
 ## [trivial](/ctpe/Automation/trivial.html)
 
-`trivial` is essentially a non-recursive [`auto`](/ctpe/Automation/auto.html).
+`trivial` is essentially a non-recursive [`auto`](/RTPE/Automation/auto.html).
 `trivial` is best utilized when a lemma that exactly matches the goal already exists in the hint database.
 
 ### Syntax
 
-```coq
+```rocq
 (* Simple usage *)
 trivial.
 
@@ -20,7 +20,7 @@ trivial with bool.
 ### Examples
 
 Script
-```coq
+```rocq
 Theorem trivial_example : forall {X : Type} (n : X), 
     n = n.
 Proof.
@@ -30,6 +30,6 @@ Qed.
 
 ### Resources
 
-[Reference Documentation](https://coq.inria.fr/doc/master/refman/proofs/automatic-tactics/auto.html#coq:tacn.trivial)
+[Reference Documentation](https://rocq-prover.org/doc/master/refman/proofs/automatic-tactics/auto.html#rocq:tacn.trivial)
 
 <hr>

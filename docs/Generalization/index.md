@@ -1,5 +1,5 @@
 ---
-title: "Generalization - CTPE"
+title: "Generalization - RTPE"
 ---
 
 # [Generalization](/ctpe/Generalization/index.html)
@@ -12,7 +12,7 @@ Theorems that are too weak (general) are frequently unprovable (even if their sp
 
 ## [intros](/ctpe/Generalization/intros.html)
 
-Typically the first tactics a Coq user ever utilizes.
+Typically the first tactics a Rocq user ever utilizes.
 `intros` finds assumptions builtin to your goal (usually in the form of a `forall` quantifier) and moves them to the goal's context (a.k.a. hypothesis space, assumption space).
 This is similar to the first step of many informal, paper proofs, when the prover states "let there be some number n, ..."
 
@@ -26,7 +26,7 @@ A simpler tactic, `intro`, acts similarly but can only introduce one assumption,
 
 ### Syntax
 
-```coq
+```rocq
 (* Simple usage - introduces all named assumptions *)
 intros.
 
@@ -40,17 +40,17 @@ intros [A B].
 ### Examples
 
 Before
-```coq
+```rocq
 =========================
 forall (n : nat), n + 0 = n
 ```
 
-```coq
+```rocq
 intros x.
 ```
 
 After
-```coq
+```rocq
 x: nat
 =========================
 1/1
@@ -58,17 +58,17 @@ x + 0 = x
 ```
 
 Before
-```coq
+```rocq
 =========================
 forall (A B C : Prop), A /\ B -> C -> A /\ C
 ```
 
-```coq
+```rocq
 intros A B C [ATrue BTrue].
 ```
 
 After
-```coq
+```rocq
 A, B, C: Prop
 ATrue: A
 BTrue: B
@@ -78,18 +78,18 @@ C -> A /\ C
 ```
 
 Before (assume `P := forall (n : nat), n = n`)
-```coq
+```rocq
 =========================
 1/1
 P
 ```
 
-```coq
+```rocq
 intros.
 ```
 
 After
-```coq
+```rocq
 =========================
 1/1
 P
@@ -97,12 +97,12 @@ P
 
 Alternatively,
 
-```coq
+```rocq
 intro.
 ```
 
 After
-```coq
+```rocq
 n: nat
 =========================
 1/1
@@ -111,7 +111,7 @@ n = n
 
 ### Resources
 
-[Reference Documentation](https://coq.inria.fr/doc/master/refman/proof-engine/tactics.html#coq:tacn.intros)
+[Reference Documentation](https://rocq-prover.org/doc/master/refman/proof-engine/tactics.html#rocq:tacn.intros)
 
 <hr>
 
@@ -126,7 +126,7 @@ Multiple assumptions may be erased in one tactic via a space-separated list of a
 
 ### Syntax
 
-```coq
+```rocq
 (* Simple usage *)
 clear H.
 
@@ -140,7 +140,7 @@ clear - x z c.
 ### Examples
 
 Before
-```coq
+```rocq
 n: nat
 H, Hr1, Hr2: n = 0
 IHn: n = 1
@@ -149,12 +149,12 @@ IHn: n = 1
 True
 ```
 
-```coq
+```rocq
 clear Hr1 Hr2.
 ```
 
 After
-```coq
+```rocq
 n: nat
 H: n = 0
 IHn: n = 1
@@ -164,7 +164,7 @@ True
 ```
 
 Before
-```coq
+```rocq
 a, b, c, x, y, z: nat
 H: a = z
 =========================
@@ -172,12 +172,12 @@ H: a = z
 True
 ```
 
-```coq
+```rocq
 clear - a x H.
 ```
 
 After
-```coq
+```rocq
 a, x, z: nat
 H: a = z
 =========================
@@ -186,7 +186,7 @@ True
 ```
 ### Resources
 
-[Reference Documentation](https://coq.inria.fr/doc/master/refman/proof-engine/tactics.html#coq:tacn.tactic)
+[Reference Documentation](https://rocq-prover.org/doc/master/refman/proof-engine/tactics.html#rocq:tacn.tactic)
 
 <hr>
 

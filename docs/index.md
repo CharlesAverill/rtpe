@@ -1,11 +1,11 @@
 ---
-title: "Coq Tactics in Plain English"
+title: "Rocq Tactics in Plain English"
 ---
 
 
-# [Coq Tactics in Plain English](/ctpe/prologue.html)
+# [Rocq Tactics in Plain English](/ctpe/prologue.html)
 
-If you're like me, one of the biggest shortcomings of the Coq ecosystem is the fairly complicated [tactic reference documentation](https://coq.inria.fr/doc/master/refman/proof-engine/tactics.html).
+If you're like me, one of the biggest shortcomings of the Rocq ecosystem is the fairly complicated [tactic reference documentation](https://rocq-prover.org/doc/master/refman/proof-engine/tactics.html).
 It is exhaustive (which is better than lacking), but I have a few specific issues with it:
 
 1. Entries are too verbose. I usually don't _need_ an exhaustive explanation of what a tactic does.
@@ -14,22 +14,22 @@ It is exhaustive (which is better than lacking), but I have a few specific issue
 
 For these reasons, I've decided to compile a reference document of every tactic that I've ever used, addressing the problems above via the following solutions.
 
-1. Entries will be written at an undergraduate level, assuming a basic understanding of the Coq system. Sometimes, this will require reading the pages for other tactics before the one you really want to know about, but I think that's a fair compromise. Explanations will focus on what configurations of goal states the tactic is useful or not useful for.
+1. Entries will be written at an undergraduate level, assuming a basic understanding of the Rocq system. Sometimes, this will require reading the pages for other tactics before the one you really want to know about, but I think that's a fair compromise. Explanations will focus on what configurations of goal states the tactic is useful or not useful for.
 2. Entries will start general and become more specific as one reads on. This will ensure minimal maintenance is necessary as tactics change over time.
 3. Entries will include syntax *examples* rather than BNF grammars.
-4. Entries will contain multiple examples, including goal states before and after executing the tactics. Small MRE Coq scripts may be included.
+4. Entries will contain multiple examples, including goal states before and after executing the tactics. Small MRE Rocq scripts may be included.
 5. As a fallback, links to other resources, at minimum the official documentation, will be included in each entry.
 
-This guide doesn't aim to replace the reference documentation, it aims to be a stepping stone into the reference documentation that reduces the apprehension of those new to Coq.
+This guide doesn't aim to replace the reference documentation, it aims to be a stepping stone into the reference documentation that reduces the apprehension of those new to Rocq.
 
-There are many other guides to Coq tactics, you should check them out too if I don't have what you need:
+There are many other guides to Rocq tactics, you should check them out too if I don't have what you need:
 
-- [Coq Tactics Cheatsheet](https://www.cs.cornell.edu/courses/cs3110/2018sp/a5/coq-tactics-cheatsheet.html)
+- [Rocq Tactics Cheatsheet](https://www.cs.cornell.edu/courses/cs3110/2018sp/a5/rocq-tactics-cheatsheet.html)
 - [More Basic Tactics - Software Foundations](https://softwarefoundations.cis.upenn.edu/lf-current/Tactics.html)
-- [Detailed examples of tactics](http://flint.cs.yale.edu/cs428/coq/doc/Reference-Manual012.html)
-- [Coq Tricks for Beginners with Too Many Examples](https://le.qun.ch/en/blog/coq/)
-- [Coq Cheatsheet](https://julesjacobs.com/notes/coq-cheatsheet/coq-cheatsheet.pdf)
-- [Coq cheat sheet](https://www.inf.ed.ac.uk/teaching/courses/tspl/cheatsheet.pdf)
+- [Detailed examples of tactics](http://flint.cs.yale.edu/cs428/rocq/doc/Reference-Manual012.html)
+- [Rocq Tricks for Beginners with Too Many Examples](https://le.qun.ch/en/blog/rocq/)
+- [Rocq Cheatsheet](https://julesjacobs.com/notes/rocq-cheatsheet/rocq-cheatsheet.pdf)
+- [Rocq cheat sheet](https://www.inf.ed.ac.uk/teaching/courses/tspl/cheatsheet.pdf)
 
 <hr>
 
@@ -60,7 +60,7 @@ Theorems that are too weak (general) are frequently unprovable (even if their sp
 
 ## [intros](/ctpe/Generalization/intros.html)
 
-Typically the first tactics a Coq user ever utilizes.
+Typically the first tactics a Rocq user ever utilizes.
 `intros` finds assumptions builtin to your goal (usually in the form of a `forall` quantifier) and moves them to the goal's context (a.k.a. hypothesis space, assumption space).
 This is similar to the first step of many informal, paper proofs, when the prover states "let there be some number n, ..."
 
@@ -74,7 +74,7 @@ A simpler tactic, `intro`, acts similarly but can only introduce one assumption,
 
 ### Syntax
 
-```coq
+```rocq
 (* Simple usage - introduces all named assumptions *)
 intros.
 
@@ -88,17 +88,17 @@ intros [A B].
 ### Examples
 
 Before
-```coq
+```rocq
 =========================
 forall (n : nat), n + 0 = n
 ```
 
-```coq
+```rocq
 intros x.
 ```
 
 After
-```coq
+```rocq
 x: nat
 =========================
 1/1
@@ -106,17 +106,17 @@ x + 0 = x
 ```
 
 Before
-```coq
+```rocq
 =========================
 forall (A B C : Prop), A /\ B -> C -> A /\ C
 ```
 
-```coq
+```rocq
 intros A B C [ATrue BTrue].
 ```
 
 After
-```coq
+```rocq
 A, B, C: Prop
 ATrue: A
 BTrue: B
@@ -126,18 +126,18 @@ C -> A /\ C
 ```
 
 Before (assume `P := forall (n : nat), n = n`)
-```coq
+```rocq
 =========================
 1/1
 P
 ```
 
-```coq
+```rocq
 intros.
 ```
 
 After
-```coq
+```rocq
 =========================
 1/1
 P
@@ -145,12 +145,12 @@ P
 
 Alternatively,
 
-```coq
+```rocq
 intro.
 ```
 
 After
-```coq
+```rocq
 n: nat
 =========================
 1/1
@@ -159,7 +159,7 @@ n = n
 
 ### Resources
 
-[Reference Documentation](https://coq.inria.fr/doc/master/refman/proof-engine/tactics.html#coq:tacn.intros)
+[Reference Documentation](https://rocq-prover.org/doc/master/refman/proof-engine/tactics.html#rocq:tacn.intros)
 
 <hr>
 
@@ -174,7 +174,7 @@ Multiple assumptions may be erased in one tactic via a space-separated list of a
 
 ### Syntax
 
-```coq
+```rocq
 (* Simple usage *)
 clear H.
 
@@ -188,7 +188,7 @@ clear - x z c.
 ### Examples
 
 Before
-```coq
+```rocq
 n: nat
 H, Hr1, Hr2: n = 0
 IHn: n = 1
@@ -197,12 +197,12 @@ IHn: n = 1
 True
 ```
 
-```coq
+```rocq
 clear Hr1 Hr2.
 ```
 
 After
-```coq
+```rocq
 n: nat
 H: n = 0
 IHn: n = 1
@@ -212,7 +212,7 @@ True
 ```
 
 Before
-```coq
+```rocq
 a, b, c, x, y, z: nat
 H: a = z
 =========================
@@ -220,12 +220,12 @@ H: a = z
 True
 ```
 
-```coq
+```rocq
 clear - a x H.
 ```
 
 After
-```coq
+```rocq
 a, x, z: nat
 H: a = z
 =========================
@@ -234,7 +234,7 @@ True
 ```
 ### Resources
 
-[Reference Documentation](https://coq.inria.fr/doc/master/refman/proof-engine/tactics.html#coq:tacn.tactic)
+[Reference Documentation](https://rocq-prover.org/doc/master/refman/proof-engine/tactics.html#rocq:tacn.tactic)
 
 <hr>
 
@@ -254,7 +254,7 @@ They will not solve a goal, only convert it into what is a structurally smaller 
 
 ### Syntax
 
-```coq
+```rocq
 (* Simplify the goal as much as possible *)
 simpl.
 
@@ -271,18 +271,18 @@ simpl (2 + 2) in H.
 ### Examples
 
 Before
-```coq
+```rocq
 =========================
 1/1
 2 + 2 = 1 + 3
 ```
 
-```coq
+```rocq
 simpl (2 + 2).
 ```
 
 After
-```coq
+```rocq
 =========================
 1/1
 4 = 1 + 3
@@ -290,7 +290,7 @@ After
 
 ### Resources
 
-[Reference Documentation](https://coq.inria.fr/doc/master/refman/proofs/writing-proofs/equality.html#coq:tacn.simpl)
+[Reference Documentation](https://rocq-prover.org/doc/master/refman/proofs/writing-proofs/equality.html#rocq:tacn.simpl)
 
 <hr>
 
@@ -301,7 +301,7 @@ After
 
 ### Syntax
 
-```coq
+```rocq
 (* Simple example *)
 unfold plus.
 
@@ -315,7 +315,7 @@ unfold X in *.
 ### Examples
 
 Given
-```coq
+```rocq
 Fixpoint bitlist (n : nat) : list bool :=
     match n with
     | O =>    true  :: nil
@@ -324,7 +324,7 @@ Fixpoint bitlist (n : nat) : list bool :=
 ```
 
 Before
-```coq
+```rocq
 n: nat
 l: list bool
 H: bitlist (S (S n)) = false :: false :: l
@@ -333,12 +333,12 @@ H: bitlist (S (S n)) = false :: false :: l
 bitlist (S n) = false :: l
 ```
 
-```coq
+```rocq
 unfold bitlist in *.
 ```
 
 After
-```coq
+```rocq
 n: nat
 l: list bool
 H: false
@@ -361,7 +361,7 @@ false
 
 ### Resources
 
-[Reference Documentation](https://coq.inria.fr/doc/master/refman/proofs/writing-proofs/equality.html#coq:tacn.unfold)
+[Reference Documentation](https://rocq-prover.org/doc/master/refman/proofs/writing-proofs/equality.html#rocq:tacn.unfold)
 
 <hr>
 
@@ -371,35 +371,35 @@ false
 `split` is primarily used to break a single goal of the form `A /\ B` into two new goals `A` and `B`.
 
 You will often notice that `split` seems to solve some of the subgoals that it generates.
-This is because `split` is just shorthand for `constructor 1` (see the [`constructor` tactic](/ctpe/CaseAnalysis/constructor.html)).
+This is because `split` is just shorthand for `constructor 1` (see the [`constructor` tactic](/RTPE/CaseAnalysis/constructor.html)).
 
 Looking at the definition of `/\` (or `and`):
-```coq
+```rocq
 Inductive and (A B : Prop) : Prop :=  conj : A -> B -> A /\ B.
 ```
 we can see that `and` has a single constructor called `conj` - so `constructor 1` simply reduces to `apply conj`, which would give us goals `A` and `B` due to the impliciations that it carries.
 
 ### Syntax
 
-```coq
+```rocq
 split.
 ```
 
 ### Examples
 
 Before
-```coq
+```rocq
 =========================
 1/1
 True /\ False
 ```
 
-```coq
+```rocq
 split.
 ```
 
 After
-```coq
+```rocq
 =========================
 1/2
 True
@@ -410,7 +410,7 @@ False
 
 ### Resources
 
-[Reference Documentation](https://coq.inria.fr/doc/master/refman/proofs/writing-proofs/reasoning-inductives.html#coq:tacn.split)
+[Reference Documentation](https://rocq-prover.org/doc/master/refman/proofs/writing-proofs/reasoning-inductives.html#rocq:tacn.split)
 
 <hr>
 
@@ -421,20 +421,20 @@ False
 
 Each tactic in this group exists to solve a very specific kind of goal.
 They're fairly simple to learn about and use, because their goal targets are such small groups that there are hardly any degrees of freedom for automation to be required.
-Essentially all Coq proofs include some of these (whether they're written by the programmer or called by more complex tactics).
+Essentially all Rocq proofs include some of these (whether they're written by the programmer or called by more complex tactics).
 
 
 ## [reflexivity](/ctpe/SpecificSolvers/reflexivity.html)
 
 `reflexivity` solves goals which state that a term is equal to itself.
-`reflexivity` has some simplification power, but not as much as [`simpl`](/ctpe/Simplification/simpl.html).
+`reflexivity` has some simplification power, but not as much as [`simpl`](/RTPE/Simplification/simpl.html).
 This tactic will fail if it cannot solve the goal.
 
 `reflexivity` makes an attempt to simplify the goal and then `apply eq_refl`, where `eq_refl` is the sole constructor of the `eq` Inductive Proposition, stating that `forall {A : Type} (a : A), eq a a`.
 
 ### Syntax
 
-```coq
+```rocq
 (* Simple usage *)
 reflexivity.
 ```
@@ -442,25 +442,25 @@ reflexivity.
 ### Examples
 
 Before
-```coq
+```rocq
 n: nat
 =========================
 1/1
 n = n
 ```
 
-```coq
+```rocq
 reflexivity.
 ```
 
 After
-```coq
+```rocq
 No more goals.
 ```
 
 ### Resources
 
-[Reference Documentation](https://coq.inria.fr/doc/master/refman/proofs/writing-proofs/equality.html?highlight=reflexivity#coq:tacn.reflexivity)
+[Reference Documentation](https://rocq-prover.org/doc/master/refman/proofs/writing-proofs/equality.html#rocq:tacn.reflexivity)
 
 <hr>
 
@@ -472,7 +472,7 @@ This tactic will fail if there does not exist such an assumption.
 
 ### Syntax
 
-```coq
+```rocq
 (* Simple usage *)
 assumption.
 ```
@@ -480,7 +480,7 @@ assumption.
 ### Examples
 
 Before
-```coq
+```rocq
 P: Prop
 H: P
 =========================
@@ -488,18 +488,18 @@ H: P
 P
 ```
 
-```coq
+```rocq
 assumption.
 ```
 
 After
-```coq
+```rocq
 No more goals.
 ```
 
 ### Resources
 
-[Reference Documentation](https://coq.inria.fr/doc/master/refman/proof-engine/tactics.html?highlight=assumption#coq:tacn.assumption)
+[Reference Documentation](https://rocq-prover.org/doc/master/refman/proof-engine/tactics.html#rocq:tacn.assumption)
 
 <hr>
 
@@ -514,7 +514,7 @@ This means that `discriminate` actually searches for trivial inequalities in ass
 
 ### Syntax
 
-```coq
+```rocq
 (* Simple usage *)
 discriminate.
 ```
@@ -522,57 +522,57 @@ discriminate.
 ### Examples
 
 Before
-```coq
+```rocq
 =========================
 1/1
 1 <> 2
 ```
 
-```coq
+```rocq
 discriminate.
 ```
 
 After
-```coq
+```rocq
 No more goals.
 ```
 
 Before
-```coq
+```rocq
 =========================
 1/1
 "hello" <> "world"
 ```
 
-```coq
+```rocq
 discriminate.
 ```
 
 After
-```coq
+```rocq
 No more goals.
 ```
 
 Before
-```coq
+```rocq
 H: S n = O
 ==========================
 1/1
 False
 ```
 
-```coq
+```rocq
 discriminate.
 ```
 
 After
-```coq
+```rocq
 No more goals.
 ```
 
 ### Resources
 
-[Reference Documentation](https://coq.inria.fr/doc/master/refman/proofs/writing-proofs/reasoning-inductives.html#coq:tacn.discriminate)
+[Reference Documentation](https://rocq-prover.org/doc/master/refman/proofs/writing-proofs/reasoning-inductives.html#rocq:tacn.discriminate)
 
 <hr>
 
@@ -584,7 +584,7 @@ This tactic will fail if the provided proof object does not prove the goal.
 
 ### Syntax
 
-```coq
+```rocq
 (* Simple usage *)
 exact I.
 ```
@@ -592,41 +592,41 @@ exact I.
 ### Examples
 
 Before
-```coq
+```rocq
 =========================
 1/1
 True
 ```
 
-```coq
+```rocq
 exact I.
 ```
 
 After
-```coq
+```rocq
 No more goals.
 ```
 
 Before
-```coq
+```rocq
 n: nat
 =========================
 1/1
 n + 5 = n + 5
 ```
 
-```coq
+```rocq
 exact (eq_refl (n + 5)).
 ```
 
 After
-```coq
+```rocq
 No more goals.
 ```
 
 ### Resources
 
-[Reference Documentation](https://coq.inria.fr/doc/master/refman/proof-engine/tactics.html?highlight=assumption#coq:tacn.exact)
+[Reference Documentation](https://rocq-prover.org/doc/master/refman/proof-engine/tactics.html#rocq:tacn.exact)
 
 <hr>
 
@@ -639,7 +639,7 @@ This tactic will fail if no such contradictions exist.
 
 ### Syntax
 
-```coq
+```rocq
 (* Simple usage *)
 contradiction.
 ```
@@ -647,24 +647,24 @@ contradiction.
 ### Examples
 
 Before
-```coq
+```rocq
 H: False
 =========================
 1/1
 False
 ```
 
-```coq
+```rocq
 contradiction.
 ```
 
 After
-```coq
+```rocq
 No more goals.
 ```
 
 Before
-```coq
+```rocq
 x, y: nat
 H: x = y
 H0: x <> y
@@ -673,18 +673,18 @@ H0: x <> y
 x = x + y
 ```
 
-```coq
+```rocq
 contradiction.
 ```
 
 After
-```coq
+```rocq
 No more goals.
 ```
 
 ### Resources
 
-[Reference Documentation](https://coq.inria.fr/doc/master/refman/proof-engine/tactics.html?highlight=assumption#coq:tacn.contradiction)
+[Reference Documentation](https://rocq-prover.org/doc/master/refman/proof-engine/tactics.html#rocq:tacn.contradiction)
 
 <hr>
 
@@ -707,7 +707,7 @@ Each of the equivalence proofs in the chain may be rewritten backwards.
 
 ### Syntax
 
-```coq
+```rocq
 (* Replace t1 with t2 in the goal *)
 rewrite t1_eq_t2.
 
@@ -724,19 +724,19 @@ rewrite t1_eq_t2, <- x_eq_y, ht_eq_ht.
 ### Examples
 
 Before
-```coq
+```rocq
 x, y: nat
 H: x = y
 =========================
 x + y = y + y
 ```
 
-```coq
+```rocq
 rewrite H.
 ```
 
 After
-```coq
+```rocq
 x, y: nat
 H: x = y
 =========================
@@ -744,12 +744,12 @@ y + y = y + y
 ```
 
 Alternatively,
-```coq
+```rocq
 rewrite <- H.
 ```
 
 
-```coq
+```rocq
 x, y: nat
 H: x = y
 =========================
@@ -758,7 +758,7 @@ x + x = x + x
 
 ### Resources
 
-[Reference Documentation](https://coq.inria.fr/doc/master/refman/proofs/writing-proofs/equality.html#coq:tacn.rewrite)
+[Reference Documentation](https://rocq-prover.org/doc/master/refman/proofs/writing-proofs/equality.html#rocq:tacn.rewrite)
 
 <hr>
 
@@ -769,7 +769,7 @@ x + x = x + x
 
 ### Syntax
 
-```coq
+```rocq
 (* Simple example *)
 rename x into y.
 ```
@@ -777,19 +777,19 @@ rename x into y.
 ### Examples
 
 Before
-```coq
+```rocq
 n: nat
 =========================
 1/1
 n = n
 ```
 
-```coq
+```rocq
 rename n into x.
 ```
 
 After
-```coq
+```rocq
 x: nat
 =========================
 1/1
@@ -797,7 +797,7 @@ x = x
 ```
 ### Resources
 
-[Reference Documentation](https://coq.inria.fr/doc/V8.13.2/refman/proof-engine/tactics.html#coq:tacn.rename)
+[Reference Documentation](https://rocq-prover.org/doc/master/refman/proof-engine/tactics.html#rocq:tacn.rename)
 
 <hr>
 
@@ -809,7 +809,7 @@ Specifically, `remember t` (where `t` has type `T`) introduces an assumption tha
 
 ### Syntax
 
-```coq
+```rocq
 (* Simple usage *)
 remember (5 + x).
 
@@ -820,7 +820,7 @@ remember ("hello world") as s.
 ### Examples
 
 Before
-```coq
+```rocq
 x, y: nat
 H: x + y = x
 =========================
@@ -828,12 +828,12 @@ H: x + y = x
 y = 0
 ```
 
-```coq
+```rocq
 remember (x + y) as sum.
 ```
 
 After
-```coq
+```rocq
 x, y, sum: nat
 Heqsum: sum = x + y
 H: sum = x
@@ -844,7 +844,7 @@ y = 0
 
 ### Resources
 
-[Reference Documentation](https://coq.inria.fr/doc/V8.13.2/refman/proof-engine/tactics.html#coq:tacn.remember)
+[Reference Documentation](https://rocq-prover.org/doc/master/refman/proof-engine/tactics.html#rocq:tacn.remember)
 
 <hr>
 
@@ -857,7 +857,7 @@ y = 0
 
 ### Syntax
 
-```coq
+```rocq
 (* Usage on goal *)
 symmetry.
 
@@ -869,18 +869,18 @@ symmetry in H1, H2.
 ### Examples
 
 Before
-```coq
+```rocq
 =========================
 1/1
 5 = 2 + 3
 ```
 
-```coq
+```rocq
 symmetry.
 ```
 
 After
-```coq
+```rocq
 =========================
 1/1
 2 + 3 = 5
@@ -888,7 +888,7 @@ After
 
 ### Resources
 
-[Reference Documentation](https://coq.inria.fr/doc/master/refman/proofs/writing-proofs/equality.html#coq:tacn.symmetry)
+[Reference Documentation](https://rocq-prover.org/doc/master/refman/proofs/writing-proofs/equality.html#rocq:tacn.symmetry)
 
 <hr>
 
@@ -898,7 +898,7 @@ After
 # [Case Analysis](/ctpe/CaseAnalysis/index.html)
 
 Case analysis is a core aspect of constructivist logic.
-Although for many kinds of problems it is a low-level tool, it is ubiquitous among the foundations of all problems formalized in the Coq system.
+Although for many kinds of problems it is a low-level tool, it is ubiquitous among the foundations of all problems formalized in the Rocq system.
 The core idea is: "if I want to prove a property P holds for a term t, I can do so by writing multiple sub-proofs stating that for each form that t can have, P holds."
 
 
@@ -910,7 +910,7 @@ The arguments of `destruct` are [patterns](/ctpe/glossary.html#pattern).
 
 ### Syntax
 
-```coq
+```rocq
 (* Simple usage *)
 destruct H.
 
@@ -933,18 +933,18 @@ destruct H as [H1 | H2].
 ### Examples
 
 Before
-```coq
+```rocq
 n: nat
 =========================
 n = 0 \/ 1 <= n
 ```
 
-```coq
+```rocq
 destruct n as [| n'] eqn:E.
 ```
 
 After (first goal generated)
-```coq
+```rocq
 n: nat
 E: n = 0
 =========================
@@ -953,7 +953,7 @@ E: n = 0
 ```
 
 After (second goal generated)
-```coq
+```rocq
 n, n': nat
 E: n = S n'
 =========================
@@ -962,7 +962,7 @@ S n' = 0 \/ 1 <= S n'
 ```
 
 Script
-```coq
+```rocq
 Theorem destruct_example1 : forall n : nat,
     n = 0 \/ 1 <= n.
 Proof.
@@ -973,7 +973,7 @@ Qed.
 ```
 
 Script
-```coq
+```rocq
 Theorem destruct_example2 : forall (P Q R : Prop),
     ((P /\ Q) /\ R) -> P /\ (Q /\ R).
 Proof.
@@ -987,7 +987,7 @@ Qed.
 ```
 
 Script
-```coq
+```rocq
 Theorem destruct_example3 : 
     forall (P Q R : Prop),
     (P \/ Q) -> P \/ Q \/ R.
@@ -1000,7 +1000,7 @@ Qed.
 
 ### Resources
 
-[Reference Documentation](https://coq.inria.fr/doc/V8.13.2/refman/proof-engine/tactics.html#coq:tacn.destruct)
+[Reference Documentation](https://rocq-prover.org/doc/master/refman/proofs/writing-proofs/reasoning-inductives.html#rocq:tacn.destruct)
 
 <hr>
 
@@ -1016,7 +1016,7 @@ I recommend almost always following `inversion` with [`subst`](/) to immediately
 
 ### Syntax
 
-```coq
+```rocq
 (* Standard usage *)
 inversion H.
 ```
@@ -1024,7 +1024,7 @@ inversion H.
 ### Examples
 
 Before
-```coq
+```rocq
 n: nat
 H: n <= 1
 =========================
@@ -1032,14 +1032,14 @@ H: n <= 1
 n = 0 \/ n = 1
 ```
 
-```coq
+```rocq
 inversion H.
 ```
 
 After (first goal generated):
 
 Note: this is the case of `n <= 1` where `n = 1`, hence `H0`.
-```coq
+```rocq
 n: nat
 H: n <= 1
 H0: n = 1
@@ -1051,7 +1051,7 @@ H0: n = 1
 After (second goal generated):
 
 Note: this is the case of `n <= 1` where `n < 1`, equivalent to `n <= 0`, hence `H1`.
-```coq
+```rocq
 n: nat
 H: n <= 1
 m: nat
@@ -1063,7 +1063,7 @@ n = 0 \/ n = 1
 ```
 
 Script
-```coq
+```rocq
 Theorem inversion_example1 : 
     forall n, n <= 1 -> n = 0 \/ n = 1.
 Proof.
@@ -1074,7 +1074,7 @@ Qed.
 ```
 
 Script
-```coq
+```rocq
 Inductive color : Type :=
 | Red | Blue | Green | Cyan | Magenta | Yellow.
 
@@ -1096,7 +1096,7 @@ Qed.
 
 ### Resources
 
-[Reference Documentation](https://coq.inria.fr/doc/master/refman/proofs/writing-proofs/reasoning-inductives.html#coq:tacn.inversion)
+[Reference Documentation](https://rocq-prover.org/doc/master/refman/proofs/writing-proofs/reasoning-inductives.html#rocq:tacn.inversion)
 
 <hr>
 
@@ -1104,20 +1104,20 @@ Qed.
 ## [induction](/ctpe/CaseAnalysis/induction.html)
 
 `induction` is an extension of `destruct` that allows for case analysis on inductive terms, gaining an inductive hypothesis for each recursive subterm generated by the term destruction.
-The arguments of `induction` are [patterns](/ctpe/glossary.html#pattern).
+The arguments of `induction` are [patterns](/RTPE/glossary.html#pattern).
 
-If the goal still contains named impliciations, `induction` can be used before introducing them with [intros](/ctpe/Generalization/intros.html).
+If the goal still contains named impliciations, `induction` can be used before introducing them with [intros](/RTPE/Generalization/intros.html).
 In this case, if the argument to `induction` is not the first impliciation in the chain, all implications before it will be introduced to the goal's assumption space.
 
 `induction` can act similarly to `inversion` under specific circumstances.
-If you induct over an object that already contains subterms, you can [remember](/ctpe/Rewriting/remember.html) the subterm(s) and induct on the root object. Then, by an easy `inversion` on the hypothesis generated by `remember`, all cases that don't match the required form generated by the case analysis will be automatically solved by the [principle of explosion](/ctpe/glossary.html#explosion).
+If you induct over an object that already contains subterms, you can [remember](/RTPE/Rewriting/remember.html) the subterm(s) and induct on the root object. Then, by an easy `inversion` on the hypothesis generated by `remember`, all cases that don't match the required form generated by the case analysis will be automatically solved by the [principle of explosion](/RTPE/glossary.html#explosion).
 
 Sometimes, the automatically-generated induction principles for a type are not sufficient to prove some properties about terms with that type. 
 In this case, it is possible to write a [custom induction principle](https://softwarefoundations.cis.upenn.edu/lf-current/IndPrinciples.html) for a type and then use it with the `induction` tactic.
 
 ### Syntax
 
-```coq
+```rocq
 (* Simple usage *)
 induction n.
 
@@ -1134,25 +1134,25 @@ induction z using peano_ind.
 ### Examples
 
 Before
-```coq
+```rocq
 n: nat
 =========================
 n + 0 = n
 ```
 
-```coq
+```rocq
 induction n as [| n' IHn' ].
 ```
 
 After (first goal generated)
-```coq
+```rocq
 =========================
 1/2
 0 + 0 = 0
 ```
 
 After (second goal generated)
-```coq
+```rocq
 n': nat
 IHn' : n' + 0 = n'
 =========================
@@ -1161,7 +1161,7 @@ S n' + 0 = S n'
 ```
 
 Script
-```coq
+```rocq
 Theorem induction_example1 : forall (n : nat),
     n + 0 = n.
 Proof.
@@ -1172,7 +1172,7 @@ Qed.
 ```
 
 Script
-```coq
+```rocq
 Require Import ZArith.
 Open Scope Z.
 Theorem induction_example2 : forall (x y : Z),
@@ -1191,9 +1191,78 @@ Qed.
 
 ### Resources
 
-[Reference Documentation](https://coq.inria.fr/doc/V8.13.2/refman/proof-engine/tactics.html#coq:tacn.induction)
+[Reference Documentation](https://rocq-prover.org/doc/master/refman/proofs/writing-proofs/reasoning-inductives.html#rocq:tacn.induction)
 
 ["Induction Principles" - Logical Foundations](https://softwarefoundations.cis.upenn.edu/lf-current/IndPrinciples.html)
+
+<hr>
+
+
+## [constructor](/ctpe/CaseAnalysis/constructor.html)
+
+When faced with a goal consisting of an inductive proposition with multiple constructors (such as [`le`](https://rocq-prover.org/doc/master/corelib/Corelib.Init.Peano.html#le) or [`NoDup`](https://rocq-prover.org/doc/master/stdlib/Stdlib.Lists.List.html#NoDup)), the `constructor` tactic iteratively attempts to apply each inductive constructor until one makes progress.
+
+This tactic can succeed in multiple ways. Consider the following scenario:
+
+```rocq
+Inductive example : nat -> Prop :=
+| EOdd (n : nat) :
+    even n = false ->
+    example n
+| EEven (n : nat) :
+    even n = true ->
+    example n.
+
+Goal forall n, even n = true -> example n.
+Proof.
+    intros.
+    constructor;
+    (* This will print out:
+        even n = false
+        even n = true
+       as `constructor` first tries to prove
+       the goal via EOdd, `assumption` fails,
+       and then we backtrack and try EEven *)
+    match goal with 
+    | [|- ?G] => idtac G; assumption
+    end.
+```
+
+Binding values to specific names is supported, as with `apply`.
+
+### Syntax
+
+```rocq
+(* Simple usage *)
+constructor.
+
+(* Bind to variables in the applied constructor *)
+constructor with (n := S x) (m := 5).
+```
+
+### Examples
+
+Before
+```rocq
+n: nat
+=========================
+n = 0 \/ 1 <= n
+```
+
+```rocq
+constructor.
+```
+
+After (`or_introl` applied)
+```rocq
+n: nat
+=========================
+n = 0
+```
+
+### Resources
+
+[Reference Documentation](https://rocq-prover.org/doc/master/refman/proofs/writing-proofs/reasoning-inductives.html#rocq:tacn.constructor)
 
 <hr>
 
@@ -1211,7 +1280,7 @@ This category of tactics generally intends to solve a large category of simple g
 `auto` does a recursive search through a specified knowledge base in order to solve goals.
 If `auto` cannot completely solve a goal, it succeeds with no changes to the goal.
 
-The knowledge bases that `auto` uses are called [**Hint Databases**](https://coq.inria.fr/doc/master/refman/proofs/automatic-tactics/auto.html#hintdatabases).
+The knowledge bases that `auto` uses are called [**Hint Databases**](https://rocq-prover.org/doc/master/refman/proofs/automatic-tactics/auto.html#hintdatabases).
 Hint databases are provided by the standard library, and can also be created and added to by users.
 Hint databases can contain a variety of hint types, including but not limited to:
 
@@ -1223,7 +1292,7 @@ The default hint database used by `auto` when no other database is specified is 
 
 ### Syntax
 
-```coq
+```rocq
 (* Simple usage *)
 auto.
 
@@ -1237,7 +1306,7 @@ auto using example.
 ### Examples
 
 Before
-```coq
+```rocq
 P: Prop
 H: P
 =========================
@@ -1245,17 +1314,17 @@ H: P
 0 = 0 /\ True /\ P
 ```
 
-```coq
+```rocq
 auto.
 ```
 
 After
-```coq
+```rocq
 No more goals.
 ```
 
 Script
-```coq
+```rocq
 Create HintDb automation.
 Lemma mul_1_r : forall n, n * 1 = n. 
 Proof. induction n. auto. simpl. now rewrite IHn. Qed.
@@ -1267,27 +1336,27 @@ Proof. auto with automation. Qed.
 
 ### Resources
 
-[Reference Documentation](https://coq.inria.fr/doc/master/refman/proofs/automatic-tactics/auto.html#coq:tacn.auto)
+[Reference Documentation](https://rocq-prover.org/doc/master/refman/proofs/automatic-tactics/auto.html#rocq:tacn.auto)
 
 ["More Automation" - Logical Foundations](https://softwarefoundations.cis.upenn.edu/lf-current/Auto.html)
 
 ["A Streamlined Treatment of Automation" - Logical Foundations](https://softwarefoundations.cis.upenn.edu/lf-current/AltAuto.html)
 
-["Theory and Practice of Automation in Coq Proofs" - Programming Language Foundations](https://softwarefoundations.cis.upenn.edu/plf-current/UseAuto.html)
+["Theory and Practice of Automation in Rocq Proofs" - Programming Language Foundations](https://softwarefoundations.cis.upenn.edu/plf-current/UseAuto.html)
 
-[Hint Databases](https://coq.inria.fr/doc/master/refman/proofs/automatic-tactics/auto.html#hintdatabases)
+[Hint Databases](https://rocq-prover.org/doc/master/refman/proofs/automatic-tactics/auto.html#hintdatabases)
 
 <hr>
 
 
 ## [trivial](/ctpe/Automation/trivial.html)
 
-`trivial` is essentially a non-recursive [`auto`](/ctpe/Automation/auto.html).
+`trivial` is essentially a non-recursive [`auto`](/RTPE/Automation/auto.html).
 `trivial` is best utilized when a lemma that exactly matches the goal already exists in the hint database.
 
 ### Syntax
 
-```coq
+```rocq
 (* Simple usage *)
 trivial.
 
@@ -1298,7 +1367,7 @@ trivial with bool.
 ### Examples
 
 Script
-```coq
+```rocq
 Theorem trivial_example : forall {X : Type} (n : X), 
     n = n.
 Proof.
@@ -1308,7 +1377,7 @@ Qed.
 
 ### Resources
 
-[Reference Documentation](https://coq.inria.fr/doc/master/refman/proofs/automatic-tactics/auto.html#coq:tacn.trivial)
+[Reference Documentation](https://rocq-prover.org/doc/master/refman/proofs/automatic-tactics/auto.html#rocq:tacn.trivial)
 
 <hr>
 
@@ -1318,34 +1387,34 @@ Qed.
 `easy` throws many common "closing tactics" at a goal to solve a large category of simple problems.
 `easy` will attempt to use:
 
-- [`trivial`](/ctpe/Automation/trivial.html)
+- [`trivial`](/RTPE/Automation/trivial.html)
 
-- [`reflexivity`](/ctpe/SpecificSolvers/reflexivity.html)
+- [`reflexivity`](/RTPE/SpecificSolvers/reflexivity.html)
 
-- [`symmetry`](/ctpe/Rewriting/symmetry.html)
+- [`symmetry`](/RTPE/Rewriting/symmetry.html)
 
-- [`contradiction`](/ctpe/SpecificSolvers/contradiction.html)
+- [`contradiction`](/RTPE/SpecificSolvers/contradiction.html)
 
-- [`inversion`](/ctpe/CaseAnalysis/inversion.html)
+- [`inversion`](/RTPE/CaseAnalysis/inversion.html)
 
-- [`intros`](/ctpe/Generalization/intros.html)
+- [`intros`](/RTPE/Generalization/intros.html)
 
-- [`split`](/ctpe/Simplification/split.html) (this begins a recursive call of `easy`)
+- [`split`](/RTPE/Simplification/split.html) (this begins a recursive call of `easy`)
 
-- [`destruct`](/ctpe/CaseAnalysis/destruct.html) (on hypotheses with conjunctions)
+- [`destruct`](/RTPE/CaseAnalysis/destruct.html) (on hypotheses with conjunctions)
 
-`easy` is the base form of the [`now`](/ctpe/Tacticals/now.html) tactical.
+`easy` is the base form of the [`now`](/RTPE/Tacticals/now.html) tactical.
 
 ### Syntax
 
-```coq
+```rocq
 easy.
 ```
 
 ### Examples
 
 Before
-```coq
+```rocq
 P: Prop
 H: P
 =========================
@@ -1353,18 +1422,18 @@ H: P
 True /\ 42 = 14 * 3 /\ P
 ```
 
-```coq
+```rocq
 easy.
 ```
 
 After
-```coq
+```rocq
 No more goals.
 ```
 
 ### Resources
 
-[Reference Documentation](https://coq.inria.fr/doc/master/refman/proofs/automatic-tactics/auto.html#coq:tacn.easy)
+[Reference Documentation](https://rocq-prover.org/doc/master/refman/proofs/automatic-tactics/auto.html#rocq:tacn.easy)
 
 <hr>
 
@@ -1380,7 +1449,7 @@ String and integers are printed literally rather than via their type's pretty-pr
 
 ### Syntax
 
-```coq
+```rocq
 (* Simple usage *)
 idtac.
 
@@ -1391,38 +1460,38 @@ idtac "Hello World!".
 ### Examples
 
 Before
-```coq
+```rocq
 =========================
 1/1
 True
 ```
 
-```coq
+```rocq
 idtac.
 ```
 
 After
-```coq
+```rocq
 =========================
 1/1
 True
 ```
 
 Before
-```coq
+```rocq
 n: nat
 =========================
 1/1
 n + 0 = n
 ```
 
-```coq
+```rocq
 (* Only apply reflexivity to the n = 0 case. Leave the n = S n' case unaffected *)
 induction n; [reflexivity | idtac].
 ```
 
 After
-```coq
+```rocq
 n : nat
 IHn : n + 0 = n
 =========================
@@ -1431,7 +1500,7 @@ S n + 0 = S n
 ```
 ### Resources
 
-[Reference Documentation](https://coq.inria.fr/doc/v8.10/refman/proof-engine/ltac.html#coq:tacn.idtac)
+[Reference Documentation](https://rocq-prover.org/doc/master/refman/proof-engine/ltac.html#rocq:tacn.idtac)
 
 <hr>
 
@@ -1444,7 +1513,7 @@ This is sometimes useful if you're building a complex tactic with try-catch beha
 
 ### Syntax
 
-```coq
+```rocq
 (* Simple usage *)
 fail.
 ```
@@ -1452,24 +1521,24 @@ fail.
 ### Examples
 
 Before
-```coq
+```rocq
 =========================
 1/1
 True
 ```
 
-```coq
+```rocq
 fail.
 ```
 
 After
-```coq
+```rocq
 Error: Tactic failure.
 ```
 
 ### Resources
 
-[Reference Documentation](https://coq.inria.fr/doc/master/refman/proof-engine/ltac.html#coq:tacn.fail)
+[Reference Documentation](https://rocq-prover.org/doc/master/refman/proof-engine/ltac.html#rocq:tacn.fail)
 
 <hr>
 
@@ -1491,7 +1560,7 @@ The `try` tactical executes a provided tactic, catching any errors and always su
 
 ### Syntax
 
-```coq
+```rocq
 (* Simple usage *)
 try reflexivity.
 ```
@@ -1499,19 +1568,19 @@ try reflexivity.
 ### Examples
 
 Before
-```coq
+```rocq
 n: nat
 =========================
 1/1
 n + 0 = n
 ```
 
-```coq
+```rocq
 try reflexivity.
 ```
 
 After
-```coq
+```rocq
 n: nat
 =========================
 1/1
@@ -1520,17 +1589,17 @@ n + 0 = n
 
 Alternatively,
 
-```coq
+```rocq
 try apply add_0_r.
 ```
 
-```coq
+```rocq
 No more goals.
 ```
 
 ### Resources
 
-[Reference Documentation](https://coq.inria.fr/doc/master/refman/proof-engine/ltac.html#coq:tacn.try)
+[Reference Documentation](https://rocq-prover.org/doc/master/refman/proof-engine/ltac.html#rocq:tacn.try)
 
 <hr>
 
@@ -1575,13 +1644,9 @@ A;(B;C)             /*  Call A  */
 
 Also keep in mind that this behavior is extremely versatile, the above tree "shortening" use is only one example.
 
-Compare this tactical with [Prolog's semicolon operator](https://www.swi-prolog.org/pldoc/man?predicate=%3B/2) and revel at some neat similarities!
-For example, in Coq, `A;B` will backtrack if `B` fails and `A` can succeed in a *different way*.
-The primary example of a tactic being able to succeed in multiple ways is the [`constructor`](/ctpe/CaseAnalysis/constructor.html) tactic.
-
 ### Syntax
 
-```coq
+```rocq
 (* Simple usage *)
 split; reflexivity.
 
@@ -1595,7 +1660,7 @@ split; (split; auto).
 ### Examples
 
 Before
-```coq
+```rocq
 P, Q: Prop
 H: Q
 =========================
@@ -1603,16 +1668,16 @@ H: Q
 P \/ Q
 ```
 
-```coq
+```rocq
 constructor; assumption.
 ```
 
 After
-```coq
+```rocq
 No more goals.
 ```
 Note the definition of `or`:
-```coq
+```rocq
 Inductive or (A B : Prop) : Prop :=
 | or_introl : A -> A \/ B 
 | or_intror : B -> A \/ B.
@@ -1634,7 +1699,7 @@ There are a number of goal selectors:
 
 ### Syntax
 
-```coq
+```rocq
 all: simpl.
 
 par: simpl; reflexivity; auto.
@@ -1647,7 +1712,7 @@ par: simpl; reflexivity; auto.
 ### Examples
 
 Before
-```coq
+```rocq
 =========================
 1/2
 True
@@ -1656,20 +1721,20 @@ True
 True
 ```
 
-```coq
+```rocq
 all: exact I.
 (* or *)
 1-2: exact I.
 ```
 
 After
-```coq
+```rocq
 No more goals.
 ```
 
 Alternatively,
 
-```coq
+```rocq
 !: exact I.
 ```
 
@@ -1679,7 +1744,7 @@ Error: Expected a single focused goal but 2 goals are focused.
 
 ### Resources
 
-[Reference Documentation](https://coq.inria.fr/doc/V8.18.0/refman/proof-engine/ltac.html#goal-selectors)
+[Reference Documentation](https://rocq-prover.org/doc/master/refman/proof-engine/ltac.html#goal-selectors)
 
 <hr>
 
@@ -1694,7 +1759,7 @@ For example, `repeat symmetry` or `repeat idtac` will always result in an infini
 
 ### Syntax
 
-```coq
+```rocq
 (* Simple usage *)
 repeat split.
 ```
@@ -1702,19 +1767,19 @@ repeat split.
 ### Examples
 
 Before
-```coq
+```rocq
 P, Q, R, S: Prop
 =========================
 1/1
 P /\ Q /\ R /\ S
 ```
 
-```coq
+```rocq
 repeat split.
 ```
 
 After
-```coq
+```rocq
 P, Q, R, S: Prop
 =========================
 1/4
@@ -1732,7 +1797,7 @@ S
 
 ### Resources
 
-[Reference Documentation](https://coq.inria.fr/doc/master/refman/proof-engine/ltac.html#coq:tacn.repeat)
+[Reference Documentation](https://rocq-prover.org/doc/master/refman/proof-engine/ltac.html#rocq:tacn.repeat)
 
 <hr>
 
@@ -1744,7 +1809,7 @@ In other words, `||` executes the first tactic that makes progress on the goal.
 
 ### Syntax
 
-```coq
+```rocq
 (* Simple usage *)
 reflexivity || assumption.
 ```
@@ -1752,7 +1817,7 @@ reflexivity || assumption.
 ### Examples
 
 Before
-```coq
+```rocq
 P: Prop
 H: P
 =========================
@@ -1760,53 +1825,53 @@ H: P
 P
 ```
 
-```coq
+```rocq
 reflexivity || assumption.
 ```
 
 After
-```coq
+```rocq
 No more goals.
 ```
 
 ### Resources
 
-[Reference Documentation](https://coq.inria.fr/doc/master/refman/proof-engine/ltac.html#first-tactic-to-make-progress)
+[Reference Documentation](https://rocq-prover.org/doc/master/refman/proof-engine/ltac.html#first-tactic-to-make-progress)
 
 <hr>
 
 
 ## [now](/ctpe/Tacticals/now.html)
 
-`now tactic` is simply notation for `tactic;` [`easy`](/ctpe/Automation/easy.html).
+`now tactic` is simply notation for `tactic;` [`easy`](/RTPE/Automation/easy.html).
 
 ### Syntax
 
-```coq
+```rocq
 now split.
 ```
 
 ### Examples
 
 Before
-```coq
+```rocq
 =========================
 1/1
 True /\ 42 = 14 * 3
 ```
 
-```coq
+```rocq
 now split.
 ```
 
 After
-```coq
+```rocq
 No more goals.
 ```
 
 ### Resources
 
-[Reference Documentation](https://coq.inria.fr/doc/master/refman/proofs/automatic-tactics/auto.html#coq:tacn.now)
+[Reference Documentation](https://rocq-prover.org/doc/master/refman/proofs/automatic-tactics/auto.html#rocq:tacn.now)
 
 <hr>
 
@@ -1816,38 +1881,38 @@ No more goals.
 The `do` tactical accepts a tactic `t` and a natural number `n`, applying `t` to the goal `n` times.
 `do` fails if one of the applications of `t` fails before `n` applications have occurred.
 
-In my opinion, `do` is a difficult tactic to justify. I find myself using it when using [`repeat`](/ctpe/Tacticals/repeat.html)
+In my opinion, `do` is a difficult tactic to justify. I find myself using it when using [`repeat`](/RTPE/Tacticals/repeat.html)
 tends to be overzealous. For example, if I have a goal with 100 subterms, and I'd like to apply a tactic `t`
 only to 30 of the subterms (assuming `t` works on individual subterms and not the whole goal), I'm more
 likely to use `do 30 t` than `repeat t` to prevent the remaining 70 subterms from being affected.
 
 ### Syntax
 
-```coq
+```rocq
 do 3 (split; [reflexivity | idtac]).
 ```
 
 ### Examples
 
 Before
-```coq
+```rocq
 =========================
 1/1
 1 = 1 /\ 2 = 2 /\ 3 = 3 /\ 4 = 4
 ```
 
-```coq
+```rocq
 do 3 (split; [reflexivity | idtac]).
 ```
 
 After
-```coq
+```rocq
 No more goals.
 ```
 
 ### Resources
 
-[Reference Documentation](https://coq.inria.fr/doc/master/refman/proof-engine/ltac.html#coq:tacn.do)
+[Reference Documentation](https://rocq-prover.org/doc/master/refman/proof-engine/ltac.html#rocq:tacn.do)
 
 <hr>
 

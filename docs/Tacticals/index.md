@@ -1,5 +1,5 @@
 ---
-title: "Tacticals - CTPE"
+title: "Tacticals - RTPE"
 ---
 
 # [Tacticals](/ctpe/Tacticals/index.html)
@@ -17,7 +17,7 @@ The `try` tactical executes a provided tactic, catching any errors and always su
 
 ### Syntax
 
-```coq
+```rocq
 (* Simple usage *)
 try reflexivity.
 ```
@@ -25,19 +25,19 @@ try reflexivity.
 ### Examples
 
 Before
-```coq
+```rocq
 n: nat
 =========================
 1/1
 n + 0 = n
 ```
 
-```coq
+```rocq
 try reflexivity.
 ```
 
 After
-```coq
+```rocq
 n: nat
 =========================
 1/1
@@ -46,17 +46,17 @@ n + 0 = n
 
 Alternatively,
 
-```coq
+```rocq
 try apply add_0_r.
 ```
 
-```coq
+```rocq
 No more goals.
 ```
 
 ### Resources
 
-[Reference Documentation](https://coq.inria.fr/doc/master/refman/proof-engine/ltac.html#coq:tacn.try)
+[Reference Documentation](https://rocq-prover.org/doc/master/refman/proof-engine/ltac.html#rocq:tacn.try)
 
 <hr>
 
@@ -101,13 +101,9 @@ A;(B;C)             /*  Call A  */
 
 Also keep in mind that this behavior is extremely versatile, the above tree "shortening" use is only one example.
 
-Compare this tactical with [Prolog's semicolon operator](https://www.swi-prolog.org/pldoc/man?predicate=%3B/2) and revel at some neat similarities!
-For example, in Coq, `A;B` will backtrack if `B` fails and `A` can succeed in a *different way*.
-The primary example of a tactic being able to succeed in multiple ways is the [`constructor`](/ctpe/CaseAnalysis/constructor.html) tactic.
-
 ### Syntax
 
-```coq
+```rocq
 (* Simple usage *)
 split; reflexivity.
 
@@ -121,7 +117,7 @@ split; (split; auto).
 ### Examples
 
 Before
-```coq
+```rocq
 P, Q: Prop
 H: Q
 =========================
@@ -129,16 +125,16 @@ H: Q
 P \/ Q
 ```
 
-```coq
+```rocq
 constructor; assumption.
 ```
 
 After
-```coq
+```rocq
 No more goals.
 ```
 Note the definition of `or`:
-```coq
+```rocq
 Inductive or (A B : Prop) : Prop :=
 | or_introl : A -> A \/ B 
 | or_intror : B -> A \/ B.
@@ -160,7 +156,7 @@ There are a number of goal selectors:
 
 ### Syntax
 
-```coq
+```rocq
 all: simpl.
 
 par: simpl; reflexivity; auto.
@@ -173,7 +169,7 @@ par: simpl; reflexivity; auto.
 ### Examples
 
 Before
-```coq
+```rocq
 =========================
 1/2
 True
@@ -182,20 +178,20 @@ True
 True
 ```
 
-```coq
+```rocq
 all: exact I.
 (* or *)
 1-2: exact I.
 ```
 
 After
-```coq
+```rocq
 No more goals.
 ```
 
 Alternatively,
 
-```coq
+```rocq
 !: exact I.
 ```
 
@@ -205,7 +201,7 @@ Error: Expected a single focused goal but 2 goals are focused.
 
 ### Resources
 
-[Reference Documentation](https://coq.inria.fr/doc/V8.18.0/refman/proof-engine/ltac.html#goal-selectors)
+[Reference Documentation](https://rocq-prover.org/doc/master/refman/proof-engine/ltac.html#goal-selectors)
 
 <hr>
 
@@ -220,7 +216,7 @@ For example, `repeat symmetry` or `repeat idtac` will always result in an infini
 
 ### Syntax
 
-```coq
+```rocq
 (* Simple usage *)
 repeat split.
 ```
@@ -228,19 +224,19 @@ repeat split.
 ### Examples
 
 Before
-```coq
+```rocq
 P, Q, R, S: Prop
 =========================
 1/1
 P /\ Q /\ R /\ S
 ```
 
-```coq
+```rocq
 repeat split.
 ```
 
 After
-```coq
+```rocq
 P, Q, R, S: Prop
 =========================
 1/4
@@ -258,7 +254,7 @@ S
 
 ### Resources
 
-[Reference Documentation](https://coq.inria.fr/doc/master/refman/proof-engine/ltac.html#coq:tacn.repeat)
+[Reference Documentation](https://rocq-prover.org/doc/master/refman/proof-engine/ltac.html#rocq:tacn.repeat)
 
 <hr>
 
@@ -270,7 +266,7 @@ In other words, `||` executes the first tactic that makes progress on the goal.
 
 ### Syntax
 
-```coq
+```rocq
 (* Simple usage *)
 reflexivity || assumption.
 ```
@@ -278,7 +274,7 @@ reflexivity || assumption.
 ### Examples
 
 Before
-```coq
+```rocq
 P: Prop
 H: P
 =========================
@@ -286,53 +282,53 @@ H: P
 P
 ```
 
-```coq
+```rocq
 reflexivity || assumption.
 ```
 
 After
-```coq
+```rocq
 No more goals.
 ```
 
 ### Resources
 
-[Reference Documentation](https://coq.inria.fr/doc/master/refman/proof-engine/ltac.html#first-tactic-to-make-progress)
+[Reference Documentation](https://rocq-prover.org/doc/master/refman/proof-engine/ltac.html#first-tactic-to-make-progress)
 
 <hr>
 
 
 ## [now](/ctpe/Tacticals/now.html)
 
-`now tactic` is simply notation for `tactic;` [`easy`](/ctpe/Automation/easy.html).
+`now tactic` is simply notation for `tactic;` [`easy`](/RTPE/Automation/easy.html).
 
 ### Syntax
 
-```coq
+```rocq
 now split.
 ```
 
 ### Examples
 
 Before
-```coq
+```rocq
 =========================
 1/1
 True /\ 42 = 14 * 3
 ```
 
-```coq
+```rocq
 now split.
 ```
 
 After
-```coq
+```rocq
 No more goals.
 ```
 
 ### Resources
 
-[Reference Documentation](https://coq.inria.fr/doc/master/refman/proofs/automatic-tactics/auto.html#coq:tacn.now)
+[Reference Documentation](https://rocq-prover.org/doc/master/refman/proofs/automatic-tactics/auto.html#rocq:tacn.now)
 
 <hr>
 
@@ -342,38 +338,38 @@ No more goals.
 The `do` tactical accepts a tactic `t` and a natural number `n`, applying `t` to the goal `n` times.
 `do` fails if one of the applications of `t` fails before `n` applications have occurred.
 
-In my opinion, `do` is a difficult tactic to justify. I find myself using it when using [`repeat`](/ctpe/Tacticals/repeat.html)
+In my opinion, `do` is a difficult tactic to justify. I find myself using it when using [`repeat`](/RTPE/Tacticals/repeat.html)
 tends to be overzealous. For example, if I have a goal with 100 subterms, and I'd like to apply a tactic `t`
 only to 30 of the subterms (assuming `t` works on individual subterms and not the whole goal), I'm more
 likely to use `do 30 t` than `repeat t` to prevent the remaining 70 subterms from being affected.
 
 ### Syntax
 
-```coq
+```rocq
 do 3 (split; [reflexivity | idtac]).
 ```
 
 ### Examples
 
 Before
-```coq
+```rocq
 =========================
 1/1
 1 = 1 /\ 2 = 2 /\ 3 = 3 /\ 4 = 4
 ```
 
-```coq
+```rocq
 do 3 (split; [reflexivity | idtac]).
 ```
 
 After
-```coq
+```rocq
 No more goals.
 ```
 
 ### Resources
 
-[Reference Documentation](https://coq.inria.fr/doc/master/refman/proof-engine/ltac.html#coq:tacn.do)
+[Reference Documentation](https://rocq-prover.org/doc/master/refman/proof-engine/ltac.html#rocq:tacn.do)
 
 <hr>
 

@@ -1,5 +1,5 @@
 ---
-title: "assumption - CTPE"
+title: "assumption - RTPE"
 ---
 
 ## [assumption](/ctpe/SpecificSolvers/assumption.html)
@@ -9,7 +9,7 @@ This tactic will fail if there does not exist such an assumption.
 
 ### Syntax
 
-```coq
+```rocq
 (* Simple usage *)
 assumption.
 ```
@@ -17,7 +17,7 @@ assumption.
 ### Examples
 
 Before
-```coq
+```rocq
 P: Prop
 H: P
 =========================
@@ -25,17 +25,17 @@ H: P
 P
 ```
 
-```coq
+```rocq
 assumption.
 ```
 
 After
-```coq
+```rocq
 No more goals.
 ```
 
 ### Resources
 
-[Reference Documentation](https://coq.inria.fr/doc/master/refman/proof-engine/tactics.html?highlight=assumption#coq:tacn.assumption)
+[Reference Documentation](https://rocq-prover.org/doc/master/refman/proof-engine/tactics.html#rocq:tacn.assumption)
 
 <hr>

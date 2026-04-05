@@ -1,5 +1,5 @@
 ---
-title: easy - CTPE
+title: easy - RTPE
 ---
 
 ## easy
@@ -7,34 +7,34 @@ title: easy - CTPE
 `easy` throws many common "closing tactics" at a goal to solve a large category of simple problems.
 `easy` will attempt to use:
 
-- [`trivial`](/ctpe/Automation/trivial.html)
+- [`trivial`](/RTPE/Automation/trivial.html)
 
-- [`reflexivity`](/ctpe/SpecificSolvers/reflexivity.html)
+- [`reflexivity`](/RTPE/SpecificSolvers/reflexivity.html)
 
-- [`symmetry`](/ctpe/Rewriting/symmetry.html)
+- [`symmetry`](/RTPE/Rewriting/symmetry.html)
 
-- [`contradiction`](/ctpe/SpecificSolvers/contradiction.html)
+- [`contradiction`](/RTPE/SpecificSolvers/contradiction.html)
 
-- [`inversion`](/ctpe/CaseAnalysis/inversion.html)
+- [`inversion`](/RTPE/CaseAnalysis/inversion.html)
 
-- [`intros`](/ctpe/Generalization/intros.html)
+- [`intros`](/RTPE/Generalization/intros.html)
 
-- [`split`](/ctpe/Simplification/split.html) (this begins a recursive call of `easy`)
+- [`split`](/RTPE/Simplification/split.html) (this begins a recursive call of `easy`)
 
-- [`destruct`](/ctpe/CaseAnalysis/destruct.html) (on hypotheses with conjunctions)
+- [`destruct`](/RTPE/CaseAnalysis/destruct.html) (on hypotheses with conjunctions)
 
-`easy` is the base form of the [`now`](/ctpe/Tacticals/now.html) tactical.
+`easy` is the base form of the [`now`](/RTPE/Tacticals/now.html) tactical.
 
 ### Syntax
 
-```coq
+```rocq
 easy.
 ```
 
 ### Examples
 
 Before
-```coq
+```rocq
 P: Prop
 H: P
 =========================
@@ -42,15 +42,15 @@ H: P
 True /\ 42 = 14 * 3 /\ P
 ```
 
-```coq
+```rocq
 easy.
 ```
 
 After
-```coq
+```rocq
 No more goals.
 ```
 
 ### Resources
 
-[Reference Documentation](https://coq.inria.fr/doc/master/refman/proofs/automatic-tactics/auto.html#coq:tacn.easy)
+[Reference Documentation](https://rocq-prover.org/doc/master/refman/proofs/automatic-tactics/auto.html#rocq:tacn.easy)

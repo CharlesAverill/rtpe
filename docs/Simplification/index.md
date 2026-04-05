@@ -1,5 +1,5 @@
 ---
-title: "Simplification - CTPE"
+title: "Simplification - RTPE"
 ---
 
 # [Simplification](/ctpe/Simplification/index.html)
@@ -15,7 +15,7 @@ They will not solve a goal, only convert it into what is a structurally smaller 
 
 ### Syntax
 
-```coq
+```rocq
 (* Simplify the goal as much as possible *)
 simpl.
 
@@ -32,18 +32,18 @@ simpl (2 + 2) in H.
 ### Examples
 
 Before
-```coq
+```rocq
 =========================
 1/1
 2 + 2 = 1 + 3
 ```
 
-```coq
+```rocq
 simpl (2 + 2).
 ```
 
 After
-```coq
+```rocq
 =========================
 1/1
 4 = 1 + 3
@@ -51,7 +51,7 @@ After
 
 ### Resources
 
-[Reference Documentation](https://coq.inria.fr/doc/master/refman/proofs/writing-proofs/equality.html#coq:tacn.simpl)
+[Reference Documentation](https://rocq-prover.org/doc/master/refman/proofs/writing-proofs/equality.html#rocq:tacn.simpl)
 
 <hr>
 
@@ -62,7 +62,7 @@ After
 
 ### Syntax
 
-```coq
+```rocq
 (* Simple example *)
 unfold plus.
 
@@ -76,7 +76,7 @@ unfold X in *.
 ### Examples
 
 Given
-```coq
+```rocq
 Fixpoint bitlist (n : nat) : list bool :=
     match n with
     | O =>    true  :: nil
@@ -85,7 +85,7 @@ Fixpoint bitlist (n : nat) : list bool :=
 ```
 
 Before
-```coq
+```rocq
 n: nat
 l: list bool
 H: bitlist (S (S n)) = false :: false :: l
@@ -94,12 +94,12 @@ H: bitlist (S (S n)) = false :: false :: l
 bitlist (S n) = false :: l
 ```
 
-```coq
+```rocq
 unfold bitlist in *.
 ```
 
 After
-```coq
+```rocq
 n: nat
 l: list bool
 H: false
@@ -122,7 +122,7 @@ false
 
 ### Resources
 
-[Reference Documentation](https://coq.inria.fr/doc/master/refman/proofs/writing-proofs/equality.html#coq:tacn.unfold)
+[Reference Documentation](https://rocq-prover.org/doc/master/refman/proofs/writing-proofs/equality.html#rocq:tacn.unfold)
 
 <hr>
 
@@ -132,35 +132,35 @@ false
 `split` is primarily used to break a single goal of the form `A /\ B` into two new goals `A` and `B`.
 
 You will often notice that `split` seems to solve some of the subgoals that it generates.
-This is because `split` is just shorthand for `constructor 1` (see the [`constructor` tactic](/ctpe/CaseAnalysis/constructor.html)).
+This is because `split` is just shorthand for `constructor 1` (see the [`constructor` tactic](/RTPE/CaseAnalysis/constructor.html)).
 
 Looking at the definition of `/\` (or `and`):
-```coq
+```rocq
 Inductive and (A B : Prop) : Prop :=  conj : A -> B -> A /\ B.
 ```
 we can see that `and` has a single constructor called `conj` - so `constructor 1` simply reduces to `apply conj`, which would give us goals `A` and `B` due to the impliciations that it carries.
 
 ### Syntax
 
-```coq
+```rocq
 split.
 ```
 
 ### Examples
 
 Before
-```coq
+```rocq
 =========================
 1/1
 True /\ False
 ```
 
-```coq
+```rocq
 split.
 ```
 
 After
-```coq
+```rocq
 =========================
 1/2
 True
@@ -171,7 +171,7 @@ False
 
 ### Resources
 
-[Reference Documentation](https://coq.inria.fr/doc/master/refman/proofs/writing-proofs/reasoning-inductives.html#coq:tacn.split)
+[Reference Documentation](https://rocq-prover.org/doc/master/refman/proofs/writing-proofs/reasoning-inductives.html#rocq:tacn.split)
 
 <hr>
 

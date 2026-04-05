@@ -1,5 +1,5 @@
 ---
-title: "|| - CTPE"
+title: "|| - RTPE"
 ---
 
 ## [||](/ctpe/Tacticals/or.html)
@@ -9,7 +9,7 @@ In other words, `||` executes the first tactic that makes progress on the goal.
 
 ### Syntax
 
-```coq
+```rocq
 (* Simple usage *)
 reflexivity || assumption.
 ```
@@ -17,7 +17,7 @@ reflexivity || assumption.
 ### Examples
 
 Before
-```coq
+```rocq
 P: Prop
 H: P
 =========================
@@ -25,17 +25,17 @@ H: P
 P
 ```
 
-```coq
+```rocq
 reflexivity || assumption.
 ```
 
 After
-```coq
+```rocq
 No more goals.
 ```
 
 ### Resources
 
-[Reference Documentation](https://coq.inria.fr/doc/master/refman/proof-engine/ltac.html#first-tactic-to-make-progress)
+[Reference Documentation](https://rocq-prover.org/doc/master/refman/proof-engine/ltac.html#first-tactic-to-make-progress)
 
 <hr>

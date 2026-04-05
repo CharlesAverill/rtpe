@@ -1,5 +1,5 @@
 ---
-title: symmetry - CTPE
+title: symmetry - RTPE
 ---
 
 ## [symmetry](/ctpe/Rewriting/symmetry.html)
@@ -10,7 +10,7 @@ title: symmetry - CTPE
 
 ### Syntax
 
-```coq
+```rocq
 (* Usage on goal *)
 symmetry.
 
@@ -22,18 +22,18 @@ symmetry in H1, H2.
 ### Examples
 
 Before
-```coq
+```rocq
 =========================
 1/1
 5 = 2 + 3
 ```
 
-```coq
+```rocq
 symmetry.
 ```
 
 After
-```coq
+```rocq
 =========================
 1/1
 2 + 3 = 5
@@ -41,6 +41,6 @@ After
 
 ### Resources
 
-[Reference Documentation](https://coq.inria.fr/doc/master/refman/proofs/writing-proofs/equality.html#coq:tacn.symmetry)
+[Reference Documentation](https://rocq-prover.org/doc/master/refman/proofs/writing-proofs/equality.html#rocq:tacn.symmetry)
 
 <hr>

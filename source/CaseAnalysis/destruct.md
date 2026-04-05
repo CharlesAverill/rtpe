@@ -1,5 +1,5 @@
 ---
-title: "destruct - CTPE"
+title: "destruct - RTPE"
 ---
 
 ## destruct
@@ -10,7 +10,7 @@ The arguments of `destruct` are [patterns](glossary.md#pattern).
 
 ### Syntax
 
-```coq
+```rocq
 (* Simple usage *)
 destruct H.
 
@@ -33,18 +33,18 @@ destruct H as [H1 | H2].
 ### Examples
 
 Before
-```coq
+```rocq
 n: nat
 =========================
 n = 0 \/ 1 <= n
 ```
 
-```coq
+```rocq
 destruct n as [| n'] eqn:E.
 ```
 
 After (first goal generated)
-```coq
+```rocq
 n: nat
 E: n = 0
 =========================
@@ -53,7 +53,7 @@ E: n = 0
 ```
 
 After (second goal generated)
-```coq
+```rocq
 n, n': nat
 E: n = S n'
 =========================
@@ -62,7 +62,7 @@ S n' = 0 \/ 1 <= S n'
 ```
 
 Script
-```coq
+```rocq
 Theorem destruct_example1 : forall n : nat,
     n = 0 \/ 1 <= n.
 Proof.
@@ -73,7 +73,7 @@ Qed.
 ```
 
 Script
-```coq
+```rocq
 Theorem destruct_example2 : forall (P Q R : Prop),
     ((P /\ Q) /\ R) -> P /\ (Q /\ R).
 Proof.
@@ -87,7 +87,7 @@ Qed.
 ```
 
 Script
-```coq
+```rocq
 Theorem destruct_example3 : 
     forall (P Q R : Prop),
     (P \/ Q) -> P \/ Q \/ R.
@@ -100,4 +100,4 @@ Qed.
 
 ### Resources
 
-[Reference Documentation](https://coq.inria.fr/doc/V8.13.2/refman/proof-engine/tactics.html#coq:tacn.destruct)
+[Reference Documentation](https://rocq-prover.org/doc/master/refman/proofs/writing-proofs/reasoning-inductives.html#rocq:tacn.destruct)

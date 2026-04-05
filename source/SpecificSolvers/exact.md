@@ -1,5 +1,5 @@
 ---
-title: "exact - CTPE"
+title: "exact - RTPE"
 ---
 
 ## exact
@@ -9,7 +9,7 @@ This tactic will fail if the provided proof object does not prove the goal.
 
 ### Syntax
 
-```coq
+```rocq
 (* Simple usage *)
 exact I.
 ```
@@ -17,38 +17,38 @@ exact I.
 ### Examples
 
 Before
-```coq
+```rocq
 =========================
 1/1
 True
 ```
 
-```coq
+```rocq
 exact I.
 ```
 
 After
-```coq
+```rocq
 No more goals.
 ```
 
 Before
-```coq
+```rocq
 n: nat
 =========================
 1/1
 n + 5 = n + 5
 ```
 
-```coq
+```rocq
 exact (eq_refl (n + 5)).
 ```
 
 After
-```coq
+```rocq
 No more goals.
 ```
 
 ### Resources
 
-[Reference Documentation](https://coq.inria.fr/doc/master/refman/proof-engine/tactics.html?highlight=assumption#coq:tacn.exact)
+[Reference Documentation](https://rocq-prover.org/doc/master/refman/proof-engine/tactics.html#rocq:tacn.exact)

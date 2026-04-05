@@ -1,5 +1,5 @@
 ---
-title: "Glossary - CTPE"
+title: "Glossary - RTPE"
 ---
 
 # Specialize
@@ -7,13 +7,13 @@ title: "Glossary - CTPE"
 To transform a theorem P into some theorem P' that applies to a similar but more specific set of inputs than P. 
 For example, the commutativity of addition states that
 
-```coq
+```rocq
 forall (n m : nat), n + m = m + n.
 ```
 
 This can be specialized into the following theorem, which says that addition is commutative if one of the arguments is 7:
 
-```coq
+```rocq
 forall (m : nat), 7 + m = m + 7.
 ```
 

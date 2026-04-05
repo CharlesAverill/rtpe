@@ -1,5 +1,5 @@
 ---
-title: "Automation - CTPE"
+title: "Automation - RTPE"
 ---
 
 # [Automation](/ctpe/Automation/index.html)
@@ -13,7 +13,7 @@ This category of tactics generally intends to solve a large category of simple g
 `auto` does a recursive search through a specified knowledge base in order to solve goals.
 If `auto` cannot completely solve a goal, it succeeds with no changes to the goal.
 
-The knowledge bases that `auto` uses are called [**Hint Databases**](https://coq.inria.fr/doc/master/refman/proofs/automatic-tactics/auto.html#hintdatabases).
+The knowledge bases that `auto` uses are called [**Hint Databases**](https://rocq-prover.org/doc/master/refman/proofs/automatic-tactics/auto.html#hintdatabases).
 Hint databases are provided by the standard library, and can also be created and added to by users.
 Hint databases can contain a variety of hint types, including but not limited to:
 
@@ -25,7 +25,7 @@ The default hint database used by `auto` when no other database is specified is 
 
 ### Syntax
 
-```coq
+```rocq
 (* Simple usage *)
 auto.
 
@@ -39,7 +39,7 @@ auto using example.
 ### Examples
 
 Before
-```coq
+```rocq
 P: Prop
 H: P
 =========================
@@ -47,17 +47,17 @@ H: P
 0 = 0 /\ True /\ P
 ```
 
-```coq
+```rocq
 auto.
 ```
 
 After
-```coq
+```rocq
 No more goals.
 ```
 
 Script
-```coq
+```rocq
 Create HintDb automation.
 Lemma mul_1_r : forall n, n * 1 = n. 
 Proof. induction n. auto. simpl. now rewrite IHn. Qed.
@@ -69,27 +69,27 @@ Proof. auto with automation. Qed.
 
 ### Resources
 
-[Reference Documentation](https://coq.inria.fr/doc/master/refman/proofs/automatic-tactics/auto.html#coq:tacn.auto)
+[Reference Documentation](https://rocq-prover.org/doc/master/refman/proofs/automatic-tactics/auto.html#rocq:tacn.auto)
 
 ["More Automation" - Logical Foundations](https://softwarefoundations.cis.upenn.edu/lf-current/Auto.html)
 
 ["A Streamlined Treatment of Automation" - Logical Foundations](https://softwarefoundations.cis.upenn.edu/lf-current/AltAuto.html)
 
-["Theory and Practice of Automation in Coq Proofs" - Programming Language Foundations](https://softwarefoundations.cis.upenn.edu/plf-current/UseAuto.html)
+["Theory and Practice of Automation in Rocq Proofs" - Programming Language Foundations](https://softwarefoundations.cis.upenn.edu/plf-current/UseAuto.html)
 
-[Hint Databases](https://coq.inria.fr/doc/master/refman/proofs/automatic-tactics/auto.html#hintdatabases)
+[Hint Databases](https://rocq-prover.org/doc/master/refman/proofs/automatic-tactics/auto.html#hintdatabases)
 
 <hr>
 
 
 ## [trivial](/ctpe/Automation/trivial.html)
 
-`trivial` is essentially a non-recursive [`auto`](/ctpe/Automation/auto.html).
+`trivial` is essentially a non-recursive [`auto`](/RTPE/Automation/auto.html).
 `trivial` is best utilized when a lemma that exactly matches the goal already exists in the hint database.
 
 ### Syntax
 
-```coq
+```rocq
 (* Simple usage *)
 trivial.
 
@@ -100,7 +100,7 @@ trivial with bool.
 ### Examples
 
 Script
-```coq
+```rocq
 Theorem trivial_example : forall {X : Type} (n : X), 
     n = n.
 Proof.
@@ -110,7 +110,7 @@ Qed.
 
 ### Resources
 
-[Reference Documentation](https://coq.inria.fr/doc/master/refman/proofs/automatic-tactics/auto.html#coq:tacn.trivial)
+[Reference Documentation](https://rocq-prover.org/doc/master/refman/proofs/automatic-tactics/auto.html#rocq:tacn.trivial)
 
 <hr>
 
@@ -120,34 +120,34 @@ Qed.
 `easy` throws many common "closing tactics" at a goal to solve a large category of simple problems.
 `easy` will attempt to use:
 
-- [`trivial`](/ctpe/Automation/trivial.html)
+- [`trivial`](/RTPE/Automation/trivial.html)
 
-- [`reflexivity`](/ctpe/SpecificSolvers/reflexivity.html)
+- [`reflexivity`](/RTPE/SpecificSolvers/reflexivity.html)
 
-- [`symmetry`](/ctpe/Rewriting/symmetry.html)
+- [`symmetry`](/RTPE/Rewriting/symmetry.html)
 
-- [`contradiction`](/ctpe/SpecificSolvers/contradiction.html)
+- [`contradiction`](/RTPE/SpecificSolvers/contradiction.html)
 
-- [`inversion`](/ctpe/CaseAnalysis/inversion.html)
+- [`inversion`](/RTPE/CaseAnalysis/inversion.html)
 
-- [`intros`](/ctpe/Generalization/intros.html)
+- [`intros`](/RTPE/Generalization/intros.html)
 
-- [`split`](/ctpe/Simplification/split.html) (this begins a recursive call of `easy`)
+- [`split`](/RTPE/Simplification/split.html) (this begins a recursive call of `easy`)
 
-- [`destruct`](/ctpe/CaseAnalysis/destruct.html) (on hypotheses with conjunctions)
+- [`destruct`](/RTPE/CaseAnalysis/destruct.html) (on hypotheses with conjunctions)
 
-`easy` is the base form of the [`now`](/ctpe/Tacticals/now.html) tactical.
+`easy` is the base form of the [`now`](/RTPE/Tacticals/now.html) tactical.
 
 ### Syntax
 
-```coq
+```rocq
 easy.
 ```
 
 ### Examples
 
 Before
-```coq
+```rocq
 P: Prop
 H: P
 =========================
@@ -155,18 +155,18 @@ H: P
 True /\ 42 = 14 * 3 /\ P
 ```
 
-```coq
+```rocq
 easy.
 ```
 
 After
-```coq
+```rocq
 No more goals.
 ```
 
 ### Resources
 
-[Reference Documentation](https://coq.inria.fr/doc/master/refman/proofs/automatic-tactics/auto.html#coq:tacn.easy)
+[Reference Documentation](https://rocq-prover.org/doc/master/refman/proofs/automatic-tactics/auto.html#rocq:tacn.easy)
 
 <hr>
 
@@ -182,7 +182,7 @@ String and integers are printed literally rather than via their type's pretty-pr
 
 ### Syntax
 
-```coq
+```rocq
 (* Simple usage *)
 idtac.
 
@@ -193,38 +193,38 @@ idtac "Hello World!".
 ### Examples
 
 Before
-```coq
+```rocq
 =========================
 1/1
 True
 ```
 
-```coq
+```rocq
 idtac.
 ```
 
 After
-```coq
+```rocq
 =========================
 1/1
 True
 ```
 
 Before
-```coq
+```rocq
 n: nat
 =========================
 1/1
 n + 0 = n
 ```
 
-```coq
+```rocq
 (* Only apply reflexivity to the n = 0 case. Leave the n = S n' case unaffected *)
 induction n; [reflexivity | idtac].
 ```
 
 After
-```coq
+```rocq
 n : nat
 IHn : n + 0 = n
 =========================
@@ -233,7 +233,7 @@ S n + 0 = S n
 ```
 ### Resources
 
-[Reference Documentation](https://coq.inria.fr/doc/v8.10/refman/proof-engine/ltac.html#coq:tacn.idtac)
+[Reference Documentation](https://rocq-prover.org/doc/master/refman/proof-engine/ltac.html#rocq:tacn.idtac)
 
 <hr>
 
@@ -246,7 +246,7 @@ This is sometimes useful if you're building a complex tactic with try-catch beha
 
 ### Syntax
 
-```coq
+```rocq
 (* Simple usage *)
 fail.
 ```
@@ -254,24 +254,24 @@ fail.
 ### Examples
 
 Before
-```coq
+```rocq
 =========================
 1/1
 True
 ```
 
-```coq
+```rocq
 fail.
 ```
 
 After
-```coq
+```rocq
 Error: Tactic failure.
 ```
 
 ### Resources
 
-[Reference Documentation](https://coq.inria.fr/doc/master/refman/proof-engine/ltac.html#coq:tacn.fail)
+[Reference Documentation](https://rocq-prover.org/doc/master/refman/proof-engine/ltac.html#rocq:tacn.fail)
 
 <hr>
 

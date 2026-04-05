@@ -1,25 +1,25 @@
 ---
-title: "Specific Solvers - CTPE"
+title: "Specific Solvers - RTPE"
 ---
 
 # [Specific Solvers](/ctpe/SpecificSolvers/index.html)
 
 Each tactic in this group exists to solve a very specific kind of goal.
 They're fairly simple to learn about and use, because their goal targets are such small groups that there are hardly any degrees of freedom for automation to be required.
-Essentially all Coq proofs include some of these (whether they're written by the programmer or called by more complex tactics).
+Essentially all Rocq proofs include some of these (whether they're written by the programmer or called by more complex tactics).
 
 
 ## [reflexivity](/ctpe/SpecificSolvers/reflexivity.html)
 
 `reflexivity` solves goals which state that a term is equal to itself.
-`reflexivity` has some simplification power, but not as much as [`simpl`](/ctpe/Simplification/simpl.html).
+`reflexivity` has some simplification power, but not as much as [`simpl`](/RTPE/Simplification/simpl.html).
 This tactic will fail if it cannot solve the goal.
 
 `reflexivity` makes an attempt to simplify the goal and then `apply eq_refl`, where `eq_refl` is the sole constructor of the `eq` Inductive Proposition, stating that `forall {A : Type} (a : A), eq a a`.
 
 ### Syntax
 
-```coq
+```rocq
 (* Simple usage *)
 reflexivity.
 ```
@@ -27,25 +27,25 @@ reflexivity.
 ### Examples
 
 Before
-```coq
+```rocq
 n: nat
 =========================
 1/1
 n = n
 ```
 
-```coq
+```rocq
 reflexivity.
 ```
 
 After
-```coq
+```rocq
 No more goals.
 ```
 
 ### Resources
 
-[Reference Documentation](https://coq.inria.fr/doc/master/refman/proofs/writing-proofs/equality.html?highlight=reflexivity#coq:tacn.reflexivity)
+[Reference Documentation](https://rocq-prover.org/doc/master/refman/proofs/writing-proofs/equality.html#rocq:tacn.reflexivity)
 
 <hr>
 
@@ -57,7 +57,7 @@ This tactic will fail if there does not exist such an assumption.
 
 ### Syntax
 
-```coq
+```rocq
 (* Simple usage *)
 assumption.
 ```
@@ -65,7 +65,7 @@ assumption.
 ### Examples
 
 Before
-```coq
+```rocq
 P: Prop
 H: P
 =========================
@@ -73,18 +73,18 @@ H: P
 P
 ```
 
-```coq
+```rocq
 assumption.
 ```
 
 After
-```coq
+```rocq
 No more goals.
 ```
 
 ### Resources
 
-[Reference Documentation](https://coq.inria.fr/doc/master/refman/proof-engine/tactics.html?highlight=assumption#coq:tacn.assumption)
+[Reference Documentation](https://rocq-prover.org/doc/master/refman/proof-engine/tactics.html#rocq:tacn.assumption)
 
 <hr>
 
@@ -99,7 +99,7 @@ This means that `discriminate` actually searches for trivial inequalities in ass
 
 ### Syntax
 
-```coq
+```rocq
 (* Simple usage *)
 discriminate.
 ```
@@ -107,57 +107,57 @@ discriminate.
 ### Examples
 
 Before
-```coq
+```rocq
 =========================
 1/1
 1 <> 2
 ```
 
-```coq
+```rocq
 discriminate.
 ```
 
 After
-```coq
+```rocq
 No more goals.
 ```
 
 Before
-```coq
+```rocq
 =========================
 1/1
 "hello" <> "world"
 ```
 
-```coq
+```rocq
 discriminate.
 ```
 
 After
-```coq
+```rocq
 No more goals.
 ```
 
 Before
-```coq
+```rocq
 H: S n = O
 ==========================
 1/1
 False
 ```
 
-```coq
+```rocq
 discriminate.
 ```
 
 After
-```coq
+```rocq
 No more goals.
 ```
 
 ### Resources
 
-[Reference Documentation](https://coq.inria.fr/doc/master/refman/proofs/writing-proofs/reasoning-inductives.html#coq:tacn.discriminate)
+[Reference Documentation](https://rocq-prover.org/doc/master/refman/proofs/writing-proofs/reasoning-inductives.html#rocq:tacn.discriminate)
 
 <hr>
 
@@ -169,7 +169,7 @@ This tactic will fail if the provided proof object does not prove the goal.
 
 ### Syntax
 
-```coq
+```rocq
 (* Simple usage *)
 exact I.
 ```
@@ -177,41 +177,41 @@ exact I.
 ### Examples
 
 Before
-```coq
+```rocq
 =========================
 1/1
 True
 ```
 
-```coq
+```rocq
 exact I.
 ```
 
 After
-```coq
+```rocq
 No more goals.
 ```
 
 Before
-```coq
+```rocq
 n: nat
 =========================
 1/1
 n + 5 = n + 5
 ```
 
-```coq
+```rocq
 exact (eq_refl (n + 5)).
 ```
 
 After
-```coq
+```rocq
 No more goals.
 ```
 
 ### Resources
 
-[Reference Documentation](https://coq.inria.fr/doc/master/refman/proof-engine/tactics.html?highlight=assumption#coq:tacn.exact)
+[Reference Documentation](https://rocq-prover.org/doc/master/refman/proof-engine/tactics.html#rocq:tacn.exact)
 
 <hr>
 
@@ -224,7 +224,7 @@ This tactic will fail if no such contradictions exist.
 
 ### Syntax
 
-```coq
+```rocq
 (* Simple usage *)
 contradiction.
 ```
@@ -232,24 +232,24 @@ contradiction.
 ### Examples
 
 Before
-```coq
+```rocq
 H: False
 =========================
 1/1
 False
 ```
 
-```coq
+```rocq
 contradiction.
 ```
 
 After
-```coq
+```rocq
 No more goals.
 ```
 
 Before
-```coq
+```rocq
 x, y: nat
 H: x = y
 H0: x <> y
@@ -258,18 +258,18 @@ H0: x <> y
 x = x + y
 ```
 
-```coq
+```rocq
 contradiction.
 ```
 
 After
-```coq
+```rocq
 No more goals.
 ```
 
 ### Resources
 
-[Reference Documentation](https://coq.inria.fr/doc/master/refman/proof-engine/tactics.html?highlight=assumption#coq:tacn.contradiction)
+[Reference Documentation](https://rocq-prover.org/doc/master/refman/proof-engine/tactics.html#rocq:tacn.contradiction)
 
 <hr>
 

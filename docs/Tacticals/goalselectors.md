@@ -1,5 +1,5 @@
 ---
-title: "Goal Selectors - CTPE"
+title: "Goal Selectors - RTPE"
 ---
 
 ## [Goal Selectors](/ctpe/Tacticals/goalselectors.html)
@@ -15,7 +15,7 @@ There are a number of goal selectors:
 
 ### Syntax
 
-```coq
+```rocq
 all: simpl.
 
 par: simpl; reflexivity; auto.
@@ -28,7 +28,7 @@ par: simpl; reflexivity; auto.
 ### Examples
 
 Before
-```coq
+```rocq
 =========================
 1/2
 True
@@ -37,20 +37,20 @@ True
 True
 ```
 
-```coq
+```rocq
 all: exact I.
 (* or *)
 1-2: exact I.
 ```
 
 After
-```coq
+```rocq
 No more goals.
 ```
 
 Alternatively,
 
-```coq
+```rocq
 !: exact I.
 ```
 
@@ -60,6 +60,6 @@ Error: Expected a single focused goal but 2 goals are focused.
 
 ### Resources
 
-[Reference Documentation](https://coq.inria.fr/doc/V8.18.0/refman/proof-engine/ltac.html#goal-selectors)
+[Reference Documentation](https://rocq-prover.org/doc/master/refman/proof-engine/ltac.html#goal-selectors)
 
 <hr>

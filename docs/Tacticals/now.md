@@ -1,37 +1,37 @@
 ---
-title: now - CTPE
+title: now - RTPE
 ---
 
 ## [now](/ctpe/Tacticals/now.html)
 
-`now tactic` is simply notation for `tactic;` [`easy`](/ctpe/Automation/easy.html).
+`now tactic` is simply notation for `tactic;` [`easy`](/RTPE/Automation/easy.html).
 
 ### Syntax
 
-```coq
+```rocq
 now split.
 ```
 
 ### Examples
 
 Before
-```coq
+```rocq
 =========================
 1/1
 True /\ 42 = 14 * 3
 ```
 
-```coq
+```rocq
 now split.
 ```
 
 After
-```coq
+```rocq
 No more goals.
 ```
 
 ### Resources
 
-[Reference Documentation](https://coq.inria.fr/doc/master/refman/proofs/automatic-tactics/auto.html#coq:tacn.now)
+[Reference Documentation](https://rocq-prover.org/doc/master/refman/proofs/automatic-tactics/auto.html#rocq:tacn.now)
 
 <hr>

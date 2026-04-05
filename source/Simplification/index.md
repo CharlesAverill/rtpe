@@ -1,5 +1,5 @@
 ---
-title: "Simplification - CTPE"
+title: "Simplification - RTPE"
 ---
 
 # Simplification

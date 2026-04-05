@@ -8,7 +8,7 @@ A short summary of what the tactic does, starting the most generally and ending 
 
 ### Syntax
 
-```coq
+```rocq
 (* Example 1 *)
 tactic argument in H with x.
 
@@ -19,7 +19,7 @@ tactic -> t.
 ### Examples
 
 Before
-```coq
+```rocq
 n: nat
 =========================
 1/2
@@ -29,12 +29,12 @@ False
 True
 ```
 
-```coq
+```rocq
 tactic n.
 ```
 
 After
-```coq
+```rocq
 n: nat
 =========================
 1/2
@@ -45,7 +45,7 @@ True
 ```
 
 Script
-```coq
+```rocq
 Theorem test : 
     forall (n : nat), False /\ True.
 Proof.
@@ -55,4 +55,4 @@ Qed.
 
 ### Resources
 
-[Reference Documentation](https://coq.inria.fr/doc/master/refman/proof-engine/tactics.html#coq:tacn.tactic)
+[Reference Documentation](https://rocq-prover.org/doc/master/refman/proof-engine/tactics.html#rocq:tacn.tactic)

@@ -1,18 +1,18 @@
 ---
-title: "reflexivity - CTPE"
+title: "reflexivity - RTPE"
 ---
 
 ## [reflexivity](/ctpe/SpecificSolvers/reflexivity.html)
 
 `reflexivity` solves goals which state that a term is equal to itself.
-`reflexivity` has some simplification power, but not as much as [`simpl`](/ctpe/Simplification/simpl.html).
+`reflexivity` has some simplification power, but not as much as [`simpl`](/RTPE/Simplification/simpl.html).
 This tactic will fail if it cannot solve the goal.
 
 `reflexivity` makes an attempt to simplify the goal and then `apply eq_refl`, where `eq_refl` is the sole constructor of the `eq` Inductive Proposition, stating that `forall {A : Type} (a : A), eq a a`.
 
 ### Syntax
 
-```coq
+```rocq
 (* Simple usage *)
 reflexivity.
 ```
@@ -20,24 +20,24 @@ reflexivity.
 ### Examples
 
 Before
-```coq
+```rocq
 n: nat
 =========================
 1/1
 n = n
 ```
 
-```coq
+```rocq
 reflexivity.
 ```
 
 After
-```coq
+```rocq
 No more goals.
 ```
 
 ### Resources
 
-[Reference Documentation](https://coq.inria.fr/doc/master/refman/proofs/writing-proofs/equality.html?highlight=reflexivity#coq:tacn.reflexivity)
+[Reference Documentation](https://rocq-prover.org/doc/master/refman/proofs/writing-proofs/equality.html#rocq:tacn.reflexivity)
 
 <hr>

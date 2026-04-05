@@ -1,5 +1,5 @@
 ---
-title: "rename - CTPE"
+title: "rename - RTPE"
 ---
 
 ## [rename](/ctpe/Rewriting/rename.html)
@@ -8,7 +8,7 @@ title: "rename - CTPE"
 
 ### Syntax
 
-```coq
+```rocq
 (* Simple example *)
 rename x into y.
 ```
@@ -16,19 +16,19 @@ rename x into y.
 ### Examples
 
 Before
-```coq
+```rocq
 n: nat
 =========================
 1/1
 n = n
 ```
 
-```coq
+```rocq
 rename n into x.
 ```
 
 After
-```coq
+```rocq
 x: nat
 =========================
 1/1
@@ -36,6 +36,6 @@ x = x
 ```
 ### Resources
 
-[Reference Documentation](https://coq.inria.fr/doc/V8.13.2/refman/proof-engine/tactics.html#coq:tacn.rename)
+[Reference Documentation](https://rocq-prover.org/doc/master/refman/proof-engine/tactics.html#rocq:tacn.rename)
 
 <hr>

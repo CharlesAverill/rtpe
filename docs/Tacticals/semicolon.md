@@ -1,5 +1,5 @@
 ---
-title: "; - CTPE"
+title: "; - RTPE"
 ---
 
 ## [;](/ctpe/Tacticals/semicolon.html)
@@ -42,13 +42,9 @@ A;(B;C)             /*  Call A  */
 
 Also keep in mind that this behavior is extremely versatile, the above tree "shortening" use is only one example.
 
-Compare this tactical with [Prolog's semicolon operator](https://www.swi-prolog.org/pldoc/man?predicate=%3B/2) and revel at some neat similarities!
-For example, in Coq, `A;B` will backtrack if `B` fails and `A` can succeed in a *different way*.
-The primary example of a tactic being able to succeed in multiple ways is the [`constructor`](/ctpe/CaseAnalysis/constructor.html) tactic.
-
 ### Syntax
 
-```coq
+```rocq
 (* Simple usage *)
 split; reflexivity.
 
@@ -62,7 +58,7 @@ split; (split; auto).
 ### Examples
 
 Before
-```coq
+```rocq
 P, Q: Prop
 H: Q
 =========================
@@ -70,16 +66,16 @@ H: Q
 P \/ Q
 ```
 
-```coq
+```rocq
 constructor; assumption.
 ```
 
 After
-```coq
+```rocq
 No more goals.
 ```
 Note the definition of `or`:
-```coq
+```rocq
 Inductive or (A B : Prop) : Prop :=
 | or_introl : A -> A \/ B 
 | or_intror : B -> A \/ B.

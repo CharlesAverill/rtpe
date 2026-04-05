@@ -1,5 +1,5 @@
 ---
-title: "unfold - CTPE"
+title: "unfold - RTPE"
 ---
 
 ## [unfold](/ctpe/Simplification/unfold.html)
@@ -8,7 +8,7 @@ title: "unfold - CTPE"
 
 ### Syntax
 
-```coq
+```rocq
 (* Simple example *)
 unfold plus.
 
@@ -22,7 +22,7 @@ unfold X in *.
 ### Examples
 
 Given
-```coq
+```rocq
 Fixpoint bitlist (n : nat) : list bool :=
     match n with
     | O =>    true  :: nil
@@ -31,7 +31,7 @@ Fixpoint bitlist (n : nat) : list bool :=
 ```
 
 Before
-```coq
+```rocq
 n: nat
 l: list bool
 H: bitlist (S (S n)) = false :: false :: l
@@ -40,12 +40,12 @@ H: bitlist (S (S n)) = false :: false :: l
 bitlist (S n) = false :: l
 ```
 
-```coq
+```rocq
 unfold bitlist in *.
 ```
 
 After
-```coq
+```rocq
 n: nat
 l: list bool
 H: false
@@ -68,6 +68,6 @@ false
 
 ### Resources
 
-[Reference Documentation](https://coq.inria.fr/doc/master/refman/proofs/writing-proofs/equality.html#coq:tacn.unfold)
+[Reference Documentation](https://rocq-prover.org/doc/master/refman/proofs/writing-proofs/equality.html#rocq:tacn.unfold)
 
 <hr>

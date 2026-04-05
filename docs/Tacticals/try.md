@@ -1,5 +1,5 @@
 ---
-title: "try - CTPE"
+title: "try - RTPE"
 ---
 
 ## [try](/ctpe/Tacticals/try.html)
@@ -8,7 +8,7 @@ The `try` tactical executes a provided tactic, catching any errors and always su
 
 ### Syntax
 
-```coq
+```rocq
 (* Simple usage *)
 try reflexivity.
 ```
@@ -16,19 +16,19 @@ try reflexivity.
 ### Examples
 
 Before
-```coq
+```rocq
 n: nat
 =========================
 1/1
 n + 0 = n
 ```
 
-```coq
+```rocq
 try reflexivity.
 ```
 
 After
-```coq
+```rocq
 n: nat
 =========================
 1/1
@@ -37,16 +37,16 @@ n + 0 = n
 
 Alternatively,
 
-```coq
+```rocq
 try apply add_0_r.
 ```
 
-```coq
+```rocq
 No more goals.
 ```
 
 ### Resources
 
-[Reference Documentation](https://coq.inria.fr/doc/master/refman/proof-engine/ltac.html#coq:tacn.try)
+[Reference Documentation](https://rocq-prover.org/doc/master/refman/proof-engine/ltac.html#rocq:tacn.try)
 
 <hr>

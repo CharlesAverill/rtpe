@@ -1,5 +1,5 @@
 ---
-title: "Coq Tactics in Plain English"
+title: "Rocq Tactics in Plain English"
 ---
 
 #include prologue.md

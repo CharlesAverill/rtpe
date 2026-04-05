@@ -5,18 +5,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta property="og:type" content="article">
-    <meta property="og:title" content="clear - CTPE">
+    <meta property="og:title" content="clear - RTPE">
     <meta property="og:url" content="https://charlesaverill.github.io/ctpe/">
-    <meta property="og:image" content="https://raw.githubusercontent.com/github/explore/7905d12e729f7b0f0dc9b80ad385fca3b6e17523/topics/coq/coq.png">
-    <meta property="og:description" content="A simplified explanation of commonly-used Coq tactics">
+    <meta property="og:image" content="https://raw.githubusercontent.com/github/explore/7905d12e729f7b0f0dc9b80ad385fca3b6e17523/topics/rocq/rocq.png">
+    <meta property="og:description" content="A simplified explanation of commonly-used Rocq tactics">
     <meta property="article:author" content="Charles Averill">
     <meta property="article:section" content="Technology">
-    <meta property="article:tag" content="coq">
+    <meta property="article:tag" content="rocq">
     <meta property="article:tag" content="proof">
     <meta property="article:tag" content="formal verification">
     <meta property="article:tag" content="tactic">
 
-    <title>clear - CTPE</title>
+    <title>clear - RTPE</title>
     <style>
 :root {
     --blue: #0000FF;
@@ -143,7 +143,7 @@ body {
 <p><code>clear</code> erases assumptions from the assumption space. Multiple assumptions may be erased in one tactic via a space-separated list of assumptions. <code>clear</code> will fail if an assumption passed into it contains as subterms other variables that still exist in the goal state.</p>
 <p><code>clear - ...</code> can also be used to erase all assumptions <b>not depended on</b> by a provided set of assumptions.</p>
 <h3 id="syntax">Syntax</h3>
-<pre class="coq"><code>(* Simple usage *)
+<pre class="rocq"><code>(* Simple usage *)
 clear H.
 
 (* Clear multiple assumptions *)
@@ -153,35 +153,35 @@ clear H Heq X Y n.
 clear - x z c.</code></pre>
 <h3 id="examples">Examples</h3>
 <p>Before</p>
-<pre class="coq"><code>n: nat
+<pre class="rocq"><code>n: nat
 H, Hr1, Hr2: n = 0
 IHn: n = 1
 =========================
 1/1
 True</code></pre>
-<pre class="coq"><code>clear Hr1 Hr2.</code></pre>
+<pre class="rocq"><code>clear Hr1 Hr2.</code></pre>
 <p>After</p>
-<pre class="coq"><code>n: nat
+<pre class="rocq"><code>n: nat
 H: n = 0
 IHn: n = 1
 =========================
 1/1
 True</code></pre>
 <p>Before</p>
-<pre class="coq"><code>a, b, c, x, y, z: nat
+<pre class="rocq"><code>a, b, c, x, y, z: nat
 H: a = z
 =========================
 1/1
 True</code></pre>
-<pre class="coq"><code>clear - a x H.</code></pre>
+<pre class="rocq"><code>clear - a x H.</code></pre>
 <p>After</p>
-<pre class="coq"><code>a, x, z: nat
+<pre class="rocq"><code>a, x, z: nat
 H: a = z
 =========================
 1/1
 True</code></pre>
 <h3 id="resources">Resources</h3>
-<p><a href="https://coq.inria.fr/doc/master/refman/proof-engine/tactics.html#coq:tacn.tactic">Reference Documentation</a></p>
+<p><a href="https://rocq-prover.org/doc/master/refman/proof-engine/tactics.html#rocq:tacn.tactic">Reference Documentation</a></p>
 <hr>
     </div>
 </body>

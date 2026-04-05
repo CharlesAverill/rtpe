@@ -5,18 +5,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta property="og:type" content="article">
-    <meta property="og:title" content="simpl - CTPE">
+    <meta property="og:title" content="simpl - RTPE">
     <meta property="og:url" content="https://charlesaverill.github.io/ctpe/">
-    <meta property="og:image" content="https://raw.githubusercontent.com/github/explore/7905d12e729f7b0f0dc9b80ad385fca3b6e17523/topics/coq/coq.png">
-    <meta property="og:description" content="A simplified explanation of commonly-used Coq tactics">
+    <meta property="og:image" content="https://raw.githubusercontent.com/github/explore/7905d12e729f7b0f0dc9b80ad385fca3b6e17523/topics/rocq/rocq.png">
+    <meta property="og:description" content="A simplified explanation of commonly-used Rocq tactics">
     <meta property="article:author" content="Charles Averill">
     <meta property="article:section" content="Technology">
-    <meta property="article:tag" content="coq">
+    <meta property="article:tag" content="rocq">
     <meta property="article:tag" content="proof">
     <meta property="article:tag" content="formal verification">
     <meta property="article:tag" content="tactic">
 
-    <title>simpl - CTPE</title>
+    <title>simpl - RTPE</title>
     <style>
 :root {
     --blue: #0000FF;
@@ -142,7 +142,7 @@ body {
 <h2 id="simpl"><a href="/ctpe/Simplification/simpl.html">simpl</a></h2>
 <p><code>simpl</code> evaluates terms that are constructed of constant values - not variables. <code>simpl</code> can also partially evaluate partially-constant values.</p>
 <h3 id="syntax">Syntax</h3>
-<pre class="coq"><code>(* Simplify the goal as much as possible *)
+<pre class="rocq"><code>(* Simplify the goal as much as possible *)
 simpl.
 
 (* Simplify a hypothesis *)
@@ -155,16 +155,16 @@ simpl in *.
 simpl (2 + 2) in H.</code></pre>
 <h3 id="examples">Examples</h3>
 <p>Before</p>
-<pre class="coq"><code>=========================
+<pre class="rocq"><code>=========================
 1/1
 2 + 2 = 1 + 3</code></pre>
-<pre class="coq"><code>simpl (2 + 2).</code></pre>
+<pre class="rocq"><code>simpl (2 + 2).</code></pre>
 <p>After</p>
-<pre class="coq"><code>=========================
+<pre class="rocq"><code>=========================
 1/1
 4 = 1 + 3</code></pre>
 <h3 id="resources">Resources</h3>
-<p><a href="https://coq.inria.fr/doc/master/refman/proofs/writing-proofs/equality.html#coq:tacn.simpl">Reference Documentation</a></p>
+<p><a href="https://rocq-prover.org/doc/master/refman/proofs/writing-proofs/equality.html#rocq:tacn.simpl">Reference Documentation</a></p>
 <hr>
     </div>
 </body>

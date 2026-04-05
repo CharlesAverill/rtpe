@@ -1,5 +1,5 @@
 ---
-title: idtac - CTPE
+title: idtac - RTPE
 ---
 
 ## idtac
@@ -13,7 +13,7 @@ String and integers are printed literally rather than via their type's pretty-pr
 
 ### Syntax
 
-```coq
+```rocq
 (* Simple usage *)
 idtac.
 
@@ -24,38 +24,38 @@ idtac "Hello World!".
 ### Examples
 
 Before
-```coq
+```rocq
 =========================
 1/1
 True
 ```
 
-```coq
+```rocq
 idtac.
 ```
 
 After
-```coq
+```rocq
 =========================
 1/1
 True
 ```
 
 Before
-```coq
+```rocq
 n: nat
 =========================
 1/1
 n + 0 = n
 ```
 
-```coq
+```rocq
 (* Only apply reflexivity to the n = 0 case. Leave the n = S n' case unaffected *)
 induction n; [reflexivity | idtac].
 ```
 
 After
-```coq
+```rocq
 n : nat
 IHn : n + 0 = n
 =========================
@@ -64,4 +64,4 @@ S n + 0 = S n
 ```
 ### Resources
 
-[Reference Documentation](https://coq.inria.fr/doc/v8.10/refman/proof-engine/ltac.html#coq:tacn.idtac)
+[Reference Documentation](https://rocq-prover.org/doc/master/refman/proof-engine/ltac.html#rocq:tacn.idtac)

@@ -1,5 +1,5 @@
 ---
-title: "inversion - CTPE"
+title: "inversion - RTPE"
 ---
 
 ## [inversion](/ctpe/CaseAnalysis/inversion.html)
@@ -13,7 +13,7 @@ I recommend almost always following `inversion` with [`subst`](/) to immediately
 
 ### Syntax
 
-```coq
+```rocq
 (* Standard usage *)
 inversion H.
 ```
@@ -21,7 +21,7 @@ inversion H.
 ### Examples
 
 Before
-```coq
+```rocq
 n: nat
 H: n <= 1
 =========================
@@ -29,14 +29,14 @@ H: n <= 1
 n = 0 \/ n = 1
 ```
 
-```coq
+```rocq
 inversion H.
 ```
 
 After (first goal generated):
 
 Note: this is the case of `n <= 1` where `n = 1`, hence `H0`.
-```coq
+```rocq
 n: nat
 H: n <= 1
 H0: n = 1
@@ -48,7 +48,7 @@ H0: n = 1
 After (second goal generated):
 
 Note: this is the case of `n <= 1` where `n < 1`, equivalent to `n <= 0`, hence `H1`.
-```coq
+```rocq
 n: nat
 H: n <= 1
 m: nat
@@ -60,7 +60,7 @@ n = 0 \/ n = 1
 ```
 
 Script
-```coq
+```rocq
 Theorem inversion_example1 : 
     forall n, n <= 1 -> n = 0 \/ n = 1.
 Proof.
@@ -71,7 +71,7 @@ Qed.
 ```
 
 Script
-```coq
+```rocq
 Inductive color : Type :=
 | Red | Blue | Green | Cyan | Magenta | Yellow.
 
@@ -93,6 +93,6 @@ Qed.
 
 ### Resources
 
-[Reference Documentation](https://coq.inria.fr/doc/master/refman/proofs/writing-proofs/reasoning-inductives.html#coq:tacn.inversion)
+[Reference Documentation](https://rocq-prover.org/doc/master/refman/proofs/writing-proofs/reasoning-inductives.html#rocq:tacn.inversion)
 
 <hr>

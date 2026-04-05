@@ -1,5 +1,5 @@
 ---
-title: "Rewriting - CTPE"
+title: "Rewriting - RTPE"
 ---
 
 # Rewriting

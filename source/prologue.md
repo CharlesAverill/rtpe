@@ -1,10 +1,10 @@
 ---
-title : Prologue - CTPE
+title : Prologue - RTPE
 ---
 
-# Coq Tactics in Plain English
+# Rocq Tactics in Plain English
 
-If you're like me, one of the biggest shortcomings of the Coq ecosystem is the fairly complicated [tactic reference documentation](https://coq.inria.fr/doc/master/refman/proof-engine/tactics.html).
+If you're like me, one of the biggest shortcomings of the Rocq ecosystem is the fairly complicated [tactic reference documentation](https://rocq-prover.org/doc/master/refman/proof-engine/tactics.html).
 It is exhaustive (which is better than lacking), but I have a few specific issues with it:
 
 1. Entries are too verbose. I usually don't _need_ an exhaustive explanation of what a tactic does.
@@ -13,19 +13,19 @@ It is exhaustive (which is better than lacking), but I have a few specific issue
 
 For these reasons, I've decided to compile a reference document of every tactic that I've ever used, addressing the problems above via the following solutions.
 
-1. Entries will be written at an undergraduate level, assuming a basic understanding of the Coq system. Sometimes, this will require reading the pages for other tactics before the one you really want to know about, but I think that's a fair compromise. Explanations will focus on what configurations of goal states the tactic is useful or not useful for.
+1. Entries will be written at an undergraduate level, assuming a basic understanding of the Rocq system. Sometimes, this will require reading the pages for other tactics before the one you really want to know about, but I think that's a fair compromise. Explanations will focus on what configurations of goal states the tactic is useful or not useful for.
 2. Entries will start general and become more specific as one reads on. This will ensure minimal maintenance is necessary as tactics change over time.
 3. Entries will include syntax *examples* rather than BNF grammars.
-4. Entries will contain multiple examples, including goal states before and after executing the tactics. Small MRE Coq scripts may be included.
+4. Entries will contain multiple examples, including goal states before and after executing the tactics. Small MRE Rocq scripts may be included.
 5. As a fallback, links to other resources, at minimum the official documentation, will be included in each entry.
 
-This guide doesn't aim to replace the reference documentation, it aims to be a stepping stone into the reference documentation that reduces the apprehension of those new to Coq.
+This guide doesn't aim to replace the reference documentation, it aims to be a stepping stone into the reference documentation that reduces the apprehension of those new to Rocq.
 
-There are many other guides to Coq tactics, you should check them out too if I don't have what you need:
+There are many other guides to Rocq tactics, you should check them out too if I don't have what you need:
 
-- [Coq Tactics Cheatsheet](https://www.cs.cornell.edu/courses/cs3110/2018sp/a5/coq-tactics-cheatsheet.html)
+- [Rocq Tactics Cheatsheet](https://www.cs.cornell.edu/courses/cs3110/2018sp/a5/rocq-tactics-cheatsheet.html)
 - [More Basic Tactics - Software Foundations](https://softwarefoundations.cis.upenn.edu/lf-current/Tactics.html)
-- [Detailed examples of tactics](http://flint.cs.yale.edu/cs428/coq/doc/Reference-Manual012.html)
-- [Coq Tricks for Beginners with Too Many Examples](https://le.qun.ch/en/blog/coq/)
-- [Coq Cheatsheet](https://julesjacobs.com/notes/coq-cheatsheet/coq-cheatsheet.pdf)
-- [Coq cheat sheet](https://www.inf.ed.ac.uk/teaching/courses/tspl/cheatsheet.pdf)
+- [Detailed examples of tactics](http://flint.cs.yale.edu/cs428/rocq/doc/Reference-Manual012.html)
+- [Rocq Tricks for Beginners with Too Many Examples](https://le.qun.ch/en/blog/rocq/)
+- [Rocq Cheatsheet](https://julesjacobs.com/notes/rocq-cheatsheet/rocq-cheatsheet.pdf)
+- [Rocq cheat sheet](https://www.inf.ed.ac.uk/teaching/courses/tspl/cheatsheet.pdf)

@@ -5,18 +5,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta property="og:type" content="article">
-    <meta property="og:title" content="reflexivity - CTPE">
+    <meta property="og:title" content="reflexivity - RTPE">
     <meta property="og:url" content="https://charlesaverill.github.io/ctpe/">
-    <meta property="og:image" content="https://raw.githubusercontent.com/github/explore/7905d12e729f7b0f0dc9b80ad385fca3b6e17523/topics/coq/coq.png">
-    <meta property="og:description" content="A simplified explanation of commonly-used Coq tactics">
+    <meta property="og:image" content="https://raw.githubusercontent.com/github/explore/7905d12e729f7b0f0dc9b80ad385fca3b6e17523/topics/rocq/rocq.png">
+    <meta property="og:description" content="A simplified explanation of commonly-used Rocq tactics">
     <meta property="article:author" content="Charles Averill">
     <meta property="article:section" content="Technology">
-    <meta property="article:tag" content="coq">
+    <meta property="article:tag" content="rocq">
     <meta property="article:tag" content="proof">
     <meta property="article:tag" content="formal verification">
     <meta property="article:tag" content="tactic">
 
-    <title>reflexivity - CTPE</title>
+    <title>reflexivity - RTPE</title>
     <style>
 :root {
     --blue: #0000FF;
@@ -140,22 +140,22 @@ body {
     <!-- Content -->
     <div class="container">
 <h2 id="reflexivity"><a href="/ctpe/SpecificSolvers/reflexivity.html">reflexivity</a></h2>
-<p><code>reflexivity</code> solves goals which state that a term is equal to itself. <code>reflexivity</code> has some simplification power, but not as much as <a href="/ctpe/Simplification/simpl.html"><code>simpl</code></a>. This tactic will fail if it cannot solve the goal.</p>
+<p><code>reflexivity</code> solves goals which state that a term is equal to itself. <code>reflexivity</code> has some simplification power, but not as much as <a href="/RTPE/Simplification/simpl.html"><code>simpl</code></a>. This tactic will fail if it cannot solve the goal.</p>
 <p><code>reflexivity</code> makes an attempt to simplify the goal and then <code>apply eq_refl</code>, where <code>eq_refl</code> is the sole constructor of the <code>eq</code> Inductive Proposition, stating that <code>forall {A : Type} (a : A), eq a a</code>.</p>
 <h3 id="syntax">Syntax</h3>
-<pre class="coq"><code>(* Simple usage *)
+<pre class="rocq"><code>(* Simple usage *)
 reflexivity.</code></pre>
 <h3 id="examples">Examples</h3>
 <p>Before</p>
-<pre class="coq"><code>n: nat
+<pre class="rocq"><code>n: nat
 =========================
 1/1
 n = n</code></pre>
-<pre class="coq"><code>reflexivity.</code></pre>
+<pre class="rocq"><code>reflexivity.</code></pre>
 <p>After</p>
-<pre class="coq"><code>No more goals.</code></pre>
+<pre class="rocq"><code>No more goals.</code></pre>
 <h3 id="resources">Resources</h3>
-<p><a href="https://coq.inria.fr/doc/master/refman/proofs/writing-proofs/equality.html?highlight=reflexivity#coq:tacn.reflexivity">Reference Documentation</a></p>
+<p><a href="https://rocq-prover.org/doc/master/refman/proofs/writing-proofs/equality.html#rocq:tacn.reflexivity">Reference Documentation</a></p>
 <hr>
     </div>
 </body>

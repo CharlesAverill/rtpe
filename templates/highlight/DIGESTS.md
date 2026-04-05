@@ -19,10 +19,10 @@ The full list of digests for every file can be found below.
 ### Digests
 
 ```
-sha384-GKjp3Sn3AqyzCb5mF/Nnvs6KSMJUafdTv/3KlgvFf6B4LIXy7NeMoumvPeWDZnBs /es/languages/coq.js
-sha384-i0H6klsviL0Lu3a5kZ6m/YXMTe2LYJ+I6ZKAsrDhhe4Xl7SvhKEfenOaZJwrBvPa /es/languages/coq.min.js
-sha384-lO7lnocnwTUS5n56Ha8hDFE/66823d1EVQeImdX3RxEGZtgTxZF/ZmJ0cWY4gy3v /languages/coq.js
-sha384-Djexk3CUuWlhu8etDgJrIqYyX/2iPKHlyqZo1l0uTRocpX+lFlDpNq4J8YaLd85M /languages/coq.min.js
+sha384-GKjp3Sn3AqyzCb5mF/Nnvs6KSMJUafdTv/3KlgvFf6B4LIXy7NeMoumvPeWDZnBs /es/languages/rocq.js
+sha384-i0H6klsviL0Lu3a5kZ6m/YXMTe2LYJ+I6ZKAsrDhhe4Xl7SvhKEfenOaZJwrBvPa /es/languages/rocq.min.js
+sha384-lO7lnocnwTUS5n56Ha8hDFE/66823d1EVQeImdX3RxEGZtgTxZF/ZmJ0cWY4gy3v /languages/rocq.js
+sha384-Djexk3CUuWlhu8etDgJrIqYyX/2iPKHlyqZo1l0uTRocpX+lFlDpNq4J8YaLd85M /languages/rocq.min.js
 sha384-gUv7nqPSGagrB36Y9uAAwBH1WNyxvaJncRNaeNUsSI5Yy3sgQumlGTHqEdP3Hzr1 /highlight.js
 sha384-RZhN8uaX1AaoLo/PU/1hZ4ESceW011mmMzLlsqdpZqx5sgHxCDHrZIKKbtoEoGv+ /highlight.min.js
 ```

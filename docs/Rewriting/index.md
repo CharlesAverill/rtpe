@@ -1,5 +1,5 @@
 ---
-title: "Rewriting - CTPE"
+title: "Rewriting - RTPE"
 ---
 
 # [Rewriting](/ctpe/Rewriting/index.html)
@@ -18,7 +18,7 @@ Each of the equivalence proofs in the chain may be rewritten backwards.
 
 ### Syntax
 
-```coq
+```rocq
 (* Replace t1 with t2 in the goal *)
 rewrite t1_eq_t2.
 
@@ -35,19 +35,19 @@ rewrite t1_eq_t2, <- x_eq_y, ht_eq_ht.
 ### Examples
 
 Before
-```coq
+```rocq
 x, y: nat
 H: x = y
 =========================
 x + y = y + y
 ```
 
-```coq
+```rocq
 rewrite H.
 ```
 
 After
-```coq
+```rocq
 x, y: nat
 H: x = y
 =========================
@@ -55,12 +55,12 @@ y + y = y + y
 ```
 
 Alternatively,
-```coq
+```rocq
 rewrite <- H.
 ```
 
 
-```coq
+```rocq
 x, y: nat
 H: x = y
 =========================
@@ -69,7 +69,7 @@ x + x = x + x
 
 ### Resources
 
-[Reference Documentation](https://coq.inria.fr/doc/master/refman/proofs/writing-proofs/equality.html#coq:tacn.rewrite)
+[Reference Documentation](https://rocq-prover.org/doc/master/refman/proofs/writing-proofs/equality.html#rocq:tacn.rewrite)
 
 <hr>
 
@@ -80,7 +80,7 @@ x + x = x + x
 
 ### Syntax
 
-```coq
+```rocq
 (* Simple example *)
 rename x into y.
 ```
@@ -88,19 +88,19 @@ rename x into y.
 ### Examples
 
 Before
-```coq
+```rocq
 n: nat
 =========================
 1/1
 n = n
 ```
 
-```coq
+```rocq
 rename n into x.
 ```
 
 After
-```coq
+```rocq
 x: nat
 =========================
 1/1
@@ -108,7 +108,7 @@ x = x
 ```
 ### Resources
 
-[Reference Documentation](https://coq.inria.fr/doc/V8.13.2/refman/proof-engine/tactics.html#coq:tacn.rename)
+[Reference Documentation](https://rocq-prover.org/doc/master/refman/proof-engine/tactics.html#rocq:tacn.rename)
 
 <hr>
 
@@ -120,7 +120,7 @@ Specifically, `remember t` (where `t` has type `T`) introduces an assumption tha
 
 ### Syntax
 
-```coq
+```rocq
 (* Simple usage *)
 remember (5 + x).
 
@@ -131,7 +131,7 @@ remember ("hello world") as s.
 ### Examples
 
 Before
-```coq
+```rocq
 x, y: nat
 H: x + y = x
 =========================
@@ -139,12 +139,12 @@ H: x + y = x
 y = 0
 ```
 
-```coq
+```rocq
 remember (x + y) as sum.
 ```
 
 After
-```coq
+```rocq
 x, y, sum: nat
 Heqsum: sum = x + y
 H: sum = x
@@ -155,7 +155,7 @@ y = 0
 
 ### Resources
 
-[Reference Documentation](https://coq.inria.fr/doc/V8.13.2/refman/proof-engine/tactics.html#coq:tacn.remember)
+[Reference Documentation](https://rocq-prover.org/doc/master/refman/proof-engine/tactics.html#rocq:tacn.remember)
 
 <hr>
 
@@ -168,7 +168,7 @@ y = 0
 
 ### Syntax
 
-```coq
+```rocq
 (* Usage on goal *)
 symmetry.
 
@@ -180,18 +180,18 @@ symmetry in H1, H2.
 ### Examples
 
 Before
-```coq
+```rocq
 =========================
 1/1
 5 = 2 + 3
 ```
 
-```coq
+```rocq
 symmetry.
 ```
 
 After
-```coq
+```rocq
 =========================
 1/1
 2 + 3 = 5
@@ -199,7 +199,7 @@ After
 
 ### Resources
 
-[Reference Documentation](https://coq.inria.fr/doc/master/refman/proofs/writing-proofs/equality.html#coq:tacn.symmetry)
+[Reference Documentation](https://rocq-prover.org/doc/master/refman/proofs/writing-proofs/equality.html#rocq:tacn.symmetry)
 
 <hr>
 

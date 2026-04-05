@@ -5,18 +5,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta property="og:type" content="article">
-    <meta property="og:title" content="Case Analysis - CTPE">
+    <meta property="og:title" content="Case Analysis - RTPE">
     <meta property="og:url" content="https://charlesaverill.github.io/ctpe/">
-    <meta property="og:image" content="https://raw.githubusercontent.com/github/explore/7905d12e729f7b0f0dc9b80ad385fca3b6e17523/topics/coq/coq.png">
-    <meta property="og:description" content="A simplified explanation of commonly-used Coq tactics">
+    <meta property="og:image" content="https://raw.githubusercontent.com/github/explore/7905d12e729f7b0f0dc9b80ad385fca3b6e17523/topics/rocq/rocq.png">
+    <meta property="og:description" content="A simplified explanation of commonly-used Rocq tactics">
     <meta property="article:author" content="Charles Averill">
     <meta property="article:section" content="Technology">
-    <meta property="article:tag" content="coq">
+    <meta property="article:tag" content="rocq">
     <meta property="article:tag" content="proof">
     <meta property="article:tag" content="formal verification">
     <meta property="article:tag" content="tactic">
 
-    <title>Case Analysis - CTPE</title>
+    <title>Case Analysis - RTPE</title>
     <style>
 :root {
     --blue: #0000FF;
@@ -140,11 +140,11 @@ body {
     <!-- Content -->
     <div class="container">
 <h1 id="case-analysis"><a href="/ctpe/CaseAnalysis/index.html">Case Analysis</a></h1>
-<p>Case analysis is a core aspect of constructivist logic. Although for many kinds of problems it is a low-level tool, it is ubiquitous among the foundations of all problems formalized in the Coq system. The core idea is: &#8220;if I want to prove a property P holds for a term t, I can do so by writing multiple sub-proofs stating that for each form that t can have, P holds.&#8221;</p>
+<p>Case analysis is a core aspect of constructivist logic. Although for many kinds of problems it is a low-level tool, it is ubiquitous among the foundations of all problems formalized in the Rocq system. The core idea is: &#x201C;if I want to prove a property P holds for a term t, I can do so by writing multiple sub-proofs stating that for each form that t can have, P holds.&#x201D;</p>
 <h2 id="destruct"><a href="/ctpe/CaseAnalysis/destruct.html">destruct</a></h2>
 <p><code>destruct</code> allows for case analysis on inductive terms or assumptions. It can be used to split assumptions with conjunctions and disjunctions, as well as existential assumptions. The arguments of <code>destruct</code> are <a href="/ctpe/glossary.html#pattern">patterns</a>.</p>
 <h3 id="syntax">Syntax</h3>
-<pre class="coq"><code>(* Simple usage *)
+<pre class="rocq"><code>(* Simple usage *)
 destruct H.
 
 (* Destruct a term and introduce a hypothesis E showing its equivalence to the form it took *)
@@ -163,24 +163,24 @@ destruct x as [| x0 x1], H as [[H1 H0] H2].
 destruct H as [H1 | H2].</code></pre>
 <h3 id="examples">Examples</h3>
 <p>Before</p>
-<pre class="coq"><code>n: nat
+<pre class="rocq"><code>n: nat
 =========================
 n = 0 \/ 1 &lt;= n</code></pre>
-<pre class="coq"><code>destruct n as [| n&#39;] eqn:E.</code></pre>
+<pre class="rocq"><code>destruct n as [| n&#39;] eqn:E.</code></pre>
 <p>After (first goal generated)</p>
-<pre class="coq"><code>n: nat
+<pre class="rocq"><code>n: nat
 E: n = 0
 =========================
 1/2
 0 = 0 \/ 1 &lt;= 0</code></pre>
 <p>After (second goal generated)</p>
-<pre class="coq"><code>n, n&#39;: nat
+<pre class="rocq"><code>n, n&#39;: nat
 E: n = S n&#39;
 =========================
 2/2
 S n&#39; = 0 \/ 1 &lt;= S n&#39;</code></pre>
 <p>Script</p>
-<pre class="coq"><code>Theorem destruct_example1 : forall n : nat,
+<pre class="rocq"><code>Theorem destruct_example1 : forall n : nat,
     n = 0 \/ 1 &lt;= n.
 Proof.
     intros. destruct n as [| n&#39;] eqn:E.
@@ -188,7 +188,7 @@ Proof.
     - right. apply le_n_S, le_0_n.
 Qed.</code></pre>
 <p>Script</p>
-<pre class="coq"><code>Theorem destruct_example2 : forall (P Q R : Prop),
+<pre class="rocq"><code>Theorem destruct_example2 : forall (P Q R : Prop),
     ((P /\ Q) /\ R) -&gt; P /\ (Q /\ R).
 Proof.
     intros P Q R H.
@@ -199,7 +199,7 @@ Proof.
         -- apply RTrue.
 Qed.</code></pre>
 <p>Script</p>
-<pre class="coq"><code>Theorem destruct_example3 : 
+<pre class="rocq"><code>Theorem destruct_example3 : 
     forall (P Q R : Prop),
     (P \/ Q) -&gt; P \/ Q \/ R.
 Proof.
@@ -208,25 +208,25 @@ Proof.
     - right. left. assumption.
 Qed. </code></pre>
 <h3 id="resources">Resources</h3>
-<p><a href="https://coq.inria.fr/doc/V8.13.2/refman/proof-engine/tactics.html#coq:tacn.destruct">Reference Documentation</a></p>
+<p><a href="https://rocq-prover.org/doc/master/refman/proofs/writing-proofs/reasoning-inductives.html#rocq:tacn.destruct">Reference Documentation</a></p>
 <hr>
 <h2 id="inversion"><a href="/ctpe/CaseAnalysis/inversion.html">inversion</a></h2>
-<p><code>inversion</code> looks at a given piece of structural evidence and draws conclusions from it. If there are multiple sets of conclusions, <code>inversion</code> will generate a new proof obligation for each one. Informally, <code>inversion</code> is doing a more specific form of the case analysis provided by <a href="destruct.html"><code>destruct</code></a> - where <code>destruct</code> essentially says &#8220;I don&#8217;t know what this term is, so I&#8217;ll prove a property for all of the possible forms of it,&#8221; <code>inversion</code> says &#8220;I know exactly what terms could construct this hypothesis because of its definition, so I&#8217;ll only prove a property for those terms.&#8221;</p>
+<p><code>inversion</code> looks at a given piece of structural evidence and draws conclusions from it. If there are multiple sets of conclusions, <code>inversion</code> will generate a new proof obligation for each one. Informally, <code>inversion</code> is doing a more specific form of the case analysis provided by <a href="destruct.html"><code>destruct</code></a> - where <code>destruct</code> essentially says &#x201C;I don&#x2019;t know what this term is, so I&#x2019;ll prove a property for all of the possible forms of it,&#x201D; <code>inversion</code> says &#x201C;I know exactly what terms could construct this hypothesis because of its definition, so I&#x2019;ll only prove a property for those terms.&#x201D;</p>
 <p>This tactic often generates many trivial equality assumptions that may clutter the assumption space. I recommend almost always following <code>inversion</code> with <a href="/"><code>subst</code></a> to immediately substitute away these equalities.</p>
 <h3 id="syntax-1">Syntax</h3>
-<pre class="coq"><code>(* Standard usage *)
+<pre class="rocq"><code>(* Standard usage *)
 inversion H.</code></pre>
 <h3 id="examples-1">Examples</h3>
 <p>Before</p>
-<pre class="coq"><code>n: nat
+<pre class="rocq"><code>n: nat
 H: n &lt;= 1
 =========================
 1/1
 n = 0 \/ n = 1</code></pre>
-<pre class="coq"><code>inversion H.</code></pre>
+<pre class="rocq"><code>inversion H.</code></pre>
 <p>After (first goal generated):</p>
 <p>Note: this is the case of <code>n &lt;= 1</code> where <code>n = 1</code>, hence <code>H0</code>.</p>
-<pre class="coq"><code>n: nat
+<pre class="rocq"><code>n: nat
 H: n &lt;= 1
 H0: n = 1
 =========================
@@ -234,7 +234,7 @@ H0: n = 1
 1 = 0 \/ 1 = 1</code></pre>
 <p>After (second goal generated):</p>
 <p>Note: this is the case of <code>n &lt;= 1</code> where <code>n &lt; 1</code>, equivalent to <code>n &lt;= 0</code>, hence <code>H1</code>.</p>
-<pre class="coq"><code>n: nat
+<pre class="rocq"><code>n: nat
 H: n &lt;= 1
 m: nat
 H1: n &lt;= 0
@@ -243,7 +243,7 @@ H0: m = 0
 1/1
 n = 0 \/ n = 1</code></pre>
 <p>Script</p>
-<pre class="coq"><code>Theorem inversion_example1 : 
+<pre class="rocq"><code>Theorem inversion_example1 : 
     forall n, n &lt;= 1 -&gt; n = 0 \/ n = 1.
 Proof.
     intros. inversion H. 
@@ -251,7 +251,7 @@ Proof.
     - inversion H1. left. reflexivity.
 Qed.</code></pre>
 <p>Script</p>
-<pre class="coq"><code>Inductive color : Type :=
+<pre class="rocq"><code>Inductive color : Type :=
 | Red | Blue | Green | Cyan | Magenta | Yellow.
 
 Inductive makes_white : color -&gt; color -&gt; color -&gt; Prop :=
@@ -269,15 +269,15 @@ Proof.
     - right. repeat split.
 Qed.</code></pre>
 <h3 id="resources-1">Resources</h3>
-<p><a href="https://coq.inria.fr/doc/master/refman/proofs/writing-proofs/reasoning-inductives.html#coq:tacn.inversion">Reference Documentation</a></p>
+<p><a href="https://rocq-prover.org/doc/master/refman/proofs/writing-proofs/reasoning-inductives.html#rocq:tacn.inversion">Reference Documentation</a></p>
 <hr>
 <h2 id="induction"><a href="/ctpe/CaseAnalysis/induction.html">induction</a></h2>
-<p><code>induction</code> is an extension of <code>destruct</code> that allows for case analysis on inductive terms, gaining an inductive hypothesis for each recursive subterm generated by the term destruction. The arguments of <code>induction</code> are <a href="/ctpe/glossary.html#pattern">patterns</a>.</p>
-<p>If the goal still contains named impliciations, <code>induction</code> can be used before introducing them with <a href="/ctpe/Generalization/intros.html">intros</a>. In this case, if the argument to <code>induction</code> is not the first impliciation in the chain, all implications before it will be introduced to the goal&#8217;s assumption space.</p>
-<p><code>induction</code> can act similarly to <code>inversion</code> under specific circumstances. If you induct over an object that already contains subterms, you can <a href="/ctpe/Rewriting/remember.html">remember</a> the subterm(s) and induct on the root object. Then, by an easy <code>inversion</code> on the hypothesis generated by <code>remember</code>, all cases that don&#8217;t match the required form generated by the case analysis will be automatically solved by the <a href="/ctpe/glossary.html#explosion">principle of explosion</a>.</p>
+<p><code>induction</code> is an extension of <code>destruct</code> that allows for case analysis on inductive terms, gaining an inductive hypothesis for each recursive subterm generated by the term destruction. The arguments of <code>induction</code> are <a href="/RTPE/glossary.html#pattern">patterns</a>.</p>
+<p>If the goal still contains named impliciations, <code>induction</code> can be used before introducing them with <a href="/RTPE/Generalization/intros.html">intros</a>. In this case, if the argument to <code>induction</code> is not the first impliciation in the chain, all implications before it will be introduced to the goal&#x2019;s assumption space.</p>
+<p><code>induction</code> can act similarly to <code>inversion</code> under specific circumstances. If you induct over an object that already contains subterms, you can <a href="/RTPE/Rewriting/remember.html">remember</a> the subterm(s) and induct on the root object. Then, by an easy <code>inversion</code> on the hypothesis generated by <code>remember</code>, all cases that don&#x2019;t match the required form generated by the case analysis will be automatically solved by the <a href="/RTPE/glossary.html#explosion">principle of explosion</a>.</p>
 <p>Sometimes, the automatically-generated induction principles for a type are not sufficient to prove some properties about terms with that type. In this case, it is possible to write a <a href="https://softwarefoundations.cis.upenn.edu/lf-current/IndPrinciples.html">custom induction principle</a> for a type and then use it with the <code>induction</code> tactic.</p>
 <h3 id="syntax-2">Syntax</h3>
-<pre class="coq"><code>(* Simple usage *)
+<pre class="rocq"><code>(* Simple usage *)
 induction n.
 
 (* Induct over a term and introduce a hypothesis E showing its equivalence to the form it took *)
@@ -290,22 +290,22 @@ induction n as [| n&#39; IHn&#39; ].
 induction z using peano_ind.</code></pre>
 <h3 id="examples-2">Examples</h3>
 <p>Before</p>
-<pre class="coq"><code>n: nat
+<pre class="rocq"><code>n: nat
 =========================
 n + 0 = n</code></pre>
-<pre class="coq"><code>induction n as [| n&#39; IHn&#39; ].</code></pre>
+<pre class="rocq"><code>induction n as [| n&#39; IHn&#39; ].</code></pre>
 <p>After (first goal generated)</p>
-<pre class="coq"><code>=========================
+<pre class="rocq"><code>=========================
 1/2
 0 + 0 = 0</code></pre>
 <p>After (second goal generated)</p>
-<pre class="coq"><code>n&#39;: nat
+<pre class="rocq"><code>n&#39;: nat
 IHn&#39; : n&#39; + 0 = n&#39;
 =========================
 1/1
 S n&#39; + 0 = S n&#39;</code></pre>
 <p>Script</p>
-<pre class="coq"><code>Theorem induction_example1 : forall (n : nat),
+<pre class="rocq"><code>Theorem induction_example1 : forall (n : nat),
     n + 0 = n.
 Proof.
     induction n.
@@ -313,7 +313,7 @@ Proof.
     - simpl. rewrite IHn. reflexivity.
 Qed.</code></pre>
 <p>Script</p>
-<pre class="coq"><code>Require Import ZArith.
+<pre class="rocq"><code>Require Import ZArith.
 Open Scope Z.
 Theorem induction_example2 : forall (x y : Z),
     x + y = y + x.
@@ -328,8 +328,52 @@ Proof.
       rewrite Z.add_comm. reflexivity.
 Qed. </code></pre>
 <h3 id="resources-2">Resources</h3>
-<p><a href="https://coq.inria.fr/doc/V8.13.2/refman/proof-engine/tactics.html#coq:tacn.induction">Reference Documentation</a></p>
-<p><a href="https://softwarefoundations.cis.upenn.edu/lf-current/IndPrinciples.html">&#8220;Induction Principles&#8221; - Logical Foundations</a></p>
+<p><a href="https://rocq-prover.org/doc/master/refman/proofs/writing-proofs/reasoning-inductives.html#rocq:tacn.induction">Reference Documentation</a></p>
+<p><a href="https://softwarefoundations.cis.upenn.edu/lf-current/IndPrinciples.html">&#x201C;Induction Principles&#x201D; - Logical Foundations</a></p>
+<hr>
+<h2 id="constructor"><a href="/ctpe/CaseAnalysis/constructor.html">constructor</a></h2>
+<p>When faced with a goal consisting of an inductive proposition with multiple constructors (such as <a href="https://rocq-prover.org/doc/master/corelib/Corelib.Init.Peano.html#le"><code>le</code></a> or <a href="https://rocq-prover.org/doc/master/stdlib/Stdlib.Lists.List.html#NoDup"><code>NoDup</code></a>), the <code>constructor</code> tactic iteratively attempts to apply each inductive constructor until one makes progress.</p>
+<p>This tactic can succeed in multiple ways. Consider the following scenario:</p>
+<pre class="rocq"><code>Inductive example : nat -&gt; Prop :=
+| EOdd (n : nat) :
+    even n = false -&gt;
+    example n
+| EEven (n : nat) :
+    even n = true -&gt;
+    example n.
+
+Goal forall n, even n = true -&gt; example n.
+Proof.
+    intros.
+    constructor;
+    (* This will print out:
+        even n = false
+        even n = true
+       as `constructor` first tries to prove
+       the goal via EOdd, `assumption` fails,
+       and then we backtrack and try EEven *)
+    match goal with 
+    | [|- ?G] =&gt; idtac G; assumption
+    end.</code></pre>
+<p>Binding values to specific names is supported, as with <code>apply</code>.</p>
+<h3 id="syntax-3">Syntax</h3>
+<pre class="rocq"><code>(* Simple usage *)
+constructor.
+
+(* Bind to variables in the applied constructor *)
+constructor with (n := S x) (m := 5).</code></pre>
+<h3 id="examples-3">Examples</h3>
+<p>Before</p>
+<pre class="rocq"><code>n: nat
+=========================
+n = 0 \/ 1 &lt;= n</code></pre>
+<pre class="rocq"><code>constructor.</code></pre>
+<p>After (<code>or_introl</code> applied)</p>
+<pre class="rocq"><code>n: nat
+=========================
+n = 0</code></pre>
+<h3 id="resources-3">Resources</h3>
+<p><a href="https://rocq-prover.org/doc/master/refman/proofs/writing-proofs/reasoning-inductives.html#rocq:tacn.constructor">Reference Documentation</a></p>
 <hr>
 <hr>
     </div>

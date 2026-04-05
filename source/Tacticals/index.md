@@ -1,5 +1,5 @@
 ---
-title: "Tacticals - CTPE"
+title: "Tacticals - RTPE"
 ---
 
 # Tacticals

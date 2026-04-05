@@ -1,5 +1,5 @@
 ---
-title: "simpl - CTPE"
+title: "simpl - RTPE"
 ---
 
 ## simpl
@@ -9,7 +9,7 @@ title: "simpl - CTPE"
 
 ### Syntax
 
-```coq
+```rocq
 (* Simplify the goal as much as possible *)
 simpl.
 
@@ -26,18 +26,18 @@ simpl (2 + 2) in H.
 ### Examples
 
 Before
-```coq
+```rocq
 =========================
 1/1
 2 + 2 = 1 + 3
 ```
 
-```coq
+```rocq
 simpl (2 + 2).
 ```
 
 After
-```coq
+```rocq
 =========================
 1/1
 4 = 1 + 3
@@ -45,4 +45,4 @@ After
 
 ### Resources
 
-[Reference Documentation](https://coq.inria.fr/doc/master/refman/proofs/writing-proofs/equality.html#coq:tacn.simpl)
+[Reference Documentation](https://rocq-prover.org/doc/master/refman/proofs/writing-proofs/equality.html#rocq:tacn.simpl)

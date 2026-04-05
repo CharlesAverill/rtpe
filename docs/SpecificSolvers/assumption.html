@@ -5,18 +5,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta property="og:type" content="article">
-    <meta property="og:title" content="assumption - CTPE">
+    <meta property="og:title" content="assumption - RTPE">
     <meta property="og:url" content="https://charlesaverill.github.io/ctpe/">
-    <meta property="og:image" content="https://raw.githubusercontent.com/github/explore/7905d12e729f7b0f0dc9b80ad385fca3b6e17523/topics/coq/coq.png">
-    <meta property="og:description" content="A simplified explanation of commonly-used Coq tactics">
+    <meta property="og:image" content="https://raw.githubusercontent.com/github/explore/7905d12e729f7b0f0dc9b80ad385fca3b6e17523/topics/rocq/rocq.png">
+    <meta property="og:description" content="A simplified explanation of commonly-used Rocq tactics">
     <meta property="article:author" content="Charles Averill">
     <meta property="article:section" content="Technology">
-    <meta property="article:tag" content="coq">
+    <meta property="article:tag" content="rocq">
     <meta property="article:tag" content="proof">
     <meta property="article:tag" content="formal verification">
     <meta property="article:tag" content="tactic">
 
-    <title>assumption - CTPE</title>
+    <title>assumption - RTPE</title>
     <style>
 :root {
     --blue: #0000FF;
@@ -142,20 +142,20 @@ body {
 <h2 id="assumption"><a href="/ctpe/SpecificSolvers/assumption.html">assumption</a></h2>
 <p><code>assumption</code> solves goals in which there exists an assumption that directly proves the goal (no simplification). This tactic will fail if there does not exist such an assumption.</p>
 <h3 id="syntax">Syntax</h3>
-<pre class="coq"><code>(* Simple usage *)
+<pre class="rocq"><code>(* Simple usage *)
 assumption.</code></pre>
 <h3 id="examples">Examples</h3>
 <p>Before</p>
-<pre class="coq"><code>P: Prop
+<pre class="rocq"><code>P: Prop
 H: P
 =========================
 1/1
 P</code></pre>
-<pre class="coq"><code>assumption.</code></pre>
+<pre class="rocq"><code>assumption.</code></pre>
 <p>After</p>
-<pre class="coq"><code>No more goals.</code></pre>
+<pre class="rocq"><code>No more goals.</code></pre>
 <h3 id="resources">Resources</h3>
-<p><a href="https://coq.inria.fr/doc/master/refman/proof-engine/tactics.html?highlight=assumption#coq:tacn.assumption">Reference Documentation</a></p>
+<p><a href="https://rocq-prover.org/doc/master/refman/proof-engine/tactics.html#rocq:tacn.assumption">Reference Documentation</a></p>
 <hr>
     </div>
 </body>

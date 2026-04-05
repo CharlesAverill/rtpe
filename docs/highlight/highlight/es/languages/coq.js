@@ -1,16 +1,16 @@
-/*! `coq` grammar compiled for Highlight.js 11.9.0 */
+/*! `rocq` grammar compiled for Highlight.js 11.9.0 */
 var hljsGrammar = (function () {
   'use strict';
 
   /*
-  Language: Coq
+  Language: Rocq
   Author: Stephan Boyer <stephan@stephanboyer.com>
   Category: functional
-  Website: https://coq.inria.fr
+  Website: https://rocq.inria.fr
   */
 
   /** @type LanguageFn */
-  function coq(hljs) {
+  function rocq(hljs) {
     const KEYWORDS = [
       "_|0",
       "as",
@@ -425,7 +425,7 @@ var hljsGrammar = (function () {
       "with"
     ];
     return {
-      name: 'Coq',
+      name: 'Rocq',
       keywords: {
         keyword: KEYWORDS,
         built_in: BUILT_INS
@@ -446,7 +446,7 @@ var hljsGrammar = (function () {
     };
   }
 
-  return coq;
+  return rocq;
 
 })();
 ;

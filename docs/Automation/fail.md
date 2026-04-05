@@ -1,5 +1,5 @@
 ---
-title: fail - CTPE
+title: fail - RTPE
 ---
 
 ## [fail](/ctpe/Automation/fail.html)
@@ -10,7 +10,7 @@ This is sometimes useful if you're building a complex tactic with try-catch beha
 
 ### Syntax
 
-```coq
+```rocq
 (* Simple usage *)
 fail.
 ```
@@ -18,23 +18,23 @@ fail.
 ### Examples
 
 Before
-```coq
+```rocq
 =========================
 1/1
 True
 ```
 
-```coq
+```rocq
 fail.
 ```
 
 After
-```coq
+```rocq
 Error: Tactic failure.
 ```
 
 ### Resources
 
-[Reference Documentation](https://coq.inria.fr/doc/master/refman/proof-engine/ltac.html#coq:tacn.fail)
+[Reference Documentation](https://rocq-prover.org/doc/master/refman/proof-engine/ltac.html#rocq:tacn.fail)
 
 <hr>

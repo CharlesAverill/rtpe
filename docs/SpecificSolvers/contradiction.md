@@ -1,5 +1,5 @@
 ---
-title: "contradiction - CTPE"
+title: "contradiction - RTPE"
 ---
 
 ## [contradiction](/ctpe/SpecificSolvers/contradiction.html)
@@ -10,7 +10,7 @@ This tactic will fail if no such contradictions exist.
 
 ### Syntax
 
-```coq
+```rocq
 (* Simple usage *)
 contradiction.
 ```
@@ -18,24 +18,24 @@ contradiction.
 ### Examples
 
 Before
-```coq
+```rocq
 H: False
 =========================
 1/1
 False
 ```
 
-```coq
+```rocq
 contradiction.
 ```
 
 After
-```coq
+```rocq
 No more goals.
 ```
 
 Before
-```coq
+```rocq
 x, y: nat
 H: x = y
 H0: x <> y
@@ -44,17 +44,17 @@ H0: x <> y
 x = x + y
 ```
 
-```coq
+```rocq
 contradiction.
 ```
 
 After
-```coq
+```rocq
 No more goals.
 ```
 
 ### Resources
 
-[Reference Documentation](https://coq.inria.fr/doc/master/refman/proof-engine/tactics.html?highlight=assumption#coq:tacn.contradiction)
+[Reference Documentation](https://rocq-prover.org/doc/master/refman/proof-engine/tactics.html#rocq:tacn.contradiction)
 
 <hr>

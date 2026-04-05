@@ -1,5 +1,5 @@
 ---
-title: "remember - CTPE"
+title: "remember - RTPE"
 ---
 
 ## remember
@@ -9,7 +9,7 @@ Specifically, `remember t` (where `t` has type `T`) introduces an assumption tha
 
 ### Syntax
 
-```coq
+```rocq
 (* Simple usage *)
 remember (5 + x).
 
@@ -20,7 +20,7 @@ remember ("hello world") as s.
 ### Examples
 
 Before
-```coq
+```rocq
 x, y: nat
 H: x + y = x
 =========================
@@ -28,12 +28,12 @@ H: x + y = x
 y = 0
 ```
 
-```coq
+```rocq
 remember (x + y) as sum.
 ```
 
 After
-```coq
+```rocq
 x, y, sum: nat
 Heqsum: sum = x + y
 H: sum = x
@@ -44,4 +44,4 @@ y = 0
 
 ### Resources
 
-[Reference Documentation](https://coq.inria.fr/doc/V8.13.2/refman/proof-engine/tactics.html#coq:tacn.remember)
+[Reference Documentation](https://rocq-prover.org/doc/master/refman/proof-engine/tactics.html#rocq:tacn.remember)

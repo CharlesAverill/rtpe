@@ -1,5 +1,5 @@
 ---
-title: "rewrite - CTPE"
+title: "rewrite - RTPE"
 ---
 
 ## rewrite
@@ -12,7 +12,7 @@ Each of the equivalence proofs in the chain may be rewritten backwards.
 
 ### Syntax
 
-```coq
+```rocq
 (* Replace t1 with t2 in the goal *)
 rewrite t1_eq_t2.
 
@@ -29,19 +29,19 @@ rewrite t1_eq_t2, <- x_eq_y, ht_eq_ht.
 ### Examples
 
 Before
-```coq
+```rocq
 x, y: nat
 H: x = y
 =========================
 x + y = y + y
 ```
 
-```coq
+```rocq
 rewrite H.
 ```
 
 After
-```coq
+```rocq
 x, y: nat
 H: x = y
 =========================
@@ -49,12 +49,12 @@ y + y = y + y
 ```
 
 Alternatively,
-```coq
+```rocq
 rewrite <- H.
 ```
 
 
-```coq
+```rocq
 x, y: nat
 H: x = y
 =========================
@@ -63,4 +63,4 @@ x + x = x + x
 
 ### Resources
 
-[Reference Documentation](https://coq.inria.fr/doc/master/refman/proofs/writing-proofs/equality.html#coq:tacn.rewrite)
+[Reference Documentation](https://rocq-prover.org/doc/master/refman/proofs/writing-proofs/equality.html#rocq:tacn.rewrite)

@@ -5,18 +5,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta property="og:type" content="article">
-    <meta property="og:title" content="auto - CTPE">
+    <meta property="og:title" content="auto - RTPE">
     <meta property="og:url" content="https://charlesaverill.github.io/ctpe/">
-    <meta property="og:image" content="https://raw.githubusercontent.com/github/explore/7905d12e729f7b0f0dc9b80ad385fca3b6e17523/topics/coq/coq.png">
-    <meta property="og:description" content="A simplified explanation of commonly-used Coq tactics">
+    <meta property="og:image" content="https://raw.githubusercontent.com/github/explore/7905d12e729f7b0f0dc9b80ad385fca3b6e17523/topics/rocq/rocq.png">
+    <meta property="og:description" content="A simplified explanation of commonly-used Rocq tactics">
     <meta property="article:author" content="Charles Averill">
     <meta property="article:section" content="Technology">
-    <meta property="article:tag" content="coq">
+    <meta property="article:tag" content="rocq">
     <meta property="article:tag" content="proof">
     <meta property="article:tag" content="formal verification">
     <meta property="article:tag" content="tactic">
 
-    <title>auto - CTPE</title>
+    <title>auto - RTPE</title>
     <style>
 :root {
     --blue: #0000FF;
@@ -141,15 +141,15 @@ body {
     <div class="container">
 <h2 id="auto"><a href="/ctpe/Automation/auto.html">auto</a></h2>
 <p><code>auto</code> does a recursive search through a specified knowledge base in order to solve goals. If <code>auto</code> cannot completely solve a goal, it succeeds with no changes to the goal.</p>
-<p>The knowledge bases that <code>auto</code> uses are called <a href="https://coq.inria.fr/doc/master/refman/proofs/automatic-tactics/auto.html#hintdatabases"><strong>Hint Databases</strong></a>. Hint databases are provided by the standard library, and can also be created and added to by users. Hint databases can contain a variety of hint types, including but not limited to:</p>
+<p>The knowledge bases that <code>auto</code> uses are called <a href="https://rocq-prover.org/doc/master/refman/proofs/automatic-tactics/auto.html#hintdatabases"><strong>Hint Databases</strong></a>. Hint databases are provided by the standard library, and can also be created and added to by users. Hint databases can contain a variety of hint types, including but not limited to:</p>
 <ul>
 <li><code>Constructors</code>: <code>auto</code> will now try to apply each of the constructors for a given <code>Inductive</code> type</li>
-<li><code>Unfold</code>: <code>auto</code> will now try to unfold a given definition - helpful when trivial simplification isn&#8217;t enough</li>
+<li><code>Unfold</code>: <code>auto</code> will now try to unfold a given definition - helpful when trivial simplification isn&#x2019;t enough</li>
 <li><code>Resolve</code>: <code>auto</code> will now try to <code>simple apply</code> a given lemma</li>
 </ul>
 <p>The default hint database used by <code>auto</code> when no other database is specified is <code>core</code>.</p>
 <h3 id="syntax">Syntax</h3>
-<pre class="coq"><code>(* Simple usage *)
+<pre class="rocq"><code>(* Simple usage *)
 auto.
 
 (* Using a specific database *)
@@ -159,16 +159,16 @@ auto with bool.
 auto using example.</code></pre>
 <h3 id="examples">Examples</h3>
 <p>Before</p>
-<pre class="coq"><code>P: Prop
+<pre class="rocq"><code>P: Prop
 H: P
 =========================
 1/1
 0 = 0 /\ True /\ P</code></pre>
-<pre class="coq"><code>auto.</code></pre>
+<pre class="rocq"><code>auto.</code></pre>
 <p>After</p>
-<pre class="coq"><code>No more goals.</code></pre>
+<pre class="rocq"><code>No more goals.</code></pre>
 <p>Script</p>
-<pre class="coq"><code>Create HintDb automation.
+<pre class="rocq"><code>Create HintDb automation.
 Lemma mul_1_r : forall n, n * 1 = n. 
 Proof. induction n. auto. simpl. now rewrite IHn. Qed.
 Hint Resolve mul_1_r : automation.
@@ -176,11 +176,11 @@ Hint Resolve mul_1_r : automation.
 Lemma x : (forall n, n * 1 = n) /\ (true = true). 
 Proof. auto with automation. Qed.</code></pre>
 <h3 id="resources">Resources</h3>
-<p><a href="https://coq.inria.fr/doc/master/refman/proofs/automatic-tactics/auto.html#coq:tacn.auto">Reference Documentation</a></p>
-<p><a href="https://softwarefoundations.cis.upenn.edu/lf-current/Auto.html">&#8220;More Automation&#8221; - Logical Foundations</a></p>
-<p><a href="https://softwarefoundations.cis.upenn.edu/lf-current/AltAuto.html">&#8220;A Streamlined Treatment of Automation&#8221; - Logical Foundations</a></p>
-<p><a href="https://softwarefoundations.cis.upenn.edu/plf-current/UseAuto.html">&#8220;Theory and Practice of Automation in Coq Proofs&#8221; - Programming Language Foundations</a></p>
-<p><a href="https://coq.inria.fr/doc/master/refman/proofs/automatic-tactics/auto.html#hintdatabases">Hint Databases</a></p>
+<p><a href="https://rocq-prover.org/doc/master/refman/proofs/automatic-tactics/auto.html#rocq:tacn.auto">Reference Documentation</a></p>
+<p><a href="https://softwarefoundations.cis.upenn.edu/lf-current/Auto.html">&#x201C;More Automation&#x201D; - Logical Foundations</a></p>
+<p><a href="https://softwarefoundations.cis.upenn.edu/lf-current/AltAuto.html">&#x201C;A Streamlined Treatment of Automation&#x201D; - Logical Foundations</a></p>
+<p><a href="https://softwarefoundations.cis.upenn.edu/plf-current/UseAuto.html">&#x201C;Theory and Practice of Automation in Rocq Proofs&#x201D; - Programming Language Foundations</a></p>
+<p><a href="https://rocq-prover.org/doc/master/refman/proofs/automatic-tactics/auto.html#hintdatabases">Hint Databases</a></p>
 <hr>
     </div>
 </body>

@@ -1,5 +1,5 @@
 ---
-title: "discriminate - CTPE"
+title: "discriminate - RTPE"
 ---
 
 ## [discriminate](/ctpe/SpecificSolvers/discriminate.html)
@@ -12,7 +12,7 @@ This means that `discriminate` actually searches for trivial inequalities in ass
 
 ### Syntax
 
-```coq
+```rocq
 (* Simple usage *)
 discriminate.
 ```
@@ -20,56 +20,56 @@ discriminate.
 ### Examples
 
 Before
-```coq
+```rocq
 =========================
 1/1
 1 <> 2
 ```
 
-```coq
+```rocq
 discriminate.
 ```
 
 After
-```coq
+```rocq
 No more goals.
 ```
 
 Before
-```coq
+```rocq
 =========================
 1/1
 "hello" <> "world"
 ```
 
-```coq
+```rocq
 discriminate.
 ```
 
 After
-```coq
+```rocq
 No more goals.
 ```
 
 Before
-```coq
+```rocq
 H: S n = O
 ==========================
 1/1
 False
 ```
 
-```coq
+```rocq
 discriminate.
 ```
 
 After
-```coq
+```rocq
 No more goals.
 ```
 
 ### Resources
 
-[Reference Documentation](https://coq.inria.fr/doc/master/refman/proofs/writing-proofs/reasoning-inductives.html#coq:tacn.discriminate)
+[Reference Documentation](https://rocq-prover.org/doc/master/refman/proofs/writing-proofs/reasoning-inductives.html#rocq:tacn.discriminate)
 
 <hr>

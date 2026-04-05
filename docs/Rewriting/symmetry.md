@@ -2,7 +2,7 @@
 title: symmetry - RTPE
 ---
 
-## [symmetry](/ctpe/Rewriting/symmetry.html)
+## [symmetry](/rtpe/Rewriting/symmetry.html)
 
 `symmetry` is used to swap the left and right sides of an equality.
 

@@ -2,7 +2,7 @@
 title: split - RTPE
 ---
 
-## [split](/ctpe/Simplification/split.html)
+## [split](/rtpe/Simplification/split.html)
 
 `split` is primarily used to break a single goal of the form `A /\ B` into two new goals `A` and `B`.
 

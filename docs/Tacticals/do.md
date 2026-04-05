@@ -2,7 +2,7 @@
 title: do - RTPE
 ---
 
-## [do](/ctpe/Tacticals/do.html)
+## [do](/rtpe/Tacticals/do.html)
 
 The `do` tactical accepts a tactic `t` and a natural number `n`, applying `t` to the goal `n` times.
 `do` fails if one of the applications of `t` fails before `n` applications have occurred.

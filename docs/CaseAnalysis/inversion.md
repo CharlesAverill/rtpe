@@ -2,7 +2,7 @@
 title: "inversion - RTPE"
 ---
 
-## [inversion](/ctpe/CaseAnalysis/inversion.html)
+## [inversion](/rtpe/CaseAnalysis/inversion.html)
 
 `inversion` looks at a given piece of structural evidence and draws conclusions from it.
 If there are multiple sets of conclusions, `inversion` will generate a new proof obligation for each one.

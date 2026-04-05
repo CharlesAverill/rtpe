@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta property="og:type" content="article">
     <meta property="og:title" content="Simplification - RTPE">
-    <meta property="og:url" content="https://charlesaverill.github.io/ctpe/">
+    <meta property="og:url" content="https://charlesaverill.github.io/rtpe/">
     <meta property="og:image" content="https://raw.githubusercontent.com/github/explore/7905d12e729f7b0f0dc9b80ad385fca3b6e17523/topics/rocq/rocq.png">
     <meta property="og:description" content="A simplified explanation of commonly-used Rocq tactics">
     <meta property="article:author" content="Charles Averill">
@@ -95,10 +95,10 @@ body {
     </style>
 
     <!-- Syntax Highlighting -->
-    <link rel="stylesheet" href="/ctpe/docs/highlight/styles/school-book.css">
-    <script src="/ctpe/docs/highlight/highlight.min.js"></script>
-    <link rel="stylesheet" href="/ctpe/highlight/styles/school-book.css">
-    <script src="/ctpe/highlight/highlight.min.js"></script>
+    <link rel="stylesheet" href="/rtpe/docs/highlight/styles/school-book.css">
+    <script src="/rtpe/docs/highlight/highlight.min.js"></script>
+    <link rel="stylesheet" href="/rtpe/highlight/styles/school-book.css">
+    <script src="/rtpe/highlight/highlight.min.js"></script>
     <script>hljs.highlightAll();</script>
 
     <script>
@@ -128,8 +128,8 @@ body {
 <body>
     <table>
         <tr>
-            <td><h3 class="home"><a href="/ctpe/">Home</a></h3></td>
-            <td><h3 class="home"><a href="https://github.com/CharlesAverill/ctpe/">Github</a></h3></td>
+            <td><h3 class="home"><a href="/rtpe/">Home</a></h3></td>
+            <td><h3 class="home"><a href="https://github.com/CharlesAverill/rtpe/">Github</a></h3></td>
             <td><form style="text-align: right" id="searchForm">
                 <input type="text" id="searchInput" placeholder="Tactic Name">
                 <button type="submit" id="submitButton">Tactic Search</button>
@@ -139,9 +139,9 @@ body {
 
     <!-- Content -->
     <div class="container">
-<h1 id="simplification"><a href="/ctpe/Simplification/index.html">Simplification</a></h1>
+<h1 id="simplification"><a href="/rtpe/Simplification/index.html">Simplification</a></h1>
 <p>This group of tactic aims to reduce the complexity of terms in a goal. They will not solve a goal, only convert it into what is a structurally smaller (although maybe not lexically smaller!) form of the original goal.</p>
-<h2 id="simpl"><a href="/ctpe/Simplification/simpl.html">simpl</a></h2>
+<h2 id="simpl"><a href="/rtpe/Simplification/simpl.html">simpl</a></h2>
 <p><code>simpl</code> evaluates terms that are constructed of constant values - not variables. <code>simpl</code> can also partially evaluate partially-constant values.</p>
 <h3 id="syntax">Syntax</h3>
 <pre class="rocq"><code>(* Simplify the goal as much as possible *)
@@ -168,7 +168,7 @@ simpl (2 + 2) in H.</code></pre>
 <h3 id="resources">Resources</h3>
 <p><a href="https://rocq-prover.org/doc/master/refman/proofs/writing-proofs/equality.html#rocq:tacn.simpl">Reference Documentation</a></p>
 <hr>
-<h2 id="unfold"><a href="/ctpe/Simplification/unfold.html">unfold</a></h2>
+<h2 id="unfold"><a href="/rtpe/Simplification/unfold.html">unfold</a></h2>
 <p><code>unfold</code> replaces definition identifiers with the definition&#x2019;s contents, simplifying along the way.</p>
 <h3 id="syntax-1">Syntax</h3>
 <pre class="rocq"><code>(* Simple example *)
@@ -216,7 +216,7 @@ false
 <h3 id="resources-1">Resources</h3>
 <p><a href="https://rocq-prover.org/doc/master/refman/proofs/writing-proofs/equality.html#rocq:tacn.unfold">Reference Documentation</a></p>
 <hr>
-<h2 id="split"><a href="/ctpe/Simplification/split.html">split</a></h2>
+<h2 id="split"><a href="/rtpe/Simplification/split.html">split</a></h2>
 <p><code>split</code> is primarily used to break a single goal of the form <code>A /\ B</code> into two new goals <code>A</code> and <code>B</code>.</p>
 <p>You will often notice that <code>split</code> seems to solve some of the subgoals that it generates. This is because <code>split</code> is just shorthand for <code>constructor 1</code> (see the <a href="/RTPE/CaseAnalysis/constructor.html"><code>constructor</code> tactic</a>).</p>
 <p>Looking at the definition of <code>/\</code> (or <code>and</code>):</p>

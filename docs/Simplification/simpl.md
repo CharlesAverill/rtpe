@@ -2,7 +2,7 @@
 title: "simpl - RTPE"
 ---
 
-## [simpl](/ctpe/Simplification/simpl.html)
+## [simpl](/rtpe/Simplification/simpl.html)
 
 `simpl` evaluates terms that are constructed of constant values - not variables.
 `simpl` can also partially evaluate partially-constant values.

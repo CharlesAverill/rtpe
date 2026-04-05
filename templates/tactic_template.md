@@ -1,5 +1,5 @@
 ---
-title: tactic - CTPE
+title: tactic - RTPE
 ---
 
 ## tactic

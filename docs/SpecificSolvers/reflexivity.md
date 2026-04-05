@@ -2,7 +2,7 @@
 title: "reflexivity - RTPE"
 ---
 
-## [reflexivity](/ctpe/SpecificSolvers/reflexivity.html)
+## [reflexivity](/rtpe/SpecificSolvers/reflexivity.html)
 
 `reflexivity` solves goals which state that a term is equal to itself.
 `reflexivity` has some simplification power, but not as much as [`simpl`](/RTPE/Simplification/simpl.html).

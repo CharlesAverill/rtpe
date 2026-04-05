@@ -32,12 +32,12 @@ def compile_markdown(file_path, docs_dir, depth, use_absolute_path, is_root=Fals
             if use_absolute_path:
                 fp = "/" + file_path[len("docs/"):file_path.rindex('.')]
             else:
-                fp = "/ctpe/" + file_path[len("docs/"):file_path.rindex('.')]
+                fp = "/rtpe/" + file_path[len("docs/"):file_path.rindex('.')]
             compiled_lines.extend(f"{tokens[0]} [{title}]({fp}.html)\n")
         else:
-            line = line.replace("(glossary.md", "(" + ('/ctpe/' if not use_absolute_path else '/') + 'glossary.html')
+            line = line.replace("(glossary.md", "(" + ('/rtpe/' if not use_absolute_path else '/') + 'glossary.html')
             if use_absolute_path:
-                line = line.replace("/ctpe/", "/")
+                line = line.replace("/rtpe/", "/")
             compiled_lines.append(line)
 
     compiled_lines.extend(["\n", "<hr>", "\n"])
